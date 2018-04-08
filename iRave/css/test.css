@@ -99,6 +99,18 @@ footer h3{
 	z-index: 100;
 	opacity: 0;
 }
+#lockscreen i{
+	position: absolute;
+	/*center*/
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+
+	flex: auto;
+	bottom: 0;
+	color: #e5e5e5;
+}
 #lock-Time{
 	padding-top: 45%;
 	font-size: 4em;
