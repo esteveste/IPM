@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Titulo</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="header">
+            Header do site
+        </div>
+
+        <div id="texto">
+            Texto
+        </div>
+
+        <img src="error.png" width="520px" height="200px">
+
+        <table border="2"> 
+            <tr>
+                <td bgcolor="lightgreen"><b>Um</b></td>
+                <td bgcolor="lightblue">Dois</td>
+                <td bgcolor="palegoldenrod">Tres</td>
+            </tr>
+            <tr>
+                <td bgcolor="pink">Quatro</td>
+                <td>Cinco</td>
+                <td>Seis</td>
+            </tr>
+        </table>
+
+        <br/>
+        <hr/>
+
+        <div align="center" id="header">
+            RGB, CMYK e HSV
+        </div>
+
+        <table align="center" border="2"> 
+            <tr>
+                <td align="center">RGB</td>
+                <td align="center">CMYK</td>
+                <td align="center">HSV</td>
+            </tr>
+            <tr>
+                <td><img id="rgb" onclick="changeImage()" src = "rgb.jpg" width="200"></td>
+                <td><img src="cmy.gif" height="200px" align="center"></td>
+                <td><img src="hsv.png" height="200px" align="center"></td>
+            </tr>
+        </table>
+
+        <script>
+            function changeImage() {
+                var image = document.getElementById('rgb');
+                    image.src = "error.png";
+            }
+        </script>
+    </body>
+</html>
