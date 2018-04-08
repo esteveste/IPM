@@ -67,6 +67,9 @@ footer h3{
 	/*keep aspect ratio*/
 	object-fit: cover;
 }
+.disabled{
+	display: none;
+}
 
 #boot-anim{
 	text-align: center;
