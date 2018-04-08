@@ -32,13 +32,17 @@ footer h3{
 
 	/* margin-top: 20%; */
 	/* padding-top: 20%; */
+
 	width: 100%;
 	height: 100%;
-	padding-top: 14%; /*also experiment with 13*/
+	position: relative;
+	/* Old screen*/
+	/*padding-top: 14%;
 	padding-bottom: 14%;
 	padding-left: 14%;
 	padding-right: 14%;
- 	box-sizing: border-box;
+ 	box-sizing: border-box;*/
+
 	 /*background-color: red;*/
 }
 #ecra h1{
@@ -51,6 +55,17 @@ footer h3{
 	width: 100%;
 	height: 100%;
 	border-radius: 2%;
+	position: absolute;
+	width: 72%;
+	height: 76%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+
+	/*keep aspect ratio*/
+	object-fit: cover;
 }
 
 #boot-anim{
@@ -61,7 +76,7 @@ footer h3{
 	background-size: auto;
 	background-repeat: no-repeat;
 	background-blend-mode: hue;
-	z-index: 2;
+	z-index: 200;
 
 }
 #boot-anim h1{
@@ -78,7 +93,7 @@ footer h3{
 	/*background-position: center;*/
 	background-size: cover;
 	background-repeat: no-repeat;
-	z-index: 1;
+	z-index: 100;
 }
 #lock-Time{
 	padding-top: 45%;
