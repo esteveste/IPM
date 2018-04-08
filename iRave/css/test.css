@@ -1,0 +1,89 @@
+header{
+text-align: center;
+}
+header h1{
+	margin-bottom: 0;
+	color: #222;
+	font-family: Arial,sans-serif;
+	font-size:60px;
+}
+header h3{
+	color: #888;
+	font-family: "Roboto","Helvetica","Arial",sans-serif;
+	font-weight: 500;
+	/*font-size:20px;*/
+	margin-top: 1%;
+	margin-bottom: 3%;
+}
+footer{
+	text-align: center;
+	/*position: absolute;*/
+	/*top: 93%;*/
+	/*left: 50%;*/
+	/*left: 50%;*/
+}
+footer h3{
+	margin:0;
+	color: #999;
+	font-family: "Roboto",sans-serif;
+	/*font-size:20px;*/
+}
+#ecra{
+
+	/* margin-top: 20%; */
+	/* padding-top: 20%; */
+	width: 100%;
+	height: 100%;
+	padding-top: 14%; /*also experiment with 13*/
+	padding-bottom: 14%;
+	padding-left: 14%;
+	padding-right: 14%;
+ 	box-sizing: border-box;
+	 /*background-color: red;*/
+}
+#ecra h1{
+	margin: 0;
+	/*color: #222222;*/
+	font-family: "Roboto",sans-serif;
+}
+/*Default Settings used by screens in watch */
+.app{
+	width: 100%;
+	height: 100%;
+	border-radius: 2%;
+}
+
+#boot-anim{
+	text-align: center;
+	/*background-color: white;*/
+	background-image: url("../resources/c.gif");
+	background-position: left;
+	background-size: auto;
+	background-repeat: no-repeat;
+	background-blend-mode: hue;
+	z-index: 2;
+
+}
+#boot-anim h1{
+		padding-top: 49%;
+		font-size: 3em;
+		color: #f5f5f5;
+		opacity: 0;
+
+}
+#lockscreen{
+	/*display: flex;*/
+	background-image: url("../resources/lockscreen.jpg");
+	text-align: center;
+	/*background-position: center;*/
+	background-size: cover;
+	background-repeat: no-repeat;
+	z-index: 1;
+}
+#lock-Time{
+	padding-top: 45%;
+	font-size: 4em;
+	color: #f5f5f5;
+	font-family: "Roboto","Helvetica","Arial",sans-serif;
+	font-weight: 400;
+}
