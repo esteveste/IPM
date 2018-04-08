@@ -1,13 +1,18 @@
 
 async function init(){
   console.log("lets go");
-
+  await sleep(2000);
   let boot_title = $("#boot-title");
   let boot_anim = $("#boot-anim");
-  boot_title.fadeTo("slow",1);
+  let lockscreen = $("#lockscreen");
+  boot_title.fadeTo(2000,1);
   // boot_title.css("opacity",1);
-  await sleep(3000);
-  boot_anim.fadeTo("slow",0,()=>boot_anim.addClass("disabled"));
+  await sleep(4000);
+  boot_title.fadeTo("slow",0);
+  boot_anim.fadeTo("slow",0,()=>{
+    boot_anim.addClass("disabled");
+    lockscreen.fadeTo("slow",1);
+  });
 
   //
   // console.log("awake");

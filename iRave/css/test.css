@@ -97,6 +97,7 @@ footer h3{
 	background-size: cover;
 	background-repeat: no-repeat;
 	z-index: 100;
+	opacity: 0;
 }
 #lock-Time{
 	padding-top: 45%;
