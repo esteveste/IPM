@@ -87,7 +87,7 @@ footer h3{
 		font-size: 3em;
 		color: #f5f5f5;
 		opacity: 0;
-
+		user-select: none;
 }
 #lockscreen{
 	/*display: flex;*/
@@ -110,6 +110,7 @@ footer h3{
 	flex: auto;
 	bottom: 0;
 	color: #e5e5e5;
+	user-select: none;
 }
 #lock-Time{
 	padding-top: 45%;
