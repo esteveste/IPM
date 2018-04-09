@@ -8,10 +8,12 @@ async function init(){
 }
 
 async function bootAnimation(){
-  await sleep(2000);
   let boot_title = $("#boot-title");
   let boot_anim = $("#boot-anim");
   let lockscreen = $("#lockscreen");
+
+  boot_anim.fadeTo("slow",1);
+  await sleep(2000);
   boot_title.fadeTo(2000,1);
   // boot_title.css("opacity",1);
   await sleep(4000);
