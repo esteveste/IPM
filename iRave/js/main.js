@@ -11,6 +11,7 @@ async function bootAnimation(){
   let boot_title = $("#boot-title");
   let boot_anim = $("#boot-anim");
   let lockscreen = $("#lockscreen");
+  let black_screen = $("#black");
 
   boot_anim.fadeTo("slow",1);
   await sleep(2000);
@@ -20,8 +21,9 @@ async function bootAnimation(){
   boot_title.fadeTo("slow",0);
   boot_anim.fadeTo("slow",0,()=>{
     boot_anim.addClass("disabled");
-    lockscreen.fadeTo("slow",1);
+    lockscreen.fadeTo("slow",1,()=>black_screen.addClass("disabled"));
   });
+  lockscreen.click(lockScreenUnlock);
 }
 function updateTime() {
   today = new Date();
@@ -43,7 +45,12 @@ async function lockArrow(){
   }
   setTimeout(lockArrow,2000);
 }
-
+async function lockScreenUnlock(){
+  let lockscreen = $("#lockscreen");
+      lockscreen.fadeTo("slow",0,()=>{
+        lockscreen.addClass("disabled");
+      });
+}
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }

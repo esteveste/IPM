@@ -42,6 +42,30 @@
 	display: none;
 }
 
+.menu{
+	background: grey;
+	z-index: 90;
+	text-align: center;
+}
+.menu i{
+	color: white;
+	font-size: 10em;
+	margin-top: 20%;
+	user-select: none;
+}
+.menu h1{
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+	font-size: 2.4em;
+	font-weight: bold;
+	/*margin-bottom: 20;*/
+}
+#black{
+	background: black;
+	z-index: 95;
+}
 #boot-anim{
 	text-align: center;
 	/*background-color: white;*/
