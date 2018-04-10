@@ -13,6 +13,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Hammer for swipes -->
     <!-- <script src="https://hammerjs.github.io/dist/hammer.js"> </script> -->
+
+    <!-- Jq  -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
     <link rel="stylesheet" href="css/master.css">
     <script src="js/main.js" charset="utf-8"></script>
   </head>
@@ -38,17 +44,24 @@
           <div class="case">
 						<div id="ecra">
 
-							<div id="boot-anim" class="app">
+							<!-- <div id="boot-anim" class="app">
                 <h1 id="boot-title">iRave</h1>
-							</div>
-              <div id="black" class="app"></div> <!-- black screen for init -->
-              <div id="lockscreen" class="app">
-                <h1 id="lock-Time">00:00</h1>
-                <i id="lock-arrow" class="material-icons">keyboard_arrow_up</i>
+							</div> -->
+              <!-- <div id="black" class="app"></div>  black screen for init -->
+              <div id="app-screen" class="app">
+                <div id="lockscreen">
+                  <h1 id="lock-Time">00:00</h1>
+                  <i id="lock-arrow" class="material-icons">keyboard_arrow_up</i>
+                </div>
               </div>
-              <div class="menu app">
+
+              <!-- <div id="menu-cartaz" class="menu app">
                 <i class="material-icons">event</i>
                 <h1>Cartaz</h1>
+              </div> -->
+              <div id="menu-mapa" class="menu app">
+                <i class="material-icons">place</i>
+                <h1>Mapa</h1>
               </div>
 
 						</div>
