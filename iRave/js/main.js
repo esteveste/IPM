@@ -27,7 +27,7 @@ async function init(){
                   'top': minLockDrag
               });
             }
-            $("#app-screen").addClass("disabled");
+            // $("#app-screen").addClass("disabled");
         }
 
     });
@@ -58,8 +58,10 @@ function updateTime() {
   var m = today.getMinutes();
   if (m < 10) { m = "0" + m };
   let lock_Time = $("#lock-Time");
-  lock_Time.text(h + ":" + m);
+  let bar_Time = $("#bar-time");
 
+  lock_Time.text(h + ":" + m);
+  bar_Time.text(h + ":" + m);
   setTimeout(updateTime, 30000);
 }
 async function lockArrow(){
