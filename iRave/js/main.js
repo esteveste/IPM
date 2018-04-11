@@ -67,18 +67,58 @@ async function init(){
         changeScreen($("#menu-cartaz"),$("#cartaz"));
       });
       $("#bt-bandas").click(()=>{
-        changeScreen($("#cartaz"),$("banda_lista"));
+        changeScreen($("#cartaz"),$("#bandas-list"));
       });
-      $("#altj").click(()=>{
-        $("#bandas-list").fadeTo("slow",0,()=>{
-          $("#bandas-list").addClass("disabled")
-        });
-      });
+      $("#altj").click(createDiv);
 }
 
+//$(".band-button").click(createDiv());
 
-async function createDiv(band_name, description){
-  //let out = document.
+var band_list = {
+  "altj":{
+    desc:"Description:",
+    hour:"10:00 - 11:00",
+    stage:"Palco 1",
+  },
+  "coldplay":{
+    desc:"Description:",
+    hour:"11:00 - 12:00",
+    stage:"Palco 2",
+  },
+  "direstraits":{
+    desc:"Description:",
+    hour:"12:00 - 13:00",
+    stage:"Palco 3",
+  },
+  "pinkfloyd":{
+    desc:"Description:",
+    hour:"13:00 - 14:00",
+    stage:"Palco 4",
+  }
+}
+
+async function createDiv(){
+  console.log($(this).attr("id"));
+  let band_screen = $("#band");
+  let artist = band_list[$(this).attr("id")];
+  let description = band_list[$(this).attr("id")].desc;
+  let hour = band_list[$(this).attr("id")].hour;
+  let stage = band_list[$(this).attr("id")].stage;
+
+  let list = [artist, hour, stage, description];
+  let table = document.createElement('TABLE');
+
+  for(i = 0; i < 4 ; i++) {
+    let tr = document.createElement("TR");
+    let td = document.createElement("TD");
+    td.appendChild(document.createTextNode(list[i]));
+    tr.appendChild(td);
+    table.appendChild(tr);
+  }
+  console.log(table);
+  band_screen.append(table);
+
+  changeScreen($("#bandas-list"), band_screen);
 
 }
 
