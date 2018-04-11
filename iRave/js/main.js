@@ -36,8 +36,9 @@ async function init(){
           axis: "y",
           scroll: false,
           position: 'unset',
+          cancel:false,
           drag: function (event, ui) {
-              // if (ui.position.top > minLockDrag) ui.position.top = minLockDrag;
+              if (ui.position.top > 0) ui.position.top = 0;
               // if (ui.position.top < maxLockDrag) ui.position.top = maxLockDrag;
           },
           // stop: function (event, ui) {
