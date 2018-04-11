@@ -161,7 +161,7 @@
 	font-weight: 400;
 }
 #cartaz{
-	z-index: 80;
+	/*z-index: 80;*/
 
 }
 #cartaz button{
@@ -179,7 +179,7 @@
 #bandas-list{
 	height: 100%;
 	width: 100%;
-	z-index: 70;
+	/*z-index: 70;*/
 	background-color: white;
 }
 .bt-lista{

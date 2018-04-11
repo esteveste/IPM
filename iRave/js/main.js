@@ -61,14 +61,10 @@ async function init(){
 
       });
       $("#menu-cartaz").click(()=>{
-        $("#menu-cartaz").fadeTo("slow",0,()=>{
-          $("#menu-cartaz").addClass("disabled")
-        });
+        changeScreen($("#menu-cartaz"),$("#cartaz"));
       });
       $("#bt-bandas").click(()=>{
-        $("#cartaz").fadeTo("slow",0,()=>{
-          $("#cartaz").addClass("disabled")
-        });
+        changeScreen($("#cartaz"),$("banda_lista"));
       });
 }
 
@@ -119,6 +115,17 @@ async function lockArrow(){
   }
   setTimeout(lockArrow,2000);
 }
+
+function changeScreen(atual,to){
+  atual.css("z-index",20);
+  to.css("z-index",10);
+    atual.fadeTo("slow",0,()=>{
+      atual.addClass("disabled")
+    });
+}
+
+
+
 async function lockScreenUnlock(){
   let lockscreen = $("#lockscreen");
       lockscreen.fadeTo("slow",0,()=>{
