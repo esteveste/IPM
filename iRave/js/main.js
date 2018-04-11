@@ -34,6 +34,8 @@ async function init(){
         }
 
     });
+
+  
     let banda_lista = $("#bandas-list");
     let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47);
     console.log(max_drag_banda);
@@ -60,6 +62,7 @@ async function init(){
           // }
 
       });
+
       $("#menu-cartaz").click(()=>{
         $("#menu-cartaz").fadeTo("slow",0,()=>{
           $("#menu-cartaz").addClass("disabled")
@@ -70,7 +73,19 @@ async function init(){
           $("#cartaz").addClass("disabled")
         });
       });
+      $("#altj").click(()=>{
+        $("#bandas-list").fadeTo("slow",0,()=>{
+          $("#bandas-list").addClass("disabled")
+        });
+      });
 }
+
+
+async function createDiv(band_name, description){
+  //let out = document.
+
+}
+
 
 async function bootAnimation(debug){
   let boot_title = $("#boot-title");
