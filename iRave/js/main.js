@@ -1,7 +1,10 @@
+const DEBUG = true;
+const BUTTON_SIZE = 61.94;
+const BAR_SIZE = 27.16;
 
 async function init(){
   console.log("lets go");
-  bootAnimation();
+  bootAnimation(DEBUG);
   lockArrow();
   updateTime();
 
@@ -32,14 +35,16 @@ async function init(){
 
     });
     let banda_lista = $("#bandas-list");
+    let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47);
+    console.log(max_drag_banda);
     banda_lista.draggable({
           axis: "y",
           scroll: false,
           position: 'unset',
           cancel:false,
           drag: function (event, ui) {
-              if (ui.position.top > 0) ui.position.top = 0;
-              // if (ui.position.top < maxLockDrag) ui.position.top = maxLockDrag;
+              if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+              if (ui.position.top < max_drag_banda) ui.position.top = max_drag_banda;
           },
           // stop: function (event, ui) {
           //     if (ui.position.top < maxLockDrag/4) {
@@ -67,11 +72,18 @@ async function init(){
       });
 }
 
-async function bootAnimation(){
+async function bootAnimation(debug){
   let boot_title = $("#boot-title");
   let boot_anim = $("#boot-anim");
   let lockscreen = $("#lockscreen");
   let black_screen = $("#black");
+
+    if(debug){
+      boot_anim.addClass("disabled");
+      lockscreen.fadeTo("slow",1,()=>black_screen.addClass("disabled"));
+      return;
+    }
+
 
   boot_anim.fadeTo("slow",1);
   await sleep(2000);
@@ -83,7 +95,7 @@ async function bootAnimation(){
     boot_anim.addClass("disabled");
     lockscreen.fadeTo("slow",1,()=>black_screen.addClass("disabled"));
   });
-  // lockscreen.click(lockScreenUnlock);
+
 }
 function updateTime() {
   today = new Date();
