@@ -186,6 +186,7 @@
 	background-color: white;
 	width: 100%;
 	height: 62px;
+	user-select: none;
 }
 .no-hover:hover{
 	background: white;
