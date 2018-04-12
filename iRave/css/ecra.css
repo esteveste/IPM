@@ -75,7 +75,7 @@
 	background-color: black;
 	height: 10%;
 	top: -66%;
-	z-index: 190;
+	z-index: 80;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 
@@ -177,7 +177,7 @@
 	background-color: var(--c2);
 }
 #bandas-list{
-	height: 100%;
+	height: auto;
 	width: 100%;
 	/*z-index: 70;*/
 	background-color: white;
@@ -185,5 +185,8 @@
 .bt-lista{
 	background-color: white;
 	width: 100%;
-	height: 30%;
+	height: 62px;
+}
+.no-hover:hover{
+	background: white;
 }

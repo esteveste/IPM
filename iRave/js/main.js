@@ -1,6 +1,9 @@
 const DEBUG = true;
-const BUTTON_SIZE = 61.94;
+const BUTTON_SIZE = 62;
 const BAR_SIZE = 27.16;
+
+var appHistory = [];
+var atualApp = undefined;
 
 async function init(){
   console.log("lets go");
@@ -37,6 +40,7 @@ async function init(){
     let banda_lista = $("#bandas-list");
     let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47);
     console.log(max_drag_banda);
+    banda_lista.css("top",BAR_SIZE);
     banda_lista.draggable({
           axis: "y",
           scroll: false,
@@ -64,9 +68,22 @@ async function init(){
         changeScreen($("#menu-cartaz"),$("#cartaz"));
       });
       $("#bt-bandas").click(()=>{
-        changeScreen($("#cartaz"),$("banda_lista"));
+        changeScreen($("#cartaz"),$("#banda_list"));
       });
+      $("#back-bt").click(backApp);
 }
+
+function addToAppHistory(appName){
+  appHistory.push(appName);
+}
+function getLastAppHistory(){
+  return appHistory.pop();
+}
+function clearAppHistory(){
+  appHistory = [];
+}
+
+
 
 async function bootAnimation(debug){
   let boot_title = $("#boot-title");
@@ -116,15 +133,42 @@ async function lockArrow(){
   setTimeout(lockArrow,2000);
 }
 
-function changeScreen(atual,to){
+function changeScreen(atual,to,addHistory=true){
+
+  // if the to is equal to from we break
+  if(atual.is(to) || (appHistory[appHistory.length -1]!=undefined
+  && appHistory[appHistory.length -1].is(to))){
+    return;
+  }
+  console.log("change");
   atual.css("z-index",20);
+  to.removeClass("disabled");
+  to.css("opacity",1);
   to.css("z-index",10);
     atual.fadeTo("slow",0,()=>{
-      atual.addClass("disabled")
+      atual.addClass("disabled");
     });
+  if(addHistory){
+    appHistory.push(to);
+  }
 }
 
+function backApp(){
+  console.log("wtf");
+  if(appHistory.length==0){
+    return;
+  }
+  console.log("berfore" + appHistory);
+  let atual = appHistory.pop(); //take out last app
+  let to = appHistory[appHistory.length - 1];
+  console.log(appHistory);
+  if(to!=undefined){
 
+    changeScreen(atual,to,false);
+  }else{
+    changeScreen(atual,$("#menu-cartaz"),false);
+  }
+}
 
 async function lockScreenUnlock(){
   let lockscreen = $("#lockscreen");
