@@ -38,7 +38,7 @@ async function init(){
 
     });
 
-  
+
     let banda_lista = $("#bandas-list");
     let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47);
     console.log(max_drag_banda);
@@ -191,11 +191,12 @@ async function lockArrow(){
 function changeScreen(atual,to,addHistory=true){
 
   // if the to is equal to from we break
-  if(atual.is(to) || (appHistory[appHistory.length -1]!=undefined
+  if(atual.is(to) || (addHistory && appHistory[appHistory.length -1]!=undefined
   && appHistory[appHistory.length -1].is(to))){
+    console.log("Whaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     return;
   }
-  console.log("change");
+  console.log("change" + to.text());
   atual.css("z-index",20);
   to.removeClass("disabled");
   to.css("opacity",1);
