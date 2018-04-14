@@ -1,6 +1,8 @@
 const DEBUG = true;
 const BUTTON_SIZE = 62;
 const BAR_SIZE = 27.16;
+const SCREEN_SIZE = 178.31;
+const NR_OF_MENU_EL = 2;
 
 var appHistory = [];
 var atualApp = undefined;
@@ -41,29 +43,32 @@ async function init(){
 
     let menu = $("#menu");
     // lockScreen.css("opacity",1);
-    // const maxDrag=-225;
+    const maxMenuDrag=-SCREEN_SIZE*(NR_OF_MENU_EL-1);
     // const minLockDrag=0;
     menu.draggable({
           axis: "y",
           scroll: false,
           position: 'unset',
           drag: function (event, ui) {
-              // if (ui.position.top > minLockDrag) ui.position.top = minLockDrag;
-              // if (ui.position.top < maxLockDrag) ui.position.top = maxLockDrag;
+              if (ui.position.top > 0) ui.position.top = 0;
+              if (ui.position.top < maxMenuDrag) ui.position.top = maxMenuDrag;
           },
           stop: function(event, ui) {
             $( event.originalEvent.target ).one('click', function(e){ e.stopImmediatePropagation(); } );
+              console.log("if "+ (ui.position.top/SCREEN_SIZE - Math.floor(ui.position.top/SCREEN_SIZE)));
+              console.log("tr " + (Math.floor(ui.position.top/SCREEN_SIZE)+1)*SCREEN_SIZE);
+                if (ui.position.top/SCREEN_SIZE - Math.floor(ui.position.top/SCREEN_SIZE)<=0.5) {
+                    $(this).animate({
+                        'top': (Math.floor(ui.position.top/SCREEN_SIZE))*SCREEN_SIZE
+                    });
+                }else{
+                  $(this).animate({
+                      'top': (Math.floor(ui.position.top/SCREEN_SIZE)+1)*SCREEN_SIZE
+                  });
+                }
         }
           // stop: function (event, ui) {
-          //     if (ui.position.top < maxLockDrag/4) {
-          //         $(this).animate({
-          //             'top': maxLockDrag
-          //         });
-          //     }else{
-          //       $(this).animate({
-          //           'top': minLockDrag
-          //       });
-          //     }
+
           // }
       });
 
