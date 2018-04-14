@@ -19,8 +19,8 @@
   <link rel="stylesheet" href="css/jquery-ui.css">
   <script src="js/jquery-ui.min.js"></script>
 
-	  <!-- Mobile Touch Hack-->
-	<script src="js/jquery.ui.touch-punch.min.js"></script>
+  <!-- Mobile Touch Hack-->
+  <script src="js/jquery.ui.touch-punch.min.js"></script>
 
   <link rel="stylesheet" href="css/master.css">
   <script src="js/main.js" charset="utf-8"></script>
@@ -46,8 +46,8 @@
         <div id="ecra">
 
           <div id="boot-anim" class="app">
-                <h1 id="boot-title">iRave</h1>
-							</div>
+            <h1 id="boot-title">iRave</h1>
+          </div>
           <!-- black screen for init -->
           <div id="black" class="app"></div>
           <div class="app overflow">
@@ -56,52 +56,60 @@
               <i id="lock-arrow" class="material-icons">keyboard_arrow_up</i>
             </div>
           </div>
-
-          <div id="menu-cartaz" class="menu app">
-            <i class="material-icons">event</i>
-            <h1>Cartaz</h1>
-          </div>
-          <!-- <div id="menu-mapa" class="menu app">
-                <i class="material-icons">place</i>
-                <h1>Mapa</h1>
-              </div> -->
-          <div id="bar" class="app ">
-                <h4 id="bar-title">Mapa</h4>
-                <h4 id="bar-time">00:00</h4>
+          <!-- MENU -->
+            <div id="menu-overflow" class="overflow app">
+              <div id="menu">
+                <div id="menu-cartaz" class="menu">
+                  <i class="material-icons">event</i>
+                  <h1>Cartaz</h1>
+                </div>
+                <div id="menu-mapa" class="menu">
+                  <i class="material-icons">place</i>
+                  <h1>Mapa</h1>
+                </div>
               </div>
+
+
+            </div>
+
+
+          <div id="bar" class="app ">
+            <h4 id="bar-title">Mapa</h4>
+            <h4 id="bar-time">00:00</h4>
+          </div>
           <div id="cartaz" class="app">
-                <!-- Flat button with ripple -->
-                <button id="bt-bandas" class="no-hover mdl-button mdl-js-button mdl-js-ripple-effect">
+            <!-- Flat button with ripple -->
+            <button id="bt-bandas" class="no-hover mdl-button mdl-js-button mdl-js-ripple-effect">
                   Bandas
                 </button>
 
-                <button id="bt-horario"class="no-hover mdl-button mdl-js-button mdl-js-ripple-effect">
+            <button id="bt-horario" class="no-hover mdl-button mdl-js-button mdl-js-ripple-effect">
                       Horário
                 </button>
           </div>
-        <div class="app overflow">
+          <div class="app overflow">
 
-          <div id="bandas-list" class="app">
-            <button id="altj" class="no-hover bt-lista mdl-button mdl-js-button mdl-js-ripple-effect">
+            <div id="bandas-list" class="app">
+              <button id="altj" class="no-hover bt-lista mdl-button mdl-js-button mdl-js-ripple-effect">
               Alt-J <img id="altj" align="left" src = "resources/altj.jpg" width="35">
             </button>
-            <button id="coldplay" class="no-hover bt-lista mdl-button mdl-js-button mdl-js-ripple-effect">
+              <button id="coldplay" class="no-hover bt-lista mdl-button mdl-js-button mdl-js-ripple-effect">
                 Colplay
             </button>
-            <button id="direstraits" class="no-hover bt-lista mdl-button mdl-js-button mdl-js-ripple-effect">
+              <button id="direstraits" class="no-hover bt-lista mdl-button mdl-js-button mdl-js-ripple-effect">
                Dire Straits
             </button>
 
-            <button id="pinkfloyd" class="no-hover bt-lista mdl-button mdl-js-button mdl-js-ripple-effect">
+              <button id="pinkfloyd" class="no-hover bt-lista mdl-button mdl-js-button mdl-js-ripple-effect">
               Pink Floyd
             </button>
+            </div>
+
           </div>
 
-        </div>
+          <div id="band" class="app">
 
-      <div id="band" class="app">
-
-        </div>
+          </div>
 
 
         </div>

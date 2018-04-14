@@ -39,6 +39,35 @@ async function init(){
     });
 
 
+    let menu = $("#menu");
+    // lockScreen.css("opacity",1);
+    // const maxDrag=-225;
+    // const minLockDrag=0;
+    menu.draggable({
+          axis: "y",
+          scroll: false,
+          position: 'unset',
+          drag: function (event, ui) {
+              // if (ui.position.top > minLockDrag) ui.position.top = minLockDrag;
+              // if (ui.position.top < maxLockDrag) ui.position.top = maxLockDrag;
+          },
+          stop: function(event, ui) {
+            $( event.originalEvent.target ).one('click', function(e){ e.stopImmediatePropagation(); } );
+        }
+          // stop: function (event, ui) {
+          //     if (ui.position.top < maxLockDrag/4) {
+          //         $(this).animate({
+          //             'top': maxLockDrag
+          //         });
+          //     }else{
+          //       $(this).animate({
+          //           'top': minLockDrag
+          //       });
+          //     }
+          // }
+      });
+
+
     let banda_lista = $("#bandas-list");
     let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47);
     console.log(max_drag_banda);
@@ -66,10 +95,10 @@ async function init(){
           // }
 
       });
-
-      $("#menu-cartaz").click(()=>{
-        changeScreen($("#menu-cartaz"),$("#cartaz"));
+      $("#menu-cartaz").click(function(event) {
+              changeScreen($("#menu-overflow"),$("#cartaz"));
       });
+
       $("#bt-bandas").click(()=>{
         changeScreen($("#cartaz"),$("#bandas-list"));
       });
