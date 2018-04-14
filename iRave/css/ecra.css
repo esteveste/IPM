@@ -81,6 +81,10 @@
 
 }
 
+.fixbar{
+	height: 10%;
+}
+
 #bar h4{
 
 	color:white;
@@ -167,7 +171,7 @@
 #cartaz button{
 	color: var(--cb);
 	font-size: 3em;
-	height: 50%;
+	height: 45%;
 	width: 100%;
 }
 #bt-bandas{
@@ -176,7 +180,32 @@
 #bt-horario{
 	background-color: var(--c2);
 }
+#band button{
+	padding: 0;
+	color: var(--cb);
+	font-size: 1.2em;
+	text-align: center;
+	width: 50%;
+}
+#bt-reminder{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	background-color: var(--c1);
+}
+#bt-nav{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background-color: var(--c2);
+}
 #bandas-list{
+	height: auto;
+	width: 100%;
+	/*z-index: 70;*/
+	background-color: white;
+}
+#horario-list{
 	height: auto;
 	width: 100%;
 	/*z-index: 70;*/
@@ -188,6 +217,21 @@
 	height: 62px;
 	user-select: none;
 }
+.bt-band{
+	background-color: white;
+	width: 100%;
+	height: 62px;
+	user-select: none;
+}
+.bt-schedule{
+	background-color: white;
+	width: 100%;
+	height: 62px;
+	user-select: none;	
+}
 .no-hover:hover{
+	background: white;
+}
+#band{
 	background: white;
 }
