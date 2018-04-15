@@ -44,6 +44,7 @@
 	bottom: 0;
 	margin: auto;
 	transition: 0.5s;
+	/*pointer-events: none;*/
 	/*keep aspect ratio*/
 	object-fit: cover;
 }
@@ -213,12 +214,14 @@
 	height: auto;
 	width: 100%;
 	/*z-index: 70;*/
+	transition: 0s;
 	background-color: black;
 }
 #horario-list{
 	height: auto;
 	width: 100%;
 	/*z-index: 70;*/
+	transition: 0s;
 	background-color: black;
 }
 .button-style{
@@ -261,4 +264,12 @@
 	z-index: 60;
 	margin: auto;
 	/*padding-left: 70%;*/
+}
+.no-touch{
+	pointer-events: none;
+}
+/*Tratar no futuro*/
+.app-mod{
+	height: 0%;
+	width: 0%;
 }

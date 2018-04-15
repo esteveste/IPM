@@ -103,18 +103,9 @@ async function init(){
               if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
               if (ui.position.top < max_drag_horario) ui.position.top = max_drag_horario;
           },
-          // stop: function (event, ui) {
-          //     if (ui.position.top < maxLockDrag/4) {
-          //         $(this).animate({
-          //             'top': maxLockDrag
-          //         });
-          //     }else{
-          //       $(this).animate({
-          //           'top': minLockDrag
-          //       });
-          //     }
-          //     // $("#app-screen").addClass("disabled");
-          // }
+          stop: function (event, ui) {
+              $( event.originalEvent.target ).one('click', function(e){ e.stopImmediatePropagation(); } );
+          }
 
       });
 
@@ -131,18 +122,9 @@ async function init(){
               if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
               if (ui.position.top < max_drag_banda) ui.position.top = max_drag_banda;
           },
-          // stop: function (event, ui) {
-          //     if (ui.position.top < maxLockDrag/4) {
-          //         $(this).animate({
-          //             'top': maxLockDrag
-          //         });
-          //     }else{
-          //       $(this).animate({
-          //           'top': minLockDrag
-          //       });
-          //     }
-          //     // $("#app-screen").addClass("disabled");
-          // }
+          stop: function (event, ui) {
+              $( event.originalEvent.target ).one('click', function(e){ e.stopImmediatePropagation(); } );
+          }
 
       });
       $("#menu-cartaz").click(function(event) {
@@ -306,7 +288,7 @@ async function bootAnimation(debug){
 
     if(debug){
       boot_anim.addClass("disabled");
-      lockscreen.fadeTo("slow",1,()=>black_screen.addClass("disabled"));
+      lockscreen.fadeTo("slow",1,()=>black_screen.css("z-index","5"));
       return;
     }
 
@@ -319,7 +301,7 @@ async function bootAnimation(debug){
   boot_title.fadeTo("slow",0);
   boot_anim.fadeTo("slow",0,()=>{
     boot_anim.addClass("disabled");
-    lockscreen.fadeTo("slow",1,()=>black_screen.addClass("disabled"));
+    lockscreen.fadeTo("slow",1,()=>black_screen.css("z-index","5"));
   });
 
 }
@@ -346,7 +328,7 @@ async function lockArrow(){
   setTimeout(lockArrow,2000);
 }
 
-function changeScreen(atual,to,addHistory=true){
+async function changeScreen(atual,to,addHistory=true){
 
   // if the to is equal to from we break
   if(atual.is(to) || (addHistory && appHistory[appHistory.length -1]!=undefined
@@ -354,16 +336,24 @@ function changeScreen(atual,to,addHistory=true){
     console.log("Whaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     return;
   }
-
   console.log("change to " + to.attr("id"));
-  atual.css("z-index",10);
+  atual.css("z-index",20);
+  atual.add("no-touch");
+  to.add("no-touch");
   to.removeClass("disabled");
+  to.css("height","76%");
+  to.css("width","72%");
   to.css("opacity",1);
-  to.css("z-index",20);
-  atual.addClass("disabled");
+  to.css("z-index",10);
   // atual.fadeTo("slow",0,()=>{
-  //
-  //   });
+  atual.css("opacity",0);
+  atual.css("height","0%");
+  atual.css("width","0%");
+  await sleep("500");
+  atual.addClass("disabled");
+  atual.removeClass("no-touch");
+  to.removeClass("no-touch");
+    // });
   if(addHistory){
     appHistory.push(to);
   }
