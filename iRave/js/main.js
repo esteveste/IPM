@@ -219,7 +219,8 @@ var title_list = {
   "band":"Bandas",
   "list-horario":"Horário",
   "":"Mapa",
-  "":""
+  "":"",
+  "menu-overflow":"Menu"
 };
 
 async function createBar(screen){
@@ -241,7 +242,7 @@ async function createDiv(el,flag){
 
     var bt_nav = document.createElement("button");
     var bt_reminder = document.createElement("button");
-  
+
     bt_nav.id="bt-nav";
     bt_reminder.id="bt-reminder";
 
@@ -356,7 +357,7 @@ function changeScreen(atual,to,addHistory=true){
   to.removeClass("disabled");
   to.css("opacity",1);
   to.css("z-index",10);
-    atual.fadeTo("slow",0,()=>{
+  atual.fadeTo("slow",0,()=>{
       atual.addClass("disabled");
     });
   if(addHistory){
@@ -370,7 +371,7 @@ function backApp(){
   if(appHistory.length==0){
     return;
   }
-  console.log("berfore" + appHistory);
+  console.log("before" + appHistory);
   let atual = appHistory.pop(); //take out last app
   let to = appHistory[appHistory.length - 1];
   console.log(appHistory);
@@ -378,7 +379,7 @@ function backApp(){
 
     changeScreen(atual,to,false);
   }else{
-    changeScreen(atual,$("#menu-cartaz"),false);
+    changeScreen(atual,$("#menu-overflow"),false);
   }
 }
 
