@@ -41,6 +41,7 @@ html{
   border-radius:10em 10em 11em 11em / 4em 4em 4em 4em;
 }
 .crown{
+  cursor: pointer;
 position: absolute;
 background: #f6f6f6;
 width: 1.5em;
