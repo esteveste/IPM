@@ -208,12 +208,63 @@ var title_list = {
   "menu-overflow":"Menu"
 };
 
+var notificationTitle = "";
+var notificationInfo = "";
+
+var popup_list = {
+  1:["Alerta adicionado.", "Cancelar"],
+  2:["" , "Remover"]
+}
+
 async function createBar(screen){
   $("#bar-title").text(title_list[screen]);
 }
 
+async function createNotification(alert){
+  let lockscreen = $("#lockscreen");
+
+  $("#notification").remove();
+
+  var notificationDiv = document.createElement("div");
+  let notificationButton = document.createElement("button");
+  let notificationText = document.createElement("span");
+
+  notificationDiv.id = "notification";
+  notificationDiv.className = "notification";
+
+  notificationText.className = "notification-text";
+  notificationButton.className = "notification-bt";
+
+  notificationButton.textContent = popup_list[alert][1];
+  notificationText.textContent = popup_list[alert][0];
+
+  notificationDiv.appendChild(notificationText);
+  notificationDiv.appendChild(notificationButton);
+
+  lockscreen.append(notificationDiv);
+  $(".notification-bt").click(function(){
+    $("#notification").remove();}
+  );
+}
+
+async function createPopup(alert){
+  let text = $("#txt-popup");
+  let bt = $("#bt-popup");
+  text.empty();
+  bt.empty();
+  text.text(popup_list[alert][0]);
+  bt.text(popup_list[alert][1]);
+}
+
+async function notifyPopup(){
+  let popup = $(".popup");
+  let h = popup.height();
+  popup.css("top", -h-2);
+  setTimeout(function(){$(".popup").animate({top:0}, 300);}, 500);
+  setTimeout(function(){$(".popup").animate({top:-h-2}, 300);}, 4000);
+}
+
 async function createDiv(el,flag){
-  console.log(el.attr("id"));
   let band_screen = $("#band");
   band_screen.empty();
   let fixbardiv = document.createElement("div");
@@ -225,6 +276,8 @@ async function createDiv(el,flag){
     var hour = band_list[el.attr("id")].hour;
     var stage = band_list[el.attr("id")].stage;
 
+    popup_list[2][0]= artist + " as " + hour + " no " + stage;
+
     var bt_nav = document.createElement("button");
     var bt_reminder = document.createElement("button");
 
@@ -232,7 +285,7 @@ async function createDiv(el,flag){
     bt_reminder.id="bt-reminder";
 
     bt_nav.className="no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
-    bt_reminder.className="no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
+    bt_reminder.className="mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
 
     bt_nav.textContent="Navegar";
     bt_reminder.textContent="Alerta";
@@ -264,7 +317,14 @@ async function createDiv(el,flag){
   band_screen.append(bt_nav);
 
   changeScreen(el.parent().parent(), band_screen);
-
+  $("#bt-reminder").click(function(){
+    createPopup(1);
+    notifyPopup();
+    createNotification(2);}
+  );
+  $(".popup-button").click(function(){
+    $("#notification").remove();}
+  );
 }
 
 
@@ -333,7 +393,6 @@ async function changeScreen(atual,to,addHistory=true){
   // if the to is equal to from we break
   if(atual.is(to) || (addHistory && appHistory[appHistory.length -1]!=undefined
   && appHistory[appHistory.length -1].is(to))){
-    console.log("Whaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     return;
   }
   console.log("change to " + to.attr("id"));

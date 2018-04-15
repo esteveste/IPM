@@ -256,6 +256,48 @@
 	width: 100%;
 	z-index: 50;
 }
+.popup{
+	background: white;
+	border: 1px solid #0099ff;
+	height: 25%;
+	top: -26%;
+	text-align: left;
+	position: absolute;
+	width: 98%;
+	z-index: 200;
+	font-family: "Roboto";
+}
+.popup-text{
+	color: #000000;
+}
+.popup-button{
+	position: absolute;
+	background: white;
+	right: 0;
+	bottom: 0;
+	color: #ff0000;
+	border: 0;
+}
+.notification{
+	text-align: left;
+	position: absolute;
+	left: 7.5%;
+	width: 85%;
+	height: 20%;
+	background: rgba(255, 255, 255, 0.7);
+}
+.notification-text{
+	color: #000000;
+	left: 2%;
+}
+.notification-bt{
+	position: absolute;
+	background: transparent;
+	right: 0;
+	bottom: 0;
+	color: #ff0000;
+	border: 0;
+}
 #menu-status{
 	position: absolute;
 	right: 0;
