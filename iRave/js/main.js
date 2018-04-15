@@ -1,8 +1,8 @@
 // 'use strict';
 
 const DEBUG = true;
-const BUTTON_SIZE = 62;
-const BAR_SIZE = 27.16;
+const BUTTON_SIZE = 64;
+const BAR_SIZE = 25.8;
 const SCREEN_SIZE = 178.31;
 const NR_OF_MENU_EL = 3;
 
@@ -91,7 +91,7 @@ async function init(){
 
 
     let horario_lista = $("#horario-list");
-    let max_drag_horario = -($("#horario-list > button").length * BUTTON_SIZE - 206.47);
+    let max_drag_horario = -($("#horario-list > button").length * BUTTON_SIZE - 206.47)-BAR_SIZE;
     console.log(max_drag_horario);
     horario_lista.css("top",BAR_SIZE);
     horario_lista.draggable({
@@ -119,7 +119,7 @@ async function init(){
       });
 
     let banda_lista = $("#bandas-list");
-    let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47);
+    let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47)-BAR_SIZE;
     console.log(max_drag_banda);
     banda_lista.css("top",BAR_SIZE);
     banda_lista.draggable({
