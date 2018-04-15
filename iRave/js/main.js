@@ -320,7 +320,7 @@ function updateTime() {
 async function lockArrow(){
   let arrow = $("#lock-arrow");
   if (arrow.css("opacity")=="1") {
-    await sleep(2000);
+    await sleep(1000);
     arrow.fadeTo("slow",0);
   }else{
     arrow.fadeTo("slow",1);
@@ -337,22 +337,50 @@ async function changeScreen(atual,to,addHistory=true){
     return;
   }
   console.log("change to " + to.attr("id"));
-  atual.css("z-index",20);
-  atual.add("no-touch");
-  to.add("no-touch");
+  //prevent clicks during change screen
+  if(addHistory){
+    to.css("opacity",0);
+    to.css("height","50%");
+    to.css("width","50%");
+}
+  atual.addClass("transition");
+  to.addClass("transition");
+
+  $("#back-bt").addClass("no-touch");
+  $("#crown-button").addClass("no-touch");
+  atual.addClass("no-touch");
+  to.addClass("no-touch");
+
+  atual.css("z-index",10);
   to.removeClass("disabled");
   to.css("height","76%");
   to.css("width","72%");
   to.css("opacity",1);
-  to.css("z-index",10);
+  to.css("z-index",20);
   // atual.fadeTo("slow",0,()=>{
   atual.css("opacity",0);
-  atual.css("height","0%");
-  atual.css("width","0%");
-  await sleep("500");
-  atual.addClass("disabled");
-  atual.removeClass("no-touch");
-  to.removeClass("no-touch");
+
+  if(addHistory){
+      atual.css("height","50%");
+      atual.css("width","50%");
+  }else{
+    // atual.css("height","0%");
+
+  }
+  setTimeout(()=>{
+    $("#back-bt").removeClass("no-touch");
+    $("#crown-button").removeClass("no-touch");
+    atual.addClass("disabled");
+    atual.removeClass("no-touch");
+    to.removeClass("no-touch");
+    atual.removeClass("transition");
+    to.removeClass("transition");
+    to.removeClass("app-anim");
+    atual.css("height","76%");
+    atual.css("width","72%");
+    // atual.css("opacity",1);
+  },300);
+
     // });
   if(addHistory){
     appHistory.push(to);

@@ -43,7 +43,7 @@
 	right: 0;
 	bottom: 0;
 	margin: auto;
-	transition: 0.5s;
+
 	/*pointer-events: none;*/
 	/*keep aspect ratio*/
 	object-fit: cover;
@@ -268,8 +268,7 @@
 .no-touch{
 	pointer-events: none;
 }
-/*Tratar no futuro*/
-.app-mod{
-	height: 0%;
-	width: 0%;
+/*Tratar no futuro animacoes*/
+.transition{
+		transition: 0.35s;
 }
