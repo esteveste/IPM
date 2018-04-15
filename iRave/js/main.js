@@ -9,7 +9,7 @@ const NR_OF_MENU_EL = 3;
 var appHistory = [];
 var atualApp = undefined;
 
-async function init(){
+async function init() {
   console.log("lets go");
   bootAnimation(DEBUG);
   lockArrow();
@@ -17,210 +17,218 @@ async function init(){
 
   let lockScreen = $("#lockscreen");
   // lockScreen.css("opacity",1);
-  const maxLockDrag=-225;
-  const minLockDrag=0;
+  const maxLockDrag = -225;
+  const minLockDrag = 0;
   lockScreen.draggable({
-        axis: "y",
-        scroll: false,
-        position: 'unset',
-        drag: function (event, ui) {
-            if (ui.position.top > minLockDrag) ui.position.top = minLockDrag;
-            if (ui.position.top < maxLockDrag) ui.position.top = maxLockDrag;
+    axis: "y",
+    scroll: false,
+    position: 'unset',
+    drag: function (event, ui) {
+      if (ui.position.top > minLockDrag) ui.position.top = minLockDrag;
+      if (ui.position.top < maxLockDrag) ui.position.top = maxLockDrag;
 
-        },
-        stop: function (event, ui) {
-            if (ui.position.top < maxLockDrag/4) {
-                $(this).animate({
-                    'top': maxLockDrag
-                });
-            }else{
-              $(this).animate({
-                  'top': minLockDrag
-              });
-            }
-            // $("#app-screen").addClass("disabled");
-        }
+    },
+    stop: function (event, ui) {
+      if (ui.position.top < maxLockDrag / 4) {
+        $(this).animate({
+          'top': maxLockDrag
+        });
+      } else {
+        $(this).animate({
+          'top': minLockDrag
+        });
+      }
+      // $("#app-screen").addClass("disabled");
+    }
 
-    });
+  });
 
 
-    let menu = $("#menu");
-    // lockScreen.css("opacity",1);
-    const maxMenuDrag=-SCREEN_SIZE*(NR_OF_MENU_EL-1);
-    // const minLockDrag=0;
-    menu.draggable({
-          axis: "y",
-          scroll: false,
-          position: 'unset',
-          drag: function (event, ui) {
-              if (ui.position.top > 0) ui.position.top = 0;
-              if (ui.position.top < maxMenuDrag) ui.position.top = maxMenuDrag;
-              // if(!$(`#menu-status li:nth-child(${(Math.floor(ui.position.top/SCREEN_SIZE)+1)})`).hasClass("current")){
-              //   $(`#menu-status li:nth-child(${(Math.floor(ui.position.top/SCREEN_SIZE))})`).removeClass("current");
-              //   $(`#menu-status li:nth-child(${(Math.floor(ui.position.top/SCREEN_SIZE)+1)})`).addClass("current");
-              // }
-              // console.log(!$(`#menu-status li:nth-child(${(Math.floor(ui.position.top/SCREEN_SIZE)+1)})`).hasClass("current"));
-                // console.log("csajlsajcsa" + Math.floor(ui.position.top/SCREEN_SIZE));
-              if (ui.position.top/SCREEN_SIZE - Math.floor(ui.position.top/SCREEN_SIZE)<0.5 && ui.position.top%SCREEN_SIZE!=0) {
-                $(`#menu-status li:nth-child(${(Math.floor(-ui.position.top/SCREEN_SIZE)+1)})`).removeClass("current");
-                $(`#menu-status li:nth-child(${(Math.floor(-ui.position.top/SCREEN_SIZE)+2)})`).addClass("current");
-              }
-              else{
-                $(`#menu-status li:nth-child(${(Math.floor(-ui.position.top/SCREEN_SIZE)+2)})`).removeClass("current");
-                $(`#menu-status li:nth-child(${(Math.floor(-ui.position.top/SCREEN_SIZE)+1)})`).addClass("current");
-              }
-          },
-          stop: function(event, ui) {
-            $( event.originalEvent.target ).one('click', function(e){ e.stopImmediatePropagation(); } );
-              console.log("if "+ (ui.position.top/SCREEN_SIZE - Math.floor(ui.position.top/SCREEN_SIZE)));
-              console.log("tr " + (Math.floor(ui.position.top/SCREEN_SIZE)+1)*SCREEN_SIZE);
-                if (ui.position.top/SCREEN_SIZE - Math.floor(ui.position.top/SCREEN_SIZE)<=0.5) {
-                    $(this).animate({
-                        'top': (Math.floor(ui.position.top/SCREEN_SIZE))*SCREEN_SIZE
-                    });
-                }else{
-                  $(this).animate({
-                      'top': (Math.floor(ui.position.top/SCREEN_SIZE)+1)*SCREEN_SIZE
-                  });
-                }
-        }
-          // stop: function (event, ui) {
-
-          // }
+  let menu = $("#menu");
+  // lockScreen.css("opacity",1);
+  const maxMenuDrag = -SCREEN_SIZE * (NR_OF_MENU_EL - 1);
+  // const minLockDrag=0;
+  menu.draggable({
+    axis: "y",
+    scroll: false,
+    position: 'unset',
+    drag: function (event, ui) {
+      if (ui.position.top > 0) ui.position.top = 0;
+      if (ui.position.top < maxMenuDrag) ui.position.top = maxMenuDrag;
+      // if(!$(`#menu-status li:nth-child(${(Math.floor(ui.position.top/SCREEN_SIZE)+1)})`).hasClass("current")){
+      //   $(`#menu-status li:nth-child(${(Math.floor(ui.position.top/SCREEN_SIZE))})`).removeClass("current");
+      //   $(`#menu-status li:nth-child(${(Math.floor(ui.position.top/SCREEN_SIZE)+1)})`).addClass("current");
+      // }
+      // console.log(!$(`#menu-status li:nth-child(${(Math.floor(ui.position.top/SCREEN_SIZE)+1)})`).hasClass("current"));
+      // console.log("csajlsajcsa" + Math.floor(ui.position.top/SCREEN_SIZE));
+      if (ui.position.top / SCREEN_SIZE - Math.floor(ui.position.top / SCREEN_SIZE) < 0.5 && ui.position.top % SCREEN_SIZE != 0) {
+        $(`#menu-status li:nth-child(${(Math.floor(-ui.position.top/SCREEN_SIZE)+1)})`).removeClass("current");
+        $(`#menu-status li:nth-child(${(Math.floor(-ui.position.top/SCREEN_SIZE)+2)})`).addClass("current");
+      } else {
+        $(`#menu-status li:nth-child(${(Math.floor(-ui.position.top/SCREEN_SIZE)+2)})`).removeClass("current");
+        $(`#menu-status li:nth-child(${(Math.floor(-ui.position.top/SCREEN_SIZE)+1)})`).addClass("current");
+      }
+    },
+    stop: function (event, ui) {
+      $(event.originalEvent.target).one('click', function (e) {
+        e.stopImmediatePropagation();
       });
+      console.log("if " + (ui.position.top / SCREEN_SIZE - Math.floor(ui.position.top / SCREEN_SIZE)));
+      console.log("tr " + (Math.floor(ui.position.top / SCREEN_SIZE) + 1) * SCREEN_SIZE);
+      if (ui.position.top / SCREEN_SIZE - Math.floor(ui.position.top / SCREEN_SIZE) <= 0.5) {
+        $(this).animate({
+          'top': (Math.floor(ui.position.top / SCREEN_SIZE)) * SCREEN_SIZE
+        });
+      } else {
+        $(this).animate({
+          'top': (Math.floor(ui.position.top / SCREEN_SIZE) + 1) * SCREEN_SIZE
+        });
+      }
+    }
+    // stop: function (event, ui) {
+
+    // }
+  });
 
 
-    let horario_lista = $("#horario-list");
-    let max_drag_horario = -($("#horario-list > button").length * BUTTON_SIZE - 206.47)-BAR_SIZE;
-    console.log(max_drag_horario);
-    horario_lista.css("top",BAR_SIZE);
-    horario_lista.draggable({
-          axis: "y",
-          scroll: false,
-          position: 'unset',
-          cancel:false,
-          drag: function (event, ui) {
-              if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
-              if (ui.position.top < max_drag_horario) ui.position.top = max_drag_horario;
-          },
-          stop: function (event, ui) {
-              $( event.originalEvent.target ).one('click', function(e){ e.stopImmediatePropagation(); } );
-          }
-
+  let horario_lista = $("#horario-list");
+  let max_drag_horario = -($("#horario-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
+  console.log(max_drag_horario);
+  horario_lista.css("top", BAR_SIZE);
+  horario_lista.draggable({
+    axis: "y",
+    scroll: false,
+    position: 'unset',
+    cancel: false,
+    drag: function (event, ui) {
+      if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+      if (ui.position.top < max_drag_horario) ui.position.top = max_drag_horario;
+    },
+    stop: function (event, ui) {
+      $(event.originalEvent.target).one('click', function (e) {
+        e.stopImmediatePropagation();
       });
+    }
 
-    let banda_lista = $("#bandas-list");
-    let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47)-BAR_SIZE;
-    console.log(max_drag_banda);
-    banda_lista.css("top",BAR_SIZE);
-    banda_lista.draggable({
-          axis: "y",
-          scroll: false,
-          position: 'unset',
-          cancel:false,
-          drag: function (event, ui) {
-              if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
-              if (ui.position.top < max_drag_banda) ui.position.top = max_drag_banda;
-          },
-          stop: function (event, ui) {
-              $( event.originalEvent.target ).one('click', function(e){ e.stopImmediatePropagation(); } );
-          }
+  });
 
+  let banda_lista = $("#bandas-list");
+  let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
+  console.log(max_drag_banda);
+  banda_lista.css("top", BAR_SIZE);
+  banda_lista.draggable({
+    axis: "y",
+    scroll: false,
+    position: 'unset',
+    cancel: false,
+    drag: function (event, ui) {
+      if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+      if (ui.position.top < max_drag_banda) ui.position.top = max_drag_banda;
+    },
+    stop: function (event, ui) {
+      $(event.originalEvent.target).one('click', function (e) {
+        e.stopImmediatePropagation();
       });
-      $("#menu-cartaz").click(function(event) {
-              changeScreen($("#menu-overflow"),$("#cartaz"));
-      });
+    }
 
-      $("#bt-bandas").click(()=>{
-        changeScreen($("#cartaz"),$("#list-bandas"));
-      });
-      $("#bt-horario").click(()=>{
-        changeScreen($("#cartaz"),$("#list-horario"));
-      });
+  });
+  $("#menu-cartaz").click(function (event) {
+    changeScreen($("#menu-overflow"), $("#cartaz"));
+  });
 
-      $("#back-bt").click(backApp);
-      $("#crown-button").click(crownFunction);
+  $("#bt-bandas").click(() => {
+    changeScreen($("#cartaz"), $("#list-bandas"));
+  });
+  $("#bt-horario").click(() => {
+    changeScreen($("#cartaz"), $("#list-horario"));
+  });
 
-      $(".bt-band").click(function(){
-        createDiv($(this), 1)}
-      );
-      $(".bt-schedule").click(function(){
-        createDiv($(this), 0)}
-      );
+  $("#back-bt").click(backApp);
+  $("#crown-button").click(crownFunction);
+
+  $(".bt-band").click(function () {
+    createDiv($(this), 1)
+  });
+  $(".bt-schedule").click(function () {
+    createDiv($(this), 0)
+  });
+
+  $("#bar-title").text("Menu");
+
 }
 
 var band_list = {
-  "altj":{
-    artist:"Altj",
-    desc:"Description:",
-    hour:"10:00 - 11:00",
-    stage:"Palco 1",
+  "altj": {
+    artist: "Altj",
+    desc: "Description:",
+    hour: "10:00 - 11:00",
+    stage: "Palco 1",
   },
-  "coldplay":{
-    artist:"Coldplay",
-    desc:"Description:",
-    hour:"11:00 - 12:00",
-    stage:"Palco 2",
+  "coldplay": {
+    artist: "Coldplay",
+    desc: "Description:",
+    hour: "11:00 - 12:00",
+    stage: "Palco 2",
   },
-  "direstraits":{
-    artist:"Direstraits",
-    desc:"Description:",
-    hour:"12:00 - 13:00",
-    stage:"Palco 3",
+  "direstraits": {
+    artist: "Direstraits",
+    desc: "Description:",
+    hour: "12:00 - 13:00",
+    stage: "Palco 3",
   },
-  "pinkfloyd":{
-    artist:"Pink Floyd",
-    desc:"Description:",
-    hour:"13:00 - 14:00",
-    stage:"Palco 4",
+  "pinkfloyd": {
+    artist: "Pink Floyd",
+    desc: "Description:",
+    hour: "13:00 - 14:00",
+    stage: "Palco 4",
   }
 }
 
 var schedule_list = {
-  "altj":{
-    desc:"Description:",
-    hour:"10:00 - 11:00",
-    stage:"Palco 1",
+  "altj": {
+    desc: "Description:",
+    hour: "10:00 - 11:00",
+    stage: "Palco 1",
   },
-  "coldplay":{
-    desc:"Description:",
-    hour:"11:00 - 12:00",
-    stage:"Palco 2",
+  "coldplay": {
+    desc: "Description:",
+    hour: "11:00 - 12:00",
+    stage: "Palco 2",
   },
-  "direstraits":{
-    desc:"Description:",
-    hour:"12:00 - 13:00",
-    stage:"Palco 3",
+  "direstraits": {
+    desc: "Description:",
+    hour: "12:00 - 13:00",
+    stage: "Palco 3",
   },
-  "pinkfloyd":{
-    desc:"Description:",
-    hour:"13:00 - 14:00",
-    stage:"Palco 4",
+  "pinkfloyd": {
+    desc: "Description:",
+    hour: "13:00 - 14:00",
+    stage: "Palco 4",
   }
 }
 var title_list = {
-  "cartaz":"Cartaz",
-  "list-bandas":"Bandas",
-  "band":"Bandas",
-  "list-horario":"Horário",
-  "":"Mapa",
-  "":"",
-  "menu-overflow":"Menu"
+  "cartaz": "Cartaz",
+  "list-bandas": "Bandas",
+  "band": "Bandas",
+  "list-horario": "Horário",
+  "menu": "Menu",
+  "menu-cartaz": "Menu",
+  "menu-overflow": "Menu"
 };
 
 var notificationTitle = "";
 var notificationInfo = "";
 
 var popup_list = {
-  1:["Alerta adicionado.", "Cancelar"],
-  2:["" , "Remover"]
+  1: ["Alerta adicionado.", "Cancelar"],
+  2: ["", "Remover"]
 }
 
-async function createBar(screen){
+async function createBar(screen) {
   $("#bar-title").text(title_list[screen]);
 }
 
-async function createNotification(alert){
+async function createNotification(alert) {
   let lockscreen = $("#lockscreen");
 
   $("#notification").remove();
@@ -242,12 +250,12 @@ async function createNotification(alert){
   notificationDiv.appendChild(notificationButton);
 
   lockscreen.append(notificationDiv);
-  $(".notification-bt").click(function(){
-    $("#notification").remove();}
-  );
+  $(".notification-bt").click(function () {
+    $("#notification").remove();
+  });
 }
 
-async function createPopup(alert){
+async function createPopup(alert) {
   let text = $("#txt-popup");
   let bt = $("#bt-popup");
   text.empty();
@@ -256,42 +264,49 @@ async function createPopup(alert){
   bt.text(popup_list[alert][1]);
 }
 
-async function notifyPopup(){
+async function notifyPopup() {
   let popup = $(".popup");
   let h = popup.height();
-  popup.css("top", -h-2);
-  setTimeout(function(){$(".popup").animate({top:0}, 300);}, 500);
-  setTimeout(function(){$(".popup").animate({top:-h-2}, 300);}, 4000);
+  popup.css("top", -h - 2);
+  setTimeout(function () {
+    $(".popup").animate({
+      top: 0
+    }, 300);
+  }, 500);
+  setTimeout(function () {
+    $(".popup").animate({
+      top: -h - 2
+    }, 300);
+  }, 4000);
 }
 
-async function createDiv(el,flag){
+async function createDiv(el, flag) {
   let band_screen = $("#band");
   band_screen.empty();
   let fixbardiv = document.createElement("div");
-  fixbardiv.className="fixbar";
+  fixbardiv.className = "fixbar";
   band_screen.append(fixbardiv);
-  if (flag){
+  if (flag) {
     var artist = band_list[el.attr("id")].artist;
     var description = band_list[el.attr("id")].desc;
     var hour = band_list[el.attr("id")].hour;
     var stage = band_list[el.attr("id")].stage;
 
-    popup_list[2][0]= artist + " as " + hour + " no " + stage;
+    popup_list[2][0] = artist + " as " + hour + " no " + stage;
 
     var bt_nav = document.createElement("button");
     var bt_reminder = document.createElement("button");
 
-    bt_nav.id="bt-nav";
-    bt_reminder.id="bt-reminder";
+    bt_nav.id = "bt-nav";
+    bt_reminder.id = "bt-reminder";
 
-    bt_nav.className="no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
-    bt_reminder.className="mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
+    bt_nav.className = "no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
+    bt_reminder.className = "mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
 
-    bt_nav.textContent="Navegar";
-    bt_reminder.textContent="Alerta";
+    bt_nav.textContent = "Navegar";
+    bt_reminder.textContent = "Alerta";
 
-  }
-  else{
+  } else {
     var artist = schedule_list[el.attr("id")];
     var description = schedule_list[el.attr("id")].desc;
     var hour = schedule_list[el.attr("id")].hour;
@@ -301,7 +316,7 @@ async function createDiv(el,flag){
   let list = [artist, hour, stage, description];
   let table = document.createElement('TABLE');
 
-  for(i = 0; i < 4 ; i++) {
+  for (i = 0; i < 4; i++) {
     let tr = document.createElement("TR");
     let td = document.createElement("TD");
     td.appendChild(document.createTextNode(list[i]));
@@ -317,59 +332,64 @@ async function createDiv(el,flag){
   band_screen.append(bt_nav);
 
   changeScreen(el.parent().parent(), band_screen);
-  $("#bt-reminder").click(function(){
+  $("#bt-reminder").click(function () {
     createPopup(1);
     notifyPopup();
-    createNotification(2);}
-  );
-  $(".popup-button").click(function(){
-    $("#notification").remove();}
-  );
+    createNotification(2);
+  });
+  $(".popup-button").click(function () {
+    $("#notification").remove();
+  });
 }
 
 
-function addToAppHistory(appName){
+function addToAppHistory(appName) {
   appHistory.push(appName);
 }
-function getLastAppHistory(){
+
+function getLastAppHistory() {
   return appHistory.pop();
 }
-function clearAppHistory(){
+
+function clearAppHistory() {
   appHistory = [];
 }
 
 
 
-async function bootAnimation(debug){
+async function bootAnimation(debug) {
   let boot_title = $("#boot-title");
   let boot_anim = $("#boot-anim");
   let lockscreen = $("#lockscreen");
   let black_screen = $("#black");
 
-    if(debug){
-      boot_anim.addClass("disabled");
-      lockscreen.fadeTo("slow",1,()=>black_screen.css("z-index","5"));
-      return;
-    }
+  if (debug) {
+    boot_anim.addClass("disabled");
+    lockscreen.fadeTo("slow", 1, () => black_screen.css("z-index", "5"));
+    return;
+  }
 
 
-  boot_anim.fadeTo("slow",1);
+  boot_anim.fadeTo("slow", 1);
   await sleep(2000);
-  boot_title.fadeTo(2000,1);
+  boot_title.fadeTo(2000, 1);
   // boot_title.css("opacity",1);
   await sleep(4000);
-  boot_title.fadeTo("slow",0);
-  boot_anim.fadeTo("slow",0,()=>{
+  boot_title.fadeTo("slow", 0);
+  boot_anim.fadeTo("slow", 0, () => {
     boot_anim.addClass("disabled");
-    lockscreen.fadeTo("slow",1,()=>black_screen.css("z-index","5"));
+    lockscreen.fadeTo("slow", 1, () => black_screen.css("z-index", "5"));
   });
 
 }
+
 function updateTime() {
   today = new Date();
   var h = today.getHours();
   var m = today.getMinutes();
-  if (m < 10) { m = "0" + m };
+  if (m < 10) {
+    m = "0" + m
+  };
   let lock_Time = $("#lock-Time");
   let bar_Time = $("#bar-time");
 
@@ -377,31 +397,31 @@ function updateTime() {
   bar_Time.text(h + ":" + m);
   setTimeout(updateTime, 30000);
 }
-async function lockArrow(){
+async function lockArrow() {
   let arrow = $("#lock-arrow");
-  if (arrow.css("opacity")=="1") {
+  if (arrow.css("opacity") == "1") {
     await sleep(1000);
-    arrow.fadeTo("slow",0);
-  }else{
-    arrow.fadeTo("slow",1);
+    arrow.fadeTo("slow", 0);
+  } else {
+    arrow.fadeTo("slow", 1);
   }
-  setTimeout(lockArrow,2000);
+  setTimeout(lockArrow, 2000);
 }
 
-async function changeScreen(atual,to,addHistory=true){
+async function changeScreen(atual, to, addHistory = true) {
 
   // if the to is equal to from we break
-  if(atual.is(to) || (addHistory && appHistory[appHistory.length -1]!=undefined
-  && appHistory[appHistory.length -1].is(to))){
+  if (atual.is(to) || (addHistory && appHistory[appHistory.length - 1] != undefined &&
+      appHistory[appHistory.length - 1].is(to))) {
     return;
   }
   console.log("change to " + to.attr("id"));
   //prevent clicks during change screen
-  if(addHistory){
-    to.css("opacity",0);
-    to.css("height","50%");
-    to.css("width","50%");
-}
+  if (addHistory) {
+    to.css("opacity", 0);
+    to.css("height", "50%");
+    to.css("width", "50%");
+  }
   atual.addClass("transition");
   to.addClass("transition");
 
@@ -410,23 +430,23 @@ async function changeScreen(atual,to,addHistory=true){
   atual.addClass("no-touch");
   to.addClass("no-touch");
 
-  atual.css("z-index",10);
+  atual.css("z-index", 10);
   to.removeClass("disabled");
-  to.css("height","76%");
-  to.css("width","72%");
-  to.css("opacity",1);
-  to.css("z-index",20);
+  to.css("height", "76%");
+  to.css("width", "72%");
+  to.css("opacity", 1);
+  to.css("z-index", 20);
   // atual.fadeTo("slow",0,()=>{
-  atual.css("opacity",0);
+  atual.css("opacity", 0);
 
-  if(addHistory){
-      atual.css("height","50%");
-      atual.css("width","50%");
-  }else{
+  if (addHistory) {
+    atual.css("height", "50%");
+    atual.css("width", "50%");
+  } else {
     // atual.css("height","0%");
 
   }
-  setTimeout(()=>{
+  setTimeout(() => {
     $("#back-bt").removeClass("no-touch");
     $("#crown-button").removeClass("no-touch");
     atual.addClass("disabled");
@@ -435,56 +455,58 @@ async function changeScreen(atual,to,addHistory=true){
     atual.removeClass("transition");
     to.removeClass("transition");
     to.removeClass("app-anim");
-    atual.css("height","76%");
-    atual.css("width","72%");
+    atual.css("height", "76%");
+    atual.css("width", "72%");
     // atual.css("opacity",1);
-  },300);
+  }, 300);
 
-    // });
-  if(addHistory){
+  // });
+  if (addHistory) {
     appHistory.push(to);
   }
   createBar(to.attr("id"));
 }
 
-function backApp(){
+function backApp() {
   //if lockscreen is oppened
-  if($("#lockscreen").position().top < -100){
-    if(appHistory.length==0){
+  if ($("#lockscreen").position().top < -100) {
+    if (appHistory.length == 0) {
       return;
     }
     console.log("before" + appHistory);
     let atual = appHistory.pop(); //take out last app
     let to = appHistory[appHistory.length - 1];
     console.log(appHistory);
-    if(to!=undefined){
-      if(to.attr("id")=="menu-overflow"){
-        appHistory=[];
+    if (to != undefined) {
+      if (to.attr("id") == "menu-overflow") {
+        appHistory = [];
       }
-      changeScreen(atual,to,false);
-    }else{
-      changeScreen(atual,$("#menu-overflow"),false);
+      changeScreen(atual, to, false);
+    } else {
+      changeScreen(atual, $("#menu-overflow"), false);
     }
   }
 }
 
-async function lockScreenUnlock(){
+async function lockScreenUnlock() {
   let lockscreen = $("#lockscreen");
-      lockscreen.fadeTo("slow",0,()=>{
-        lockscreen.addClass("disabled");
-      });
+  lockscreen.fadeTo("slow", 0, () => {
+    lockscreen.addClass("disabled");
+  });
 }
-function crownFunction(){
+
+function crownFunction() {
   console.log("crown Tap");
-  if($("#menu-overflow").hasClass("disabled")){
+  if ($("#menu-overflow").hasClass("disabled")) {
     let atual = appHistory[appHistory.length - 1];
-    changeScreen(atual,$("#menu-overflow"));
-  }else{
+    changeScreen(atual, $("#menu-overflow"));
+  } else {
     $("#lockscreen").animate({
-        'top': 0
+      'top': 0
     });
   }
 }
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
