@@ -235,3 +235,21 @@
 #band{
 	background: white;
 }
+.popup{
+	background: white;
+	border: 1px solid #0099ff;
+	top: -30%;
+	height: 30%;
+	text-align: left;
+	position: absolute;
+	width: 98%;
+	font-family: "Roboto";
+}
+.popup-text{
+	color: #000000;
+}
+.popup-button{
+	color: #ff0000;
+	border: 0;
+	
+}

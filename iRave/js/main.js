@@ -171,8 +171,30 @@ var title_list = {
   "":""
 };
 
+var popup_list = {
+  1:["Alerta adicionado.", "Cancelar"]
+}
+
 async function createBar(screen){
   $("#bar-title").text(title_list[screen]);
+}
+
+
+async function createPopup(alert){
+  let text = $("#txt-popup");
+  let bt = $("#bt-popup");
+  text.empty();
+  bt.empty();
+  text.text(popup_list[alert][0]);
+  bt.text(popup_list[alert][1]);
+  notifyPopup();
+}
+
+async function notifyPopup(){
+  let popup = $(".popup");
+  let h = popup.height();
+  popup.css("top", -h);
+  setTimeout(function(){$(".popup").animate({top:0}, 300);}, 2000);
 }
 
 async function createDiv(el,flag){
@@ -195,7 +217,7 @@ async function createDiv(el,flag){
     bt_reminder.id="bt-reminder";
 
     bt_nav.className="no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
-    bt_reminder.className="no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
+    bt_reminder.className="mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
 
     bt_nav.textContent="Navegar";
     bt_reminder.textContent="Alerta";
@@ -227,7 +249,9 @@ async function createDiv(el,flag){
   band_screen.append(bt_nav);
 
   changeScreen($("#bandas-list"), band_screen);
-
+  $("#bt-reminder").click(function(){
+    createPopup(1)}
+  );
 }
 
 
@@ -296,7 +320,6 @@ function changeScreen(atual,to,addHistory=true){
   // if the to is equal to from we break
   if(atual.is(to) || (addHistory && appHistory[appHistory.length -1]!=undefined
   && appHistory[appHistory.length -1].is(to))){
-    console.log("Whaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     return;
   }
 
