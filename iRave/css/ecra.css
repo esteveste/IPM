@@ -43,7 +43,7 @@
 	right: 0;
 	bottom: 0;
 	margin: auto;
-
+	transition: 0.5s;
 	/*keep aspect ratio*/
 	object-fit: cover;
 }
@@ -169,16 +169,15 @@
 	font-weight: 400;
 }
 #cartaz{
+	background-color: black;
 	/*z-index: 80;*/
 
 }
 #cartaz button{
-	/*color: var(--cb);*/
 	font-size: 2em;
 	height: 41%;
 	margin: 1% auto;
 	width: 100%;
-	/*weight*/
 }
 #bt-bandas{
 	/*text-decoration-color: white;*/

@@ -155,7 +155,10 @@ async function init(){
       $("#bt-horario").click(()=>{
         changeScreen($("#cartaz"),$("#list-horario"));
       });
+
       $("#back-bt").click(backApp);
+      $("#crown-button").click(crownFunction);
+
       $(".bt-band").click(function(){
         createDiv($(this), 1)}
       );
@@ -352,14 +355,15 @@ function changeScreen(atual,to,addHistory=true){
     return;
   }
 
-  console.log("change" + to.text());
-  atual.css("z-index",20);
+  console.log("change to " + to.attr("id"));
+  atual.css("z-index",10);
   to.removeClass("disabled");
   to.css("opacity",1);
-  to.css("z-index",10);
-  atual.fadeTo("slow",0,()=>{
-      atual.addClass("disabled");
-    });
+  to.css("z-index",20);
+  atual.addClass("disabled");
+  // atual.fadeTo("slow",0,()=>{
+  //
+  //   });
   if(addHistory){
     appHistory.push(to);
   }
@@ -367,19 +371,23 @@ function changeScreen(atual,to,addHistory=true){
 }
 
 function backApp(){
-  console.log("wtf");
-  if(appHistory.length==0){
-    return;
-  }
-  console.log("before" + appHistory);
-  let atual = appHistory.pop(); //take out last app
-  let to = appHistory[appHistory.length - 1];
-  console.log(appHistory);
-  if(to!=undefined){
-
-    changeScreen(atual,to,false);
-  }else{
-    changeScreen(atual,$("#menu-overflow"),false);
+  //if lockscreen is oppened
+  if($("#lockscreen").position().top < -100){
+    if(appHistory.length==0){
+      return;
+    }
+    console.log("before" + appHistory);
+    let atual = appHistory.pop(); //take out last app
+    let to = appHistory[appHistory.length - 1];
+    console.log(appHistory);
+    if(to!=undefined){
+      if(to.attr("id")=="menu-overflow"){
+        appHistory=[];
+      }
+      changeScreen(atual,to,false);
+    }else{
+      changeScreen(atual,$("#menu-overflow"),false);
+    }
   }
 }
 
@@ -388,6 +396,17 @@ async function lockScreenUnlock(){
       lockscreen.fadeTo("slow",0,()=>{
         lockscreen.addClass("disabled");
       });
+}
+function crownFunction(){
+  console.log("crown Tap");
+  if($("#menu-overflow").hasClass("disabled")){
+    let atual = appHistory[appHistory.length - 1];
+    changeScreen(atual,$("#menu-overflow"));
+  }else{
+    $("#lockscreen").animate({
+        'top': 0
+    });
+  }
 }
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

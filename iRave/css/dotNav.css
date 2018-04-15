@@ -35,7 +35,7 @@
 	background-color: #fff;
 	background-color: rgba(255, 255, 255, 0.3);
 	text-indent: -999em; /* make the text accessible to screen readers */
-	cursor: pointer;
+	cursor: default;
 	position: absolute;
 }
 
@@ -555,6 +555,7 @@
 }
 
 .dotstyle-fall li a {
+
 	-webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 	transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
