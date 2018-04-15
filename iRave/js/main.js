@@ -278,7 +278,7 @@ async function createDiv(el,flag){
   band_screen.append(bt_reminder);
   band_screen.append(bt_nav);
 
-  changeScreen($("#bandas-list"), band_screen);
+  changeScreen(el.parent().parent(), band_screen);
 
 }
 
