@@ -32,8 +32,8 @@
 }
 /*Default Settings used by screens in watch */
 .app{
-	width: 100%;
-	height: 100%;
+	/*width: 100%;
+	height: 100%;*/
 	border-radius: 2%;
 	position: absolute;
 	width: 72%;
@@ -52,8 +52,11 @@
 }
 
 .menu{
+	width: 100%;
+	height: 100%;
+	position: relative;
 	background: grey;
-	z-index: 90;
+	/*z-index: 90;*/
 	text-align: center;
 }
 .menu i{
@@ -75,7 +78,7 @@
 	background-color: black;
 	height: 10%;
 	top: -66%;
-	z-index: 80;
+	/*z-index: 80;*/
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 
@@ -234,4 +237,19 @@
 }
 #band{
 	background: white;
+}
+#menu{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 50;
+}
+#menu-status{
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 60;
+	margin: auto;
+	/*padding-left: 70%;*/
 }
