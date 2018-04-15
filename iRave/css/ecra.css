@@ -76,7 +76,7 @@
 }
 
 .fixbar{
-	height: 10%;
+	height: 14%;
 }
 
 #bar{
@@ -173,16 +173,19 @@
 
 }
 #cartaz button{
-	color: var(--cb);
-	font-size: 3em;
-	height: 45%;
+	/*color: var(--cb);*/
+	font-size: 2em;
+	height: 40%;
+	margin: 1% auto;
 	width: 100%;
+	/*weight*/
 }
 #bt-bandas{
-	background-color: var(--c1);
+	/*text-decoration-color: white;*/
+	/*background-color: var(--c1);*/
 }
 #bt-horario{
-	background-color: var(--c2);
+	/*background-color: var(--c2);*/
 }
 #band{
 	background: white;
