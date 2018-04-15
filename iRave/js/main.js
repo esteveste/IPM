@@ -171,14 +171,44 @@ var title_list = {
   "":""
 };
 
+var notificationTitle = "";
+var notificationInfo = "";
+
 var popup_list = {
-  1:["Alerta adicionado.", "Cancelar"]
+  1:["Alerta adicionado.", "Cancelar"],
+  2:["" , "Remover"]
 }
 
 async function createBar(screen){
   $("#bar-title").text(title_list[screen]);
 }
 
+async function createNotification(alert){
+  let lockscreen = $("#lockscreen");
+
+  $("#notification").remove();
+
+  var notificationDiv = document.createElement("div");
+  let notificationButton = document.createElement("button");
+  let notificationText = document.createElement("span");
+
+  notificationDiv.id = "notification";
+  notificationDiv.className = "notification";
+  
+  notificationText.className = "notification-text";
+  notificationButton.className = "notification-bt";
+
+  notificationButton.textContent = popup_list[alert][1];
+  notificationText.textContent = popup_list[alert][0];
+
+  notificationDiv.appendChild(notificationText);
+  notificationDiv.appendChild(notificationButton);
+
+  lockscreen.append(notificationDiv);
+  $(".notification-bt").click(function(){
+    $("#notification").remove();}
+  );
+}
 
 async function createPopup(alert){
   let text = $("#txt-popup");
@@ -187,18 +217,17 @@ async function createPopup(alert){
   bt.empty();
   text.text(popup_list[alert][0]);
   bt.text(popup_list[alert][1]);
-  notifyPopup();
 }
 
 async function notifyPopup(){
   let popup = $(".popup");
   let h = popup.height();
-  popup.css("top", -h);
-  setTimeout(function(){$(".popup").animate({top:0}, 300);}, 2000);
+  popup.css("top", -h-2);
+  setTimeout(function(){$(".popup").animate({top:0}, 300);}, 500);
+  setTimeout(function(){$(".popup").animate({top:-h-2}, 300);}, 4000);
 }
 
 async function createDiv(el,flag){
-  console.log(el.attr("id"));
   let band_screen = $("#band");
   band_screen.empty();
   let fixbardiv = document.createElement("div");
@@ -209,6 +238,8 @@ async function createDiv(el,flag){
     var description = band_list[el.attr("id")].desc;
     var hour = band_list[el.attr("id")].hour;
     var stage = band_list[el.attr("id")].stage;
+
+    popup_list[2][0]= artist + " as " + hour + " no " + stage;
 
     var bt_nav = document.createElement("button");
     var bt_reminder = document.createElement("button");
@@ -250,7 +281,12 @@ async function createDiv(el,flag){
 
   changeScreen($("#bandas-list"), band_screen);
   $("#bt-reminder").click(function(){
-    createPopup(1)}
+    createPopup(1);
+    notifyPopup();
+    createNotification(2);}
+  );
+  $(".popup-button").click(function(){
+    $("#notification").remove();}
   );
 }
 
