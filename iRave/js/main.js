@@ -4,7 +4,7 @@ const DEBUG = true;
 const BUTTON_SIZE = 64;
 const BAR_SIZE = 25.8;
 const SCREEN_SIZE = 178.31;
-const NR_OF_MENU_EL = 3;
+const NR_OF_MENU_EL = 4;
 
 var appHistory = [];
 var atualApp = undefined;

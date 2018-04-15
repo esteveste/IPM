@@ -112,8 +112,20 @@
 	text-align: left;
 }
 
+#menu-cartaz {
+	background-color: #00bfa5;
+}
+
 #menu-mapa {
 	background-color: #e34567;
+}
+
+#menu-pedidos {
+	background-color: #3d5afe;
+}
+
+#menu-ajuda {
+	background-color: #64dd17;
 }
 
 .overflow {
@@ -330,11 +342,15 @@
 #menu-status {
 	position: absolute;
 	right: 0;
-	top: 0;
-	bottom: 0;
+	top: 14%;
+	height: 86%;
 	z-index: 60;
-	margin: auto;
 	/*padding-left: 70%;*/
+}
+
+#menu-balls {
+	top: 12.5%;
+	margin: 0 auto;
 }
 
 .no-touch {
