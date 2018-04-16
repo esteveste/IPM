@@ -150,7 +150,7 @@ async function init() {
     createDiv($(this), 1)
   });
   $(".bt-schedule").click(function () {
-    createDiv($(this), 0)
+    createDiv($(this), 1)
   });
 
   $("#bar-title").text("Menu");
@@ -167,7 +167,7 @@ var band_list = {
   "coldplay": {
     artist: "Coldplay",
     desc: "Description:",
-    hour: "11:00 - 12:00",
+    hour: "13:00 - 14:00",
     stage: "Palco 2",
   },
   "direstraits": {
@@ -179,33 +179,11 @@ var band_list = {
   "pinkfloyd": {
     artist: "Pink Floyd",
     desc: "Description:",
-    hour: "13:00 - 14:00",
+    hour: "11:00 - 12:00",
     stage: "Palco 4",
   }
 }
 
-var schedule_list = {
-  "altj": {
-    desc: "Description:",
-    hour: "10:00 - 11:00",
-    stage: "Palco 1",
-  },
-  "coldplay": {
-    desc: "Description:",
-    hour: "11:00 - 12:00",
-    stage: "Palco 2",
-  },
-  "direstraits": {
-    desc: "Description:",
-    hour: "12:00 - 13:00",
-    stage: "Palco 3",
-  },
-  "pinkfloyd": {
-    desc: "Description:",
-    hour: "13:00 - 14:00",
-    stage: "Palco 4",
-  }
-}
 var title_list = {
   "cartaz": "Cartaz",
   "list-bandas": "Bandas",
@@ -300,34 +278,24 @@ async function createDiv(el, flag) {
     bt_nav.id = "bt-nav";
     bt_reminder.id = "bt-reminder";
 
-    bt_nav.className = "no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
+    bt_nav.className = "mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
     bt_reminder.className = "mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
 
     bt_nav.textContent = "Navegar";
     bt_reminder.textContent = "Alerta";
 
-  } else {
-    var artist = schedule_list[el.attr("id")];
-    var description = schedule_list[el.attr("id")].desc;
-    var hour = schedule_list[el.attr("id")].hour;
-    var stage = schedule_list[el.attr("id")].stage;
   }
 
   let list = [artist, hour, stage, description];
   let table = document.createElement('TABLE');
 
   for (i = 0; i < 4; i++) {
-    let tr = document.createElement("TR");
-    let td = document.createElement("TD");
-    td.appendChild(document.createTextNode(list[i]));
-    tr.appendChild(td);
-    table.appendChild(tr);
+    let divText = document.createElement("div");
+    divText.textContent = list[i];
+    divText.className = "text"+i;
+    band_screen.append(divText);
   }
 
-  //criar funcionalidade do botao
-
-  console.log(table);
-  band_screen.append(table);
   band_screen.append(bt_reminder);
   band_screen.append(bt_nav);
 
