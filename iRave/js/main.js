@@ -270,7 +270,7 @@ async function createDiv(el, flag) {
     var hour = band_list[el.attr("id")].hour;
     var stage = band_list[el.attr("id")].stage;
 
-    popup_list[2][0] = artist + " as " + hour + " no " + stage;
+    popup_list[2][0] = artist + ", " + hour + ", " + stage;
 
     var bt_nav = document.createElement("button");
     var bt_reminder = document.createElement("button");
