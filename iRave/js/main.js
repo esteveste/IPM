@@ -159,25 +159,25 @@ async function init() {
 
 var band_list = {
   "altj": {
-    artist: "Altj",
+    artist: "ALTJ",
     desc: "Description:",
     hour: "10:00 - 11:00",
     stage: "Palco 1",
   },
   "coldplay": {
-    artist: "Coldplay",
+    artist: "COLDPLAY",
     desc: "Description:",
     hour: "13:00 - 14:00",
     stage: "Palco 2",
   },
   "direstraits": {
-    artist: "Direstraits",
+    artist: "DIRESTRAITS",
     desc: "Description:",
     hour: "12:00 - 13:00",
     stage: "Palco 3",
   },
   "pinkfloyd": {
-    artist: "Pink Floyd",
+    artist: "PINK FLOYD",
     desc: "Description:",
     hour: "11:00 - 12:00",
     stage: "Palco 4",
@@ -199,7 +199,8 @@ var notificationInfo = "";
 
 var popup_list = {
   1: ["Alerta adicionado.", "Cancelar"],
-  2: ["", "Remover"]
+  2: ["", "Remover"],
+  3: ["Função nao implementada", ""]
 }
 
 async function createBar(screen) {
@@ -304,6 +305,10 @@ async function createDiv(el, flag) {
     createPopup(1);
     notifyPopup();
     createNotification(2);
+  });
+  $("#bt-nav").click(function () {
+    createPopup(3);
+    notifyPopup();
   });
   $(".popup-button").click(function () {
     $("#notification").remove();

@@ -27,6 +27,7 @@
 }
 
 #ecra {
+	user-select: none;
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -218,7 +219,7 @@
 
 #band button {
 	padding: 0;
-	color: var(--cb);
+	color: var(--w1);
 	font-size: 1.2em;
 	text-align: center;
 	width: 46%;
@@ -294,7 +295,7 @@
 }
 
 .popup {
-	background: rgba(224, 224, 224, 0.9);
+	background: rgba(224, 224, 224, 1);
 	border: 1px solid var(--bp2);
 	height: 25%;
 	top: -26%;
@@ -307,6 +308,7 @@
 }
 
 .popup-text {
+	font-size: 1.4em;
 	color: #000000;
 }
 
@@ -362,6 +364,7 @@
 }
 
 .text0 {
+	user-select: none;
 	border-radius: inherit;
 	position: absolute;
 	background-color: var(--bp2);
@@ -375,6 +378,7 @@
 }
 
 .text1 {
+	user-select: none;
 	border-radius: inherit;
 	position: absolute;
 	background-color: var(--w1);
@@ -387,6 +391,7 @@
 }
 
 .text2 {
+	user-select: none;
 	border-radius: inherit;
 	position: absolute;
 	background-color: var(--w1);
@@ -399,6 +404,7 @@
 }
 
 .text3 {
+	user-select: none;
 	border-radius: inherit;
 	position: absolute;
 	background-color: var(--w1);
