@@ -132,6 +132,7 @@ async function init() {
     }
 
   });
+
   $("#menu-cartaz").click(function (event) {
     changeScreen($("#menu-overflow"), $("#cartaz"));
   });
@@ -159,6 +160,7 @@ async function init() {
       });
     }
   });
+  $("#bar-title").click(backApp);
 
   $("#bar-title").text("Menu");
 
@@ -212,7 +214,14 @@ var popup_list = {
 
 async function createBar(screen) {
   $("#bar-title").empty();
-  $("#bar-title").append('<b>&lt;</b>' + title_list[screen]);
+  if (title_list[screen]!="Menu"){
+    $("#bar-title").css("cursor", "pointer");
+    $("#bar-title").append('<b>&lt;</b>' + title_list[screen]);
+  }
+  else{
+    $("#bar-title").css("cursor", "default");
+    $("#bar-title").append(title_list[screen]);
+  }
 }
 
 async function createNotification(alert) {
@@ -296,19 +305,43 @@ async function createDiv(el, flag) {
   }
 
   let list = [artist, hour, stage, description];
-  let table = document.createElement('TABLE');
+  let dragDiv = document.createElement("div");
+  dragDiv.id = "dragDiv";
+  dragDiv.className = "dragDiv";
+  let dragDivIn = document.createElement("div");
+  dragDivIn.className = "overflow dragDiv";
 
   for (i = 0; i < 4; i++) {
     let divText = document.createElement("div");
     divText.textContent = list[i];
     divText.className = "text"+i;
-    band_screen.append(divText);
+    dragDiv.append(divText);
   }
 
+  dragDivIn.append(dragDiv);
+  band_screen.append(dragDivIn);
   band_screen.append(bt_reminder);
   band_screen.append(bt_nav);
 
   changeScreen(el.parent().parent(), band_screen);
+
+  let max_drag_bandtext = -100;
+  $("#dragDiv").draggable({
+    axis: "y",
+    scroll: false,
+    position: 'unset',
+    cancel: false,
+    drag: function (event, ui) {
+      if (ui.position.top > 0) ui.position.top = 0;
+      if (ui.position.top < max_drag_bandtext) ui.position.top = max_drag_bandtext;
+    },
+    stop: function (event, ui) {
+      $(event.originalEvent.target).one('click', function (e) {
+        e.stopImmediatePropagation();
+      });
+    }
+  });
+
   $("#bt-reminder").click(function () {
     createPopup(1);
     notifyPopup();
