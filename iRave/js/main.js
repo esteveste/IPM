@@ -166,27 +166,27 @@ async function init() {
 
 var band_list = {
   "altj": {
-    artist: "ALTJ",
-    desc: "Description:",
-    hour: "10:00 - 11:00",
+    artist: "ALT-J",
+    desc: "Descrição: É uma banda de rock alternativo formada em 2007 em Leeds, Inglaterra.",
+    hour: "19:00 - 20:30",
     stage: "Palco 1",
   },
   "coldplay": {
     artist: "COLDPLAY",
-    desc: "Description:",
-    hour: "13:00 - 14:00",
+    desc: "Descrição: É uma banda britânica de rock alternativo fundada em 1996 na Inglaterra pelo vocalista e pianista Chris Martin e o guitarrista Jonny Buckland no University College London.",
+    hour: "17:00 - 18:45",
     stage: "Palco 2",
   },
-  "direstraits": {
-    artist: "DIRESTRAITS",
-    desc: "Description:",
-    hour: "12:00 - 13:00",
+  "linkinpark": {
+    artist: "LINKIN PARK",
+    desc: "Descrição: É uma banda de rock dos Estados Unidos formada em 1996 em Agoura Hills, Califórnia. Desde a sua formação, o grupo já vendeu pelo menos 70 milhões de álbuns pelo mundo e ganhou dois Grammy Awards.",
+    hour: "00:30 - 02:00",
     stage: "Palco 3",
   },
   "pinkfloyd": {
     artist: "PINK FLOYD",
-    desc: "Description:",
-    hour: "11:00 - 12:00",
+    desc: "Descrição: É uma banda britânica de rock, formada em Londres em 1965, que atingiu sucesso internacional com sua música psicodélica e progressiva.",
+    hour: "22:30 - 00:00",
     stage: "Palco 4",
   }
 }
