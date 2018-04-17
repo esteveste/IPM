@@ -1,37 +1,47 @@
-:root{
-	--c1:#F3D57E;
-	--c2:#5FB19A;
-	--c3:#374D4D;
-	--cb:#222;
-}
-*{
-	font-family: "Roboto",sans-serif;
-}
-#ecra{
+:root {
+	/*Greys*/
+	--g1: #000000;
+	--g2: #212121;
+	--g3: #303030;
+	--g4: #424242;
 
-	/* margin-top: 20%; */
-	/* padding-top: 20%; */
+	/*Whites*/
+	--w1: #ffffff;
+	--w2: #fafafa;
+	--w3: #f5f5f5;
+	--w4: #e0e0e0;
 
+	/*Blues Primario*/
+	--bp1: #1565C0;
+	--bp2: #002984;
+	--bp3: #757de8;
+
+	/*Greys Secondario*/
+	--gs1: #546e7a;
+	--gs2: #29434e;
+	--gs3: #819ca9;
+}
+
+* {
+	font-family: "Roboto", sans-serif;
+}
+
+#ecra {
+	user-select: none;
 	width: 100%;
 	height: 100%;
 	position: relative;
-	/* Old screen*/
-	/*padding-top: 14%;
-	padding-bottom: 14%;
-	padding-left: 14%;
-	padding-right: 14%;
- 	box-sizing: border-box;*/
-
-	 /*background-color: red;*/
 }
-#ecra h1{
+
+#ecra h1 {
 	margin: 0;
-	/*color: #222222;*/
-	font-family: "Roboto",sans-serif;
+	font-family: "Roboto", sans-serif;
 	user-select: none;
 }
+
 /*Default Settings used by screens in watch */
-.app{
+
+.app {
 	/*width: 100%;
 	height: 100%;*/
 	border-radius: 2%;
@@ -43,16 +53,16 @@
 	right: 0;
 	bottom: 0;
 	margin: auto;
-
 	/*pointer-events: none;*/
 	/*keep aspect ratio*/
 	object-fit: cover;
 }
-.disabled{
+
+.disabled {
 	display: none;
 }
 
-.menu{
+.menu {
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -60,13 +70,15 @@
 	/*z-index: 90;*/
 	text-align: center;
 }
-.menu i{
+
+.menu i {
 	color: white;
 	font-size: 10em;
 	margin-top: 20%;
 	user-select: none;
 }
-.menu h1{
+
+.menu h1 {
 	position: absolute;
 	bottom: 20px;
 	left: 0;
@@ -76,11 +88,11 @@
 	/*margin-bottom: 20;*/
 }
 
-.fixbar{
+.fixbar {
 	height: 14%;
 }
 
-#bar{
+#bar {
 	background-color: black;
 	height: 11%;
 	top: -66%;
@@ -90,34 +102,50 @@
 	user-select: none;
 }
 
-#bar h4{
-
-	color:white;
-	font-size:1.8em;
+#bar h4 {
+	color: white;
+	font-size: 1.8em;
 	margin: 0;
-	margin-top:auto;
-	margin-bottom:auto;
-
+	margin-top: auto;
+	margin-bottom: auto;
 }
-#bar-time{
+
+#bar-time {
 	padding-right: 5%;
 	text-align: right;
 }
-#bar-title{
+
+#bar-title {
 	padding-left: 5%;
 	text-align: left;
 }
-#menu-mapa{
-	background-color: #e34567;
+
+#menu-cartaz {
+	background-color: var(--bp1);
 }
-.overflow{
+
+#menu-mapa {
+	background-color: #F44336;
+}
+
+#menu-pedidos {
+	background-color: #4CAF50;
+}
+
+#menu-ajuda {
+	background-color: var(--gs1);
+}
+
+.overflow {
 	overflow: hidden;
 }
-#black{
+
+#black {
 	background: black;
 	z-index: 95;
 }
-#boot-anim{
+
+#boot-anim {
 	text-align: center;
 	/*background-color: white;*/
 	background-image: url("../resources/c.gif");
@@ -128,147 +156,289 @@
 	z-index: 200;
 	opacity: 0;
 }
-#boot-anim h1{
-		padding-top: 49%;
-		font-size: 3em;
-		color: #f5f5f5;
-		opacity: 0;
-		user-select: none;
+
+#boot-anim h1 {
+	padding-top: 49%;
+	font-size: 3em;
+	color: #f5f5f5;
+	opacity: 0;
+	user-select: none;
 }
-#lockscreen{
-	/*display: flex;*/
+
+#lockscreen {
 	background-image: url("../resources/lockscreen.jpg");
 	text-align: center;
-	/*background-position: center;*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	z-index: 100;
 	opacity: 0;
-	/*transform: translate(0,-200px);*/
 	height: 100%;
 	width: 100%;
 	/*overflow: hidden;*/
 }
-#lockscreen i{
+
+#lockscreen i {
 	position: absolute;
 	/*center*/
 	margin-left: auto;
 	margin-right: auto;
 	left: 0;
 	right: 0;
-
 	flex: auto;
 	bottom: 0;
 	color: #e5e5e5;
 	user-select: none;
 }
-#lock-Time{
+
+#lock-Time {
 	padding-top: 45%;
 	font-size: 4em;
 	color: #f5f5f5;
-	font-family: "Roboto","Helvetica","Arial",sans-serif;
+	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 	font-weight: 400;
 }
-#cartaz{
-	background-color: black;
-	/*z-index: 80;*/
 
+#cartaz {
+	background-color: var(--w4);
+	/*z-index: 80;*/
 }
-#cartaz button{
+
+#cartaz button {
+	background-color: var(--bp2);
 	font-size: 2em;
-	height: 41%;
-	margin: 1% auto;
-	width: 100%;
+	height: 38%;
+	margin: 3% auto;
+	left: 3%;
+	width: 94%;
 }
-#bt-bandas{
-	/*text-decoration-color: white;*/
-	/*background-color: var(--c1);*/
-}
-#bt-horario{
-	/*background-color: var(--c2);*/
-}
-#band{
-	background: white;
+
+#band {
+	background: var(--w4);
 	opacity: 0;
 }
-#band button{
+
+#band button {
 	padding: 0;
-	color: var(--cb);
+	color: var(--w1);
 	font-size: 1.2em;
 	text-align: center;
-	width: 50%;
+	width: 46%;
+	line-height: 50%;
 }
-#bt-reminder{
+
+#bt-reminder {
 	position: absolute;
-	right: 0;
-	bottom: 0;
-	background-color: var(--c1);
+	right: 2%;
+	bottom: 2%;
+	height: 13%;
+	background-color: var(--gs1);
 }
-#bt-nav{
+
+#bt-nav {
 	position: absolute;
-	left: 0;
-	bottom: 0;
-	background-color: var(--c2);
+	left: 2%;
+	bottom: 2%;
+	height: 13%;
+	background-color: var(--gs1);
 }
-#bandas-list{
+
+#bandas-list {
 	height: auto;
 	width: 100%;
 	/*z-index: 70;*/
 	transition: 0s;
-	background-color: black;
+	background-color: var(--w4);
 }
-#horario-list{
+
+#horario-list {
 	height: auto;
 	width: 100%;
 	/*z-index: 70;*/
 	transition: 0s;
-	background-color: black;
-}
-.button-style{
-	background-color: #757575;
-	user-select: none;
-	color:white;
-	border-radius: inherit
-}
-.bt-band{
-	/*background-color: #757575;*/
-	width: 100%;
-	margin: 1px auto;
-	height: 62px;
-	user-select: none;
-
+	background-color: var(--w4);
 }
 
-.bt-schedule{
-	/*background-color: white;*/
-	margin: 1px auto;
-	width: 100%;
-	height: 62px;
+.button-style {
+	background-color: var(--w1);
+	user-select: none;
+	color: white;
+	border-radius: inherit;
+}
+
+.bt-band {
+	background-color: var(--bp2);
+	width: 94%;
+	left: 3%;
+	margin: 3% auto;
+	height: 50px;
 	user-select: none;
 }
-.no-hover:hover{
+
+.bt-schedule {
+	background-color: var(--gs1);
+	margin: 3% auto;
+	width: 94%;
+	left: 3%;
+	height: 50px;
+	user-select: none;
+}
+
+.no-hover:hover {
 	background: #757575;
 }
 
-#menu{
+#menu {
 	position: absolute;
 	height: 100%;
 	width: 100%;
 	z-index: 50;
 }
-#menu-status{
+
+.popup {
+	background: rgba(224, 224, 224, 1);
+	border: 1px solid var(--bp2);
+	height: 25%;
+	top: -26%;
+	text-align: left;
+	position: absolute;
+	width: 98.5%;
+	z-index: 200;
+	border-radius: inherit;
+	font-family: "Roboto";
+}
+
+.popup-text {
+	font-size: 1.4em;
+	color: #000000;
+}
+
+.popup-button {
+	position: absolute;
+	background: transparent;
+	right: 0;
+	bottom: 0;
+	color: #ff0000;
+	border: 0;
+}
+
+.notification {
+	border-radius: inherit;
+	text-align: left;
+	position: absolute;
+	left: 7.5%;
+	width: 85%;
+	height: 20%;
+	background: rgba(224, 224, 224, 0.9);
+}
+
+.notification-text {
+	color: #000000;
+	left: 2%;
+}
+
+.notification-bt {
+	position: absolute;
+	background: transparent;
+	right: 0;
+	bottom: 0;
+	color: #ff0000;
+	border: 0;
+}
+
+#menu-status {
 	position: absolute;
 	right: 0;
-	top: 0;
-	bottom: 0;
+	top: 14%;
+	height: 86%;
 	z-index: 60;
-	margin: auto;
 	/*padding-left: 70%;*/
 }
-.no-touch{
+
+#menu-balls {
+	top: 12.5%;
+	margin: 0 auto;
+}
+
+.no-touch {
 	pointer-events: none;
 }
+
+.text0 {
+	user-select: none;
+	border-radius: inherit;
+	position: absolute;
+	background-color: var(--bp2);
+	width: 94%;
+	height: 14%;
+	left: 3%;
+	top: 17%;
+	color: var(--w1);
+	text-align: left;
+	font-size: 1.5em;
+}
+
+.text1 {
+	user-select: none;
+	border-radius: inherit;
+	position: absolute;
+	background-color: var(--w1);
+	width: 94%;
+	left: 3%;
+	height: 11%;
+	top: 33%;
+	color: var(--g1);
+	text-align: left;
+}
+
+.text2 {
+	user-select: none;
+	border-radius: inherit;
+	position: absolute;
+	background-color: var(--w1);
+	width: 94%;
+	left: 3%;
+	height: 11%;
+	top: 46%;
+	color: var(--g1);
+	text-align: left;
+}
+
+.text3 {
+	user-select: none;
+	border-radius: inherit;
+	position: absolute;
+	background-color: var(--w1);
+	width: 94%;
+	left: 3%;
+	height: 24%;
+	top: 59%;
+	color: var(--g1);
+	text-align: left;
+}
+
+.bt-text {
+	right: 0;
+	border-radius: inherit;
+	background-color: var(--w1);
+	height: 66%;
+	text-align: right;
+	line-height: 50%;
+	font-size: 0.8em;
+	color: var(--g1);
+}
+
+.bt-title {
+	font-size: 0.9em;
+	right: 0;
+	line-height: 120%;
+	border-radius: inherit;
+	text-align: left;
+	background-color: var(--bp2);
+	height: 33%;
+}
+
 /*Tratar no futuro animacoes*/
-.transition{
-		transition: 0.35s;
+
+.transition {
+	transition: 0.35s;
 }
