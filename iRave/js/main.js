@@ -152,6 +152,13 @@ async function init() {
   $(".bt-schedule").click(function () {
     createDiv($(this), 1)
   });
+  $("#lockscreen").click(function () {
+    if ($("#lockscreen").position.top != 0){
+      $("#lockscreen").animate({
+        'top': -225
+      });
+    }
+  });
 
   $("#bar-title").text("Menu");
 
@@ -204,7 +211,8 @@ var popup_list = {
 }
 
 async function createBar(screen) {
-  $("#bar-title").text(title_list[screen]);
+  $("#bar-title").empty();
+  $("#bar-title").append('<b>&lt;</b>' + title_list[screen]);
 }
 
 async function createNotification(alert) {

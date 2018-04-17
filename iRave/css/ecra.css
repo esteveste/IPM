@@ -12,7 +12,7 @@
 	--w4: #e0e0e0;
 
 	/*Blues Primario*/
-	--bp1: #3f51b5;
+	--bp1: #1565C0;
 	--bp2: #002984;
 	--bp3: #757de8;
 
@@ -125,11 +125,11 @@
 }
 
 #menu-mapa {
-	background-color: var(--gs1);
+	background-color: #F44336;
 }
 
 #menu-pedidos {
-	background-color: var(--bp1);
+	background-color: #4CAF50;
 }
 
 #menu-ajuda {
@@ -199,12 +199,12 @@
 }
 
 #cartaz {
-	background-color: var(--gs1);
+	background-color: var(--w4);
 	/*z-index: 80;*/
 }
 
 #cartaz button {
-	background-color: var(--bp1);
+	background-color: var(--bp2);
 	font-size: 2em;
 	height: 38%;
 	margin: 3% auto;
@@ -247,7 +247,7 @@
 	width: 100%;
 	/*z-index: 70;*/
 	transition: 0s;
-	background-color: var(--bp3);
+	background-color: var(--w4);
 }
 
 #horario-list {
@@ -266,7 +266,7 @@
 }
 
 .bt-band {
-	background-color: var(--gs1);
+	background-color: var(--bp2);
 	width: 94%;
 	left: 3%;
 	margin: 3% auto;
