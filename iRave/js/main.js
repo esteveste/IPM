@@ -301,7 +301,6 @@ async function createDiv(el, flag) {
 
     bt_nav.textContent = "Navegar";
     bt_reminder.textContent = "Alerta";
-
   }
 
   let list = [artist, hour, stage, description];
@@ -313,8 +312,11 @@ async function createDiv(el, flag) {
 
   for (i = 0; i < 4; i++) {
     let divText = document.createElement("div");
-    divText.textContent = list[i];
+    let spanText = document.createElement("p");
+    spanText.textContent = list[i];
     divText.className = "text"+i;
+    spanText.className = "pargraph";
+    divText.append(spanText);
     dragDiv.append(divText);
   }
 
