@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 const DEBUG = true;
 const BUTTON_SIZE = 64;
@@ -309,15 +309,20 @@ async function createDiv(el, flag) {
   dragDiv.className = "dragDiv";
   let dragDivIn = document.createElement("div");
   dragDivIn.className = "overflow dragDiv";
+  let max_drag_bandtext = -110;
 
-  for (i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i++) {
     let divText = document.createElement("div");
     let spanText = document.createElement("p");
     spanText.textContent = list[i];
     divText.className = "text"+i;
     spanText.className = "pargraph";
+    spanText.id = "info" + i;
+   
+
     divText.append(spanText);
     dragDiv.append(divText);
+    
   }
 
   dragDivIn.append(dragDiv);
@@ -326,8 +331,12 @@ async function createDiv(el, flag) {
   band_screen.append(bt_nav);
 
   changeScreen(el.parent().parent(), band_screen);
-
-  let max_drag_bandtext = -100;
+  //let descricao_height = $("#descricao").height();
+  await sleep(500);
+  for (let index = 0; index < 4; index++) {
+    max_drag_bandtext += $("#info"+index).height();
+  }
+  console.log(max_drag_bandtext);
   $("#dragDiv").draggable({
     axis: "y",
     scroll: false,
@@ -335,7 +344,7 @@ async function createDiv(el, flag) {
     cancel: false,
     drag: function (event, ui) {
       if (ui.position.top > 0) ui.position.top = 0;
-      if (ui.position.top < max_drag_bandtext) ui.position.top = max_drag_bandtext;
+      if (ui.position.top < -max_drag_bandtext) ui.position.top = -max_drag_bandtext;
     },
     stop: function (event, ui) {
       $(event.originalEvent.target).one('click', function (e) {
@@ -400,7 +409,7 @@ async function bootAnimation(debug) {
 }
 
 function updateTime() {
-  today = new Date();
+  let today = new Date();
   var h = today.getHours();
   var m = today.getMinutes();
   if (m < 10) {

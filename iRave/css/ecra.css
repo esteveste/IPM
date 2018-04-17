@@ -210,7 +210,7 @@
 
 #dragDiv {
 	top: 0;
-	height: 180%;
+	height: 300%;
 }
 
 #cartaz {
@@ -383,41 +383,32 @@
 	vertical-align: middle;
 	text-align: center;
 	line-height: -50%;
+	margin: 3px;
 }
 
 .text0 {
 	user-select: none;
 	border-radius: inherit;
-	position: absolute;
 	background-color: var(--bp2);
 	width: 100%;
-	height: 19.1%;
-	top: 2.7%;
 	color: var(--w1);
-	text-align: left;
 	font-size: 1.5em;
 }
+
 
 .text1 {
 	user-select: none;
 	border-radius: inherit;
-	position: absolute;
 	background-color: var(--w1);
 	width: 100%;
-	height: 15%;
-	top: 24%;
 	color: var(--g1);
-	text-align: left;
 }
 
 .text2 {
 	user-select: none;
 	border-radius: inherit;
-	position: absolute;
 	background-color: var(--w1);
 	width: 100%;
-	height: 15%;
-	top: 42%;
 	color: var(--g1);
 	text-align: left;
 }
@@ -425,13 +416,13 @@
 .text3 {
 	user-select: none;
 	border-radius: inherit;
-	position: absolute;
 	background-color: var(--w1);
 	width: 100%;
-	height: 32.8%;
-	top: 60%;
 	color: var(--g1);
 	text-align: left;
+}
+.text3 > p {
+	text-align: justify; 
 }
 
 .bt-text {
