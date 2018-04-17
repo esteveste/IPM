@@ -216,7 +216,7 @@ async function createBar(screen) {
   $("#bar-title").empty();
   if (title_list[screen]!="Menu"){
     $("#bar-title").css("cursor", "pointer");
-    $("#bar-title").append('<b>&lt;</b>' + title_list[screen]);
+    $("#bar-title").append('<b style="padding-right:3%;">&lt;</b>' + title_list[screen]);
   }
   else{
     $("#bar-title").css("cursor", "default");
