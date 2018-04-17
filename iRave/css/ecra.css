@@ -205,7 +205,7 @@
 	bottom: 13%;
 	left: 3%;
 	width: 94%;
-	height: 73%;
+	height: 69%;
 }
 
 #dragDiv {
@@ -376,6 +376,13 @@
 
 .no-touch {
 	pointer-events: none;
+}
+
+.pargraph {
+	position: relative;
+	vertical-align: middle;
+	text-align: center;
+	line-height: -50%;
 }
 
 .text0 {
