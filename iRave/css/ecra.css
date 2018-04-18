@@ -13,7 +13,7 @@
 
 	/*Blues Primario*/
 	--bp1: #1565C0;
-	--bp2: #002984;
+	--bp2: #1565C0;
 	--bp3: #757de8;
 
 	/*Greys Secondario*/
@@ -74,17 +74,19 @@
 .menu i {
 	color: white;
 	font-size: 10em;
-	margin-top: 20%;
+	margin-top: 25%;
 	user-select: none;
 }
 
 .menu h1 {
 	position: absolute;
-	bottom: 20px;
+	bottom: 15px;
 	left: 0;
 	right: 0;
 	font-size: 2.4em;
 	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
 	/*margin-bottom: 20;*/
 }
 
@@ -203,8 +205,8 @@
 	user-select: none;
 	top: 14%;
 	bottom: 13%;
-	left: 3%;
-	width: 94%;
+	left: 1%;
+	right: 1%;
 	height: 69%;
 }
 
@@ -246,7 +248,7 @@
 	right: 2%;
 	bottom: 2%;
 	height: 13%;
-	background-color: var(--gs1);
+	background-color: var(--bp2);
 }
 
 #bt-nav {
@@ -254,7 +256,7 @@
 	left: 2%;
 	bottom: 2%;
 	height: 13%;
-	background-color: var(--gs1);
+	background-color: var(--bp2);
 }
 
 #bandas-list {
@@ -299,7 +301,7 @@
 }
 
 .no-hover:hover {
-	background: #757575;
+	background: var(--bp2);
 }
 
 #menu {
@@ -381,7 +383,7 @@
 .pargraph {
 	position: relative;
 	vertical-align: middle;
-	text-align: center;
+	text-align: middle;
 	line-height: -50%;
 	margin: 3px;
 }
@@ -422,7 +424,7 @@
 	text-align: left;
 }
 .text3 > p {
-	text-align: justify; 
+	text-align: left;
 }
 
 .bt-text {
