@@ -75,11 +75,9 @@
                 </li>
               </ul>
             </div>
-
-
             <div id="menu">
               <div id="menu-cartaz" class="menu">
-                <i class="material-icons">event</i>
+                <i id="ic" class="material-icons">event</i>
                 <h1>Cartaz</h1>
               </div>
               <div id="menu-mapa" class="menu">
@@ -95,14 +93,12 @@
                 <h1>Ajuda</h1>
               </div>
             </div>
-
-
           </div>
 
 
           <div id="bar" class="app ">
             <h4 id="bar-title"><i class="material-icons" style="color: #ffffff; padding:0; margin:0;">chevron_left</i></h4>
-            <h4 id="bar-time">00:00</h4>
+            <h4 id="bar-timeicon"><i id="alerticon" class="material-icons" style="color: #ffffff; opacity: 0; font-size: 0.8em;">notifications_active</i><span id="bar-time">00:00</span></h4>
           </div>
           <div id="cartaz" class="app">
             <div class="fixbar"></div>
@@ -118,17 +114,53 @@
           <div id="list-bandas" class="app overflow">
 
             <div id="bandas-list" class="app">
-              <button id="altj" class="bt-band mdl-button--raised no-hover button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                Alt-J
+              <button id="altj" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                <div class="mdl-button__ripple-container">
+                  <div class="bt-title">
+                    Altj
+                  </div>
+                  <div class="bt-text">
+                    <br>
+                    <span>19:00 - 20:30</span><br><br>
+                    <span>Palco 1</span>
+                  </div>
+                </div>
               </button>
-              <button id="coldplay" class="bt-band mdl-button--raised no-hover button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                Coldplay
+              <button id="coldplay" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                <div class="mdl-button__ripple-container">
+                  <div class="bt-title">
+                    Coldplay
+                  </div>
+                  <div class="bt-text">
+                    <br>
+                    <span>17:00 - 18:45</span><br><br>
+                    <span>Palco 2</span>
+                  </div>
+                </div>
               </button>
-              <button id="linkinpark" class="bt-band mdl-button--raised no-hover button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                Linkin Park
+              <button id="direstraits" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                <div class="mdl-button__ripple-container">
+                  <div class="bt-title">
+                    Linkin Park
+                  </div>
+                  <div class="bt-text">
+                    <br>
+                    <span>00:30 - 02:00</span><br><br>
+                    <span>Palco 3</span>
+                  </div>
+                </div>
               </button>
-              <button id="pinkfloyd" class="bt-band mdl-button--raised no-hover button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                Pink Floyd
+              <button id="pinkfloyd" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                <div class="mdl-button__ripple-container">
+                  <div class="bt-title">
+                    Pinkfloyd
+                  </div>
+                  <div class="bt-text">
+                    <br>
+                    <span>22:30 - 00:00</span><br><br>
+                    <span>Palco 4</span>
+                  </div>
+                </div>
               </button>
             </div>
 

@@ -8,12 +8,22 @@ const NR_OF_MENU_EL = 4;
 
 var appHistory = [];
 var atualApp = undefined;
+var idle = 0;
 
 async function init() {
   console.log("lets go");
   bootAnimation(DEBUG);
   lockArrow();
   updateTime();
+
+  var idletimer = setInterval(detectIdleTime, 2000);
+
+  $(document).mousemove(function (e) {
+    idle = 0;
+  });
+  $(document).keypress(function (e) {
+    idle = 0;
+  });
 
   let lockScreen = $("#lockscreen");
   // lockScreen.css("opacity",1);
@@ -166,6 +176,18 @@ async function init() {
 
 }
 
+async function detectIdleTime(){
+  idle += 2;
+  if (idle >= 30){
+    if ($("#lockscreen").position.top != 0){
+      $("#lockscreen").animate({
+        "top": 0
+      });
+      idle = 0;
+    }
+  }
+}
+
 var band_list = {
   "altj": {
     artist: "ALT-J",
@@ -248,6 +270,7 @@ async function createNotification(alert) {
   lockscreen.append(notificationDiv);
   $(".notification-bt").click(function () {
     $("#notification").remove();
+    $("#alerticon").css("opacity", "0");
   });
 }
 
@@ -356,6 +379,7 @@ async function createDiv(el, flag) {
   $("#bt-reminder").click(function () {
     createPopup(1);
     notifyPopup();
+    $("#alerticon").css("opacity", "1");
     createNotification(2);
   });
   $("#bt-nav").click(function () {
@@ -364,6 +388,7 @@ async function createDiv(el, flag) {
   });
   $(".popup-button").click(function () {
     $("#notification").remove();
+    $("#alerticon").css("opacity", "0");
   });
 }
 
