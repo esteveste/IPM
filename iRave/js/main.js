@@ -96,7 +96,7 @@ async function init() {
   console.log(max_drag_horario);
   horario_lista.css("top", BAR_SIZE);
   horario_lista.draggable({
-    axis: "y",
+    // axis: "y",
     scroll: false,
     position: 'unset',
     cancel: false,
@@ -148,18 +148,18 @@ async function init() {
   $("#crown-button").click(crownFunction);
 
   $(".bt-band").click(function () {
-    createDiv($(this), 1)
+    createDiv($(this), 1);
   });
   $(".bt-schedule").click(function () {
-    createDiv($(this), 1)
+    createDiv($(this), 1);
   });
-  $("#lockscreen").click(function () {
-    if ($("#lockscreen").position.top != 0){
-      $("#lockscreen").animate({
-        'top': -225
-      });
-    }
-  });
+  // $("#lockscreen").click(function () {
+  //   if ($("#lockscreen").position.top != 0){
+  //     $("#lockscreen").animate({
+  //       'top': -225
+  //     });
+  //   }
+  // });
   $("#bar-title").click(backApp);
 
   $("#bar-title").text("Menu");
@@ -318,11 +318,11 @@ async function createDiv(el, flag) {
     divText.className = "text"+i;
     spanText.className = "pargraph";
     spanText.id = "info" + i;
-   
+
 
     divText.append(spanText);
     dragDiv.append(divText);
-    
+
   }
 
   dragDivIn.append(dragDiv);
