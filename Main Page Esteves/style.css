@@ -10,10 +10,10 @@ html {
 body{
   min-height: 100%;
   margin: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8) ),url(h.gif);
+  /*background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8) ),url(h.gif);
   background-repeat: no-repeat;
-  background-size: cover;
-
+  background-size: cover;*/
+  transition: 0.5s;
 }
 .container{
   position: absolute;
