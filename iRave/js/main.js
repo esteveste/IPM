@@ -108,7 +108,7 @@ async function init() {
   console.log(max_drag_horario);
   horario_lista.css("top", BAR_SIZE);
   horario_lista.draggable({
-    // axis: "y",
+    axis: "y",
     scroll: false,
     position: 'unset',
     cancel: false,
@@ -289,6 +289,11 @@ async function createBar(screen) {
     $("#bar-title").css("cursor", "default");
     $("#bar-title").append(title_list[screen]);
   }
+}
+
+function writeToBar(title){
+  $("#bar-title").empty();
+  $("#bar-title").append('<b style="padding-right:3%;">&lt;</b>' + title_list[screen]);
 }
 
 async function createNotification(alert) {
