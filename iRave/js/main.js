@@ -124,7 +124,6 @@ async function init() {
 
   let banda_lista = $("#bandas-list");
   let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
-  console.log(max_drag_banda);
   banda_lista.css("top", BAR_SIZE);
   banda_lista.draggable({
     axis: "y",
@@ -143,6 +142,46 @@ async function init() {
 
   });
 
+  let mapa = $("#inner-map");
+  mapa.css("top", "-36%");
+  let max_drag_top = mapa.top;
+  mapa.css("left", "-50%");
+  let max_drag_left = mapa.left;
+  mapa.draggable({
+    scroll: false,
+    position: 'unset',
+    cancel: false,
+    drag: function (event, ui) {
+      if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+      if (ui.position.top < -121.217) ui.position.top = -121.217;
+      if (ui.position.left > 0) ui.position.left = 0;
+      if (ui.position.left < -154.5) ui.position.left = -154.5;
+    },
+    stop: function (event, ui) {
+      $(event.originalEvent.target).one('click', function (e) {
+        e.stopImmediatePropagation();
+      });
+    }
+
+  });
+
+  var longpress = 1000;
+  var start;
+
+  jQuery( "#mapa" ).on( 'mousedown', function( e ) {
+      start = new Date().getTime();
+  } );
+
+  jQuery( "#mapa" ).on( 'mouseleave', function( e ) {
+      start = 0;
+  } );
+
+  jQuery( "#mapa" ).on( 'mouseup', function( e ) {
+      if ( new Date().getTime() >= ( start + longpress )  ) {
+        changeScreen($("#mapa"), $("#options-mapa")) 
+      }
+  } );
+
   $("#menu-cartaz").click(function (event) {
     changeScreen($("#menu-overflow"), $("#cartaz"));
   });
@@ -152,6 +191,9 @@ async function init() {
   });
   $("#bt-horario").click(() => {
     changeScreen($("#cartaz"), $("#list-horario"));
+  });
+  $("#menu-mapa").click(() => {
+    changeScreen($("#menu-overflow"), $("#mapa"));
   });
 
   $("#back-bt").click(backApp);
@@ -221,8 +263,9 @@ var title_list = {
   "band": "Bandas",
   "list-horario": "Horário",
   "menu": "Menu",
-  "menu-cartaz": "Menu",
-  "menu-overflow": "Menu"
+  "menu-overflow": "Menu",
+  "mapa":"Mapa",
+  "options-mapa":"Opções"
 };
 
 var notificationTitle = "";
