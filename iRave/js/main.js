@@ -9,6 +9,8 @@ const NR_OF_MENU_EL = 4;
 var appHistory = [];
 var atualApp = undefined;
 var idle = 0;
+var longpress = 1000;
+var start;
 
 async function init() {
   console.log("lets go");
@@ -232,10 +234,14 @@ async function init() {
     position: 'unset',
     cancel: false,
     drag: function (event, ui) {
+
+      start = new Date().getTime();
+
       if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
       if (ui.position.top < -121.217) ui.position.top = -121.217;
       if (ui.position.left > 0) ui.position.left = 0;
       if (ui.position.left < -154.5) ui.position.left = -154.5;
+
     },
     stop: function (event, ui) {
       $(event.originalEvent.target).one('click', function (e) {
@@ -245,20 +251,16 @@ async function init() {
 
   });
 
-  var longpress = 1000;
-  var start;
-
-  jQuery( "#mapa" ).on( 'mousedown', function( e ) {
+  $("#mapa").on('mousedown', function( e ) {
       start = new Date().getTime();
   } );
 
-  jQuery( "#mapa" ).on( 'mouseleave', function( e ) {
+  $("#mapa").on('mouseleave', function( e ) {
       start = 0;
   } );
-
-  jQuery( "#mapa" ).on( 'mouseup', function( e ) {
-      if ( new Date().getTime() >= ( start + longpress )  ) {
-        changeScreen($("#mapa"), $("#options-mapa"))
+  $("#mapa").on('mouseup', function( e ) {
+      if (new Date().getTime() >= ( start + longpress )  ) {
+        changeScreen($("#mapa"), $("#options-mapa")) 
       }
   } );
 
