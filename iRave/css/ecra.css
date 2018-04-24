@@ -274,6 +274,14 @@
 	transition: 0s;
 	background-color: var(--w4);
 }
+#horario-list2 {
+	height: auto;
+	width: 100%;
+	left: 145px;
+	/*z-index: 70;*/
+	transition: 0s;
+	background-color: var(--w4);
+}
 
 .button-style {
 	background-color: var(--w1);

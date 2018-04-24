@@ -101,16 +101,26 @@ async function init() {
   });
 
 
-  let horario_lista = $("#horario-list");
+  let horario_lista = $(".horario-list");
   let max_drag_horario = -($("#horario-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
   console.log(max_drag_horario);
   horario_lista.css("top", BAR_SIZE);
   horario_lista.draggable({
-    axis: "y",
+    // axis: "y",
     scroll: false,
     position: 'unset',
     cancel: false,
     drag: function (event, ui) {
+      if($(this).attr("id")=="horario-list"){
+        if (ui.position.left>0) ui.position.left = 0;
+        if (ui.position.left < -145) ui.position.left = -145;
+        $("#horario-list2").css("left",145 + parseFloat($(this).css("left")) + "px");
+      }
+      if($(this).attr("id")=="horario-list2"){
+        if (ui.position.left <0) ui.position.left = 0;
+        if (ui.position.left > 145) ui.position.left = 145;
+        $("#horario-list").css("left",-145 + parseFloat($(this).css("left")) + "px");
+      }
       if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
       if (ui.position.top < max_drag_horario) ui.position.top = max_drag_horario;
     },
@@ -118,9 +128,79 @@ async function init() {
       $(event.originalEvent.target).one('click', function (e) {
         e.stopImmediatePropagation();
       });
+      if($(this).attr("id")=="horario-list"){
+        if (ui.position.left <= -45) {
+          writeToBar("Dia 2");
+          $(this).animate({
+            'left':-145
+          });
+          $("#horario-list2").animate({
+            'left':0
+          });
+        }else{
+          writeToBar("Dia 1");
+          $(this).animate({
+            'left':0
+          });
+          $("#horario-list2").animate({
+            'left':145
+          });
+        }
+      }
+      if($(this).attr("id")=="horario-list2"){
+        if (ui.position.left <= 45) {
+          writeToBar("Dia 2");
+          $(this).animate({
+            'left':0
+          });
+          $("#horario-list").animate({
+            'left':-145
+          });
+        }else{
+          writeToBar("Dia 1");
+          $(this).animate({
+            'left':145
+          });
+          $("#horario-list").animate({
+            'left':0
+          });
+        }
+      }
     }
+    // if (ui.position.top / SCREEN_SIZE - Math.floor(ui.position.top / SCREEN_SIZE) <= 0.5) {
+    //   $(this).animate({
+    //     'left': (Math.floor(ui.position.top / SCREEN_SIZE)) * SCREEN_SIZE
+    //   });
+    // } else {
+    //   $(this).animate({
+    //     'top': (Math.floor(ui.position.top / SCREEN_SIZE) + 1) * SCREEN_SIZE
+    //   });
+    // }
 
   });
+
+  // let horario_days = $("#horario-days");
+  // // let max_drag_horario = -($("#horario-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
+  // // console.log(max_drag_horario);
+  // // horario_days.css("top", BAR_SIZE);
+  // horario_days.draggable({
+  //   axis: "x",
+  //   scroll: false,
+  //   position: 'unset',
+  //   cancel: false,
+  //   drag: function (event, ui) {
+  //     if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+  //     if (ui.position.top < max_drag_horario) ui.position.top = max_drag_horario;
+  //   },
+  //   stop: function (event, ui) {
+  //     $(event.originalEvent.target).one('click', function (e) {
+  //       e.stopImmediatePropagation();
+  //     });
+  //   }
+  //
+  // });
+
+
 
   let banda_lista = $("#bandas-list");
   let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
@@ -178,7 +258,7 @@ async function init() {
 
   jQuery( "#mapa" ).on( 'mouseup', function( e ) {
       if ( new Date().getTime() >= ( start + longpress )  ) {
-        changeScreen($("#mapa"), $("#options-mapa")) 
+        changeScreen($("#mapa"), $("#options-mapa"))
       }
   } );
 
@@ -291,7 +371,7 @@ async function createBar(screen) {
 
 function writeToBar(title){
   $("#bar-title").empty();
-  $("#bar-title").append('<b style="padding-right:3%;">&lt;</b>' + title_list[screen]);
+  $("#bar-title").append('<b style="padding-right:3%;">&lt;</b>' + title);
 }
 
 async function createNotification(alert) {
@@ -401,7 +481,7 @@ async function createDiv(el, flag) {
   band_screen.append(bt_reminder);
   band_screen.append(bt_nav);
 
-  changeScreen(el.parent().parent(), band_screen);
+  changeScreen(el.parent().parent().parent(), band_screen);
   //let descricao_height = $("#descricao").height();
   await sleep(500);
   for (let index = 0; index < 4; index++) {
