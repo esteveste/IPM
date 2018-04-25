@@ -11,6 +11,7 @@ var atualApp = undefined;
 var idle = 0;
 var longpress = 1000;
 var start;
+var currentAlert = undefined;
 
 async function init() {
   console.log("lets go");
@@ -456,6 +457,7 @@ async function notifyPopup() {
 
 async function createDiv(el, flag) {
   let band_screen = $("#band");
+  band_screen.attr("band",el.attr("id"));
   band_screen.empty();
   let fixbardiv = document.createElement("div");
   fixbardiv.className = "fixbar";
@@ -475,12 +477,23 @@ async function createDiv(el, flag) {
     bt_reminder.id = "bt-reminder";
 
     bt_nav.className = "mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
-    bt_reminder.className = "add mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
+    bt_reminder.className = "mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
+
+    if(el.attr("id")==currentAlert){
+      bt_reminder.innerHTML = `<i class="material-icons">notifications_off</i>`;
+    }else{
+      bt_reminder.innerHTML = `<i class="material-icons">add_alert</i>`;
+      bt_reminder.className+=" add";
+    }
+
 
     // bt_nav.textContent = "Navegar";
     // bt_nav.append
     bt_nav.innerHTML = '<i class="material-icons">navigation</i>';
-    bt_reminder.innerHTML = `<i class="material-icons">add_alert</i>`;
+
+
+
+
   }
 
   let list = [artist, hour, stage, description];
@@ -510,10 +523,6 @@ async function createDiv(el, flag) {
   band_screen.append(bt_reminder);
   band_screen.append(bt_nav);
 
-
-  if(el.parent().parent().parent()){
-
-  }
   let changeOrigin = el.parent().parent().parent().attr("id")=="ecra"?el.parent().parent():el.parent().parent().parent();
 
   changeScreen(changeOrigin, band_screen);
@@ -542,6 +551,7 @@ async function createDiv(el, flag) {
   $("#bt-reminder").click(function () {
     if($("#bt-reminder").hasClass("add")){
       $("#bt-reminder").removeClass("add");
+      currentAlert = $("#band").attr("band");
       // $("#bt-reminder").clear();
       $("#bt-reminder").html(`<i class="material-icons">notifications_off</i>`);
       createPopup(1);
@@ -549,6 +559,7 @@ async function createDiv(el, flag) {
       $("#alerticon").css("opacity", "1");
       createNotification(2);
     }else{
+      currentAlert=undefined;
       $("#bt-reminder").addClass("add");
       // $("#bt-reminder").clear();
       $("#bt-reminder").html(`<i class="material-icons">add_alert</i>`);
@@ -563,6 +574,7 @@ async function createDiv(el, flag) {
     notifyPopup();
   });
   $(".popup-button").click(function () {
+    currentAlert=undefined;
     $("#notification").remove();
     $("#alerticon").css("opacity", "0");
     createPopup(4);
