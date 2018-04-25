@@ -327,7 +327,7 @@ async function init() {
 
 async function detectIdleTime(){
   idle += 2;
-  if (idle >= 30){
+  if (idle >= 60){
     if ($("#lockscreen").position.top != 0){
       $("#lockscreen").animate({
         "top": 0
@@ -510,7 +510,10 @@ async function createDiv(el, flag) {
       bt_reminder.innerHTML = `<i class="material-icons">add_alert</i>`;
       bt_reminder.className+=" add";
     }
-
+    if(el.hasClass("bt-past")){
+      bt_reminder.className+=" bt-past";
+      bt_reminder.setAttribute("disabled", "disabled");
+    }
 
     // bt_nav.textContent = "Navegar";
     // bt_nav.append
@@ -537,6 +540,9 @@ async function createDiv(el, flag) {
     spanText.className = "pargraph";
     spanText.id = "info" + i;
 
+    if(i==0 && el.hasClass("bt-past")){
+      divText.className+=" bt-past";
+    }
 
     divText.append(spanText);
     dragDiv.append(divText);
