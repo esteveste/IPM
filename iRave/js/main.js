@@ -132,6 +132,7 @@ async function init() {
       });
       if($(this).attr("id")=="horario-list"){
         if (ui.position.left <= -45) {
+          title_list["list-horario"]="Dia 2";
           writeToBar("Dia 2");
           $(this).animate({
             'left':-145
@@ -141,6 +142,7 @@ async function init() {
           });
         }else{
           writeToBar("Dia 1");
+          title_list["list-horario"]="Dia 1";
           $(this).animate({
             'left':0
           });
@@ -151,6 +153,7 @@ async function init() {
       }
       if($(this).attr("id")=="horario-list2"){
         if (ui.position.left <= 45) {
+          title_list["list-horario"]="Dia 2";
           writeToBar("Dia 2");
           $(this).animate({
             'left':0
@@ -159,6 +162,7 @@ async function init() {
             'left':-145
           });
         }else{
+          title_list["list-horario"]="Dia 1";
           writeToBar("Dia 1");
           $(this).animate({
             'left':145
@@ -260,7 +264,7 @@ async function init() {
   } );
   $("#mapa").on('mouseup', function( e ) {
       if (new Date().getTime() >= ( start + longpress )  ) {
-        changeScreen($("#mapa"), $("#options-mapa")) 
+        changeScreen($("#mapa"), $("#options-mapa"))
       }
   } );
 
@@ -343,7 +347,7 @@ var title_list = {
   "cartaz": "Cartaz",
   "list-bandas": "Bandas",
   "band": "Bandas",
-  "list-horario": "Horário",
+  "list-horario": "Dia 1",
   "menu": "Menu",
   "menu-overflow": "Menu",
   "mapa":"Mapa",
