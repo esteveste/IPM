@@ -339,48 +339,56 @@ async function detectIdleTime(){
 
 var band_list = {
   "altj": {
+    day:"Dia 1",
     artist: "ALT-J",
     desc: "Descrição: É uma banda de rock alternativo formada em 2007 em Leeds, Inglaterra.",
     hour: "19:00 - 20:30",
     stage: "Palco 1",
   },
   "coldplay": {
+    day:"Dia 1",
     artist: "COLDPLAY",
     desc: "Descrição: É uma banda britânica de rock alternativo fundada em 1996 na Inglaterra pelo vocalista e pianista Chris Martin e o guitarrista Jonny Buckland no University College London.",
     hour: "17:00 - 18:45",
     stage: "Palco 2",
   },
   "linkinpark": {
+    day:"Dia 1",
     artist: "LINKIN PARK",
     desc: "Descrição: É uma banda de rock dos Estados Unidos formada em 1996 em Agoura Hills, Califórnia. Desde a sua formação, o grupo já vendeu pelo menos 70 milhões de álbuns pelo mundo e ganhou dois Grammy Awards.",
     hour: "00:30 - 02:00",
     stage: "Palco 3",
   },
   "pinkfloyd": {
+    day:"Dia 1",
     artist: "PINK FLOYD",
     desc: "Descrição: É uma banda britânica de rock, formada em Londres em 1965, que atingiu sucesso internacional com sua música psicodélica e progressiva.",
     hour: "22:30 - 00:00",
     stage: "Palco 4",
   },
   "imaginedragons": {
+    day:"Dia 2",
     artist: "IMAGINE DRAGONS",
     desc: "Descrição: É uma banda de indie rock formada em Las Vegas, Nevada, Estados Unidos.",
     hour: "19:00 - 21:00",
     stage: "Palco 1",
   },
   "postmalone": {
+    day:"Dia 2",
     artist: "POST MALONE",
     desc: "Descrição: É um rapper, cantor, compositor e produtor musical norte-americano. Ganhou reconhecimento em fevereiro de 2015, quando lançou seu single de estreia, White Iverson.",
     hour: "22:45 - 00:10",
     stage: "Palco 3",
   },
   "foofighters": {
+    day:"Dia 2",
     artist: "FOO FIGHTERS",
     desc: "Descrição: É uma banda de rock dos Estados Unidos formada pelos ex-Nirvana Dave Grohl e Pat Smear em 1994.",
     hour: "00:30 - 02:30",
     stage: "Palco 2",
   },
   "thexx": {
+    day:"Dia 2",
     artist: "THE XX",
     desc: "Descrição: É uma banda indie britânica do sudoeste de Londres, Inglaterra.",
     hour: "17:00 - 18:45",
@@ -489,6 +497,7 @@ async function createDiv(el, flag) {
   band_screen.append(fixbardiv);
   if (flag) {
     var artist = band_list[el.attr("id")].artist;
+    var day = band_list[el.attr("id")].day;
     var description = band_list[el.attr("id")].desc;
     var hour = band_list[el.attr("id")].hour;
     var stage = band_list[el.attr("id")].stage;
@@ -524,7 +533,7 @@ async function createDiv(el, flag) {
 
   }
 
-  let list = [artist, hour, stage, description];
+  let list = [artist, day,hour, stage, description];
   let dragDiv = document.createElement("div");
   dragDiv.id = "dragDiv";
   dragDiv.className = "dragDiv";
@@ -532,7 +541,7 @@ async function createDiv(el, flag) {
   dragDivIn.className = "overflow dragDiv";
   let max_drag_bandtext = -110;
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     let divText = document.createElement("div");
     let spanText = document.createElement("p");
     spanText.textContent = list[i];
@@ -559,7 +568,7 @@ async function createDiv(el, flag) {
   changeScreen(changeOrigin, band_screen);
   //let descricao_height = $("#descricao").height();
   await sleep(500);
-  for (let index = 0; index < 4; index++) {
+  for (let index = 0; index < 5; index++) {
     max_drag_bandtext += $("#info"+index).height();
   }
   console.log(max_drag_bandtext);

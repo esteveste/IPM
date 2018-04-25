@@ -438,7 +438,15 @@
 	color: var(--g1);
 	text-align: left;
 }
-.text3 > p {
+.text4 {
+	user-select: none;
+	border-radius: inherit;
+	background-color: var(--w1);
+	width: 100%;
+	color: var(--g1);
+	text-align: left;
+}
+.text4 > p {
 	text-align: left;
 }
 
