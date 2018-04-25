@@ -361,7 +361,32 @@ var band_list = {
     desc: "Descrição: É uma banda britânica de rock, formada em Londres em 1965, que atingiu sucesso internacional com sua música psicodélica e progressiva.",
     hour: "22:30 - 00:00",
     stage: "Palco 4",
-  }
+  },
+  "imaginedragons": {
+    artist: "IMAGINE DRAGONS",
+    desc: "Descrição: É uma banda de indie rock formada em Las Vegas, Nevada, Estados Unidos.",
+    hour: "19:00 - 21:00",
+    stage: "Palco 1",
+  },
+  "postmalone": {
+    artist: "POST MALONE",
+    desc: "Descrição: É um rapper, cantor, compositor e produtor musical norte-americano. Ganhou reconhecimento em fevereiro de 2015, quando lançou seu single de estreia, White Iverson.",
+    hour: "22:45 - 00:10",
+    stage: "Palco 3",
+  },
+  "foofighters": {
+    artist: "FOO FIGHTERS",
+    desc: "Descrição: É uma banda de rock dos Estados Unidos formada pelos ex-Nirvana Dave Grohl e Pat Smear em 1994.",
+    hour: "00:30 - 02:30",
+    stage: "Palco 2",
+  },
+  "thexx": {
+    artist: "THE XX",
+    desc: "Descrição: É uma banda indie britânica do sudoeste de Londres, Inglaterra.",
+    hour: "17:00 - 18:45",
+    stage: "Palco 4",
+  },
+
 }
 
 var title_list = {
