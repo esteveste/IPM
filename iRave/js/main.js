@@ -228,6 +228,26 @@ async function init() {
 
   });
 
+  let options_mapa = $("#options-mapa-list");
+  // let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
+  options_mapa.css("top", BAR_SIZE);
+  options_mapa.draggable({
+    axis: "y",
+    scroll: false,
+    position: 'unset',
+    cancel: false,
+    drag: function (event, ui) {
+      if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+      if (ui.position.top < max_drag_banda) ui.position.top = max_drag_banda;
+    },
+    stop: function (event, ui) {
+      $(event.originalEvent.target).one('click', function (e) {
+        e.stopImmediatePropagation();
+      });
+    }
+
+  });
+
   let mapa = $("#inner-map");
   mapa.css("top", "-36%");
   let max_drag_top = mapa.top;
@@ -351,7 +371,7 @@ var title_list = {
   "menu": "Menu",
   "menu-overflow": "Menu",
   "mapa":"Mapa",
-  "options-mapa":"Opções"
+  "options-mapa":"Navegar"
 };
 
 var notificationTitle = "";
