@@ -507,7 +507,13 @@ async function createDiv(el, flag) {
   band_screen.append(bt_reminder);
   band_screen.append(bt_nav);
 
-  changeScreen(el.parent().parent().parent(), band_screen);
+
+  if(el.parent().parent().parent()){
+
+  }
+  let changeOrigin = el.parent().parent().parent().attr("id")=="ecra"?el.parent().parent():el.parent().parent().parent();
+
+  changeScreen(changeOrigin, band_screen);
   //let descricao_height = $("#descricao").height();
   await sleep(500);
   for (let index = 0; index < 4; index++) {
