@@ -440,13 +440,17 @@
 	border-radius: inherit;
 	background-color: var(--w1);
 	height: 66%;
-	text-align: right;
+	text-align: left;
 	line-height: 50%;
 	font-size: 0.8em;
 	color: var(--g1);
 }
+.bt-text span{
+	margin: 2px;
+}
 
 .bt-title {
+	margin: 0 2px;
 	font-size: 0.9em;
 	right: 0;
 	line-height: 120%;

@@ -378,9 +378,10 @@ var notificationTitle = "";
 var notificationInfo = "";
 
 var popup_list = {
-  1: ["Alerta adicionado.", "Cancelar"],
+  1: ["Alerta adicionado", "Cancelar"],
   2: ["", "Remover"],
-  3: ["Função nao implementada", ""]
+  3: ["Função nao implementada", ""],
+  4: ["Alerta removido", ""]
 }
 
 async function createBar(screen) {
@@ -474,10 +475,12 @@ async function createDiv(el, flag) {
     bt_reminder.id = "bt-reminder";
 
     bt_nav.className = "mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
-    bt_reminder.className = "mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
+    bt_reminder.className = "add mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
 
-    bt_nav.textContent = "Navegar";
-    bt_reminder.textContent = "Alerta";
+    // bt_nav.textContent = "Navegar";
+    // bt_nav.append
+    bt_nav.innerHTML = '<i class="material-icons">navigation</i>';
+    bt_reminder.innerHTML = `<i class="material-icons">add_alert</i>`;
   }
 
   let list = [artist, hour, stage, description];
@@ -537,10 +540,23 @@ async function createDiv(el, flag) {
   });
 
   $("#bt-reminder").click(function () {
-    createPopup(1);
-    notifyPopup();
-    $("#alerticon").css("opacity", "1");
-    createNotification(2);
+    if($("#bt-reminder").hasClass("add")){
+      $("#bt-reminder").removeClass("add");
+      // $("#bt-reminder").clear();
+      $("#bt-reminder").html(`<i class="material-icons">notifications_off</i>`);
+      createPopup(1);
+      notifyPopup();
+      $("#alerticon").css("opacity", "1");
+      createNotification(2);
+    }else{
+      $("#bt-reminder").addClass("add");
+      // $("#bt-reminder").clear();
+      $("#bt-reminder").html(`<i class="material-icons">add_alert</i>`);
+      $("#notification").remove();
+      $("#alerticon").css("opacity", "0");
+      createPopup(4);
+    }
+
   });
   $("#bt-nav").click(function () {
     createPopup(3);
@@ -549,6 +565,8 @@ async function createDiv(el, flag) {
   $(".popup-button").click(function () {
     $("#notification").remove();
     $("#alerticon").css("opacity", "0");
+    createPopup(4);
+
   });
 }
 
