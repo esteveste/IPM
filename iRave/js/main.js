@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 const DEBUG = true;
 const BUTTON_SIZE = 64;
@@ -8,12 +8,25 @@ const NR_OF_MENU_EL = 4;
 
 var appHistory = [];
 var atualApp = undefined;
+var idle = 0;
+var longpress = 1000;
+var start;
+var currentAlert = undefined;
 
 async function init() {
   console.log("lets go");
   bootAnimation(DEBUG);
   lockArrow();
   updateTime();
+
+  var idletimer = setInterval(detectIdleTime, 2000);
+
+  $(document).mousemove(function (e) {
+    idle = 0;
+  });
+  $(document).keypress(function (e) {
+    idle = 0;
+  });
 
   let lockScreen = $("#lockscreen");
   // lockScreen.css("opacity",1);
@@ -91,16 +104,26 @@ async function init() {
   });
 
 
-  let horario_lista = $("#horario-list");
+  let horario_lista = $(".horario-list");
   let max_drag_horario = -($("#horario-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
   console.log(max_drag_horario);
   horario_lista.css("top", BAR_SIZE);
   horario_lista.draggable({
-    axis: "y",
+    // axis: "y",
     scroll: false,
     position: 'unset',
     cancel: false,
     drag: function (event, ui) {
+      if($(this).attr("id")=="horario-list"){
+        if (ui.position.left>0) ui.position.left = 0;
+        if (ui.position.left < -145) ui.position.left = -145;
+        $("#horario-list2").css("left",145 + parseFloat($(this).css("left")) + "px");
+      }
+      if($(this).attr("id")=="horario-list2"){
+        if (ui.position.left <0) ui.position.left = 0;
+        if (ui.position.left > 145) ui.position.left = 145;
+        $("#horario-list").css("left",-145 + parseFloat($(this).css("left")) + "px");
+      }
       if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
       if (ui.position.top < max_drag_horario) ui.position.top = max_drag_horario;
     },
@@ -108,13 +131,86 @@ async function init() {
       $(event.originalEvent.target).one('click', function (e) {
         e.stopImmediatePropagation();
       });
+      if($(this).attr("id")=="horario-list"){
+        if (ui.position.left <= -45) {
+          title_list["list-horario"]="Dia 2";
+          writeToBar("Dia 2");
+          $(this).animate({
+            'left':-145
+          });
+          $("#horario-list2").animate({
+            'left':0
+          });
+        }else{
+          writeToBar("Dia 1");
+          title_list["list-horario"]="Dia 1";
+          $(this).animate({
+            'left':0
+          });
+          $("#horario-list2").animate({
+            'left':145
+          });
+        }
+      }
+      if($(this).attr("id")=="horario-list2"){
+        if (ui.position.left <= 45) {
+          title_list["list-horario"]="Dia 2";
+          writeToBar("Dia 2");
+          $(this).animate({
+            'left':0
+          });
+          $("#horario-list").animate({
+            'left':-145
+          });
+        }else{
+          title_list["list-horario"]="Dia 1";
+          writeToBar("Dia 1");
+          $(this).animate({
+            'left':145
+          });
+          $("#horario-list").animate({
+            'left':0
+          });
+        }
+      }
     }
+    // if (ui.position.top / SCREEN_SIZE - Math.floor(ui.position.top / SCREEN_SIZE) <= 0.5) {
+    //   $(this).animate({
+    //     'left': (Math.floor(ui.position.top / SCREEN_SIZE)) * SCREEN_SIZE
+    //   });
+    // } else {
+    //   $(this).animate({
+    //     'top': (Math.floor(ui.position.top / SCREEN_SIZE) + 1) * SCREEN_SIZE
+    //   });
+    // }
 
   });
 
+  // let horario_days = $("#horario-days");
+  // // let max_drag_horario = -($("#horario-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
+  // // console.log(max_drag_horario);
+  // // horario_days.css("top", BAR_SIZE);
+  // horario_days.draggable({
+  //   axis: "x",
+  //   scroll: false,
+  //   position: 'unset',
+  //   cancel: false,
+  //   drag: function (event, ui) {
+  //     if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+  //     if (ui.position.top < max_drag_horario) ui.position.top = max_drag_horario;
+  //   },
+  //   stop: function (event, ui) {
+  //     $(event.originalEvent.target).one('click', function (e) {
+  //       e.stopImmediatePropagation();
+  //     });
+  //   }
+  //
+  // });
+
+
+
   let banda_lista = $("#bandas-list");
   let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
-  console.log(max_drag_banda);
   banda_lista.css("top", BAR_SIZE);
   banda_lista.draggable({
     axis: "y",
@@ -132,6 +228,67 @@ async function init() {
     }
 
   });
+
+  let options_mapa = $("#options-mapa-list");
+  // let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
+  options_mapa.css("top", BAR_SIZE);
+  options_mapa.draggable({
+    axis: "y",
+    scroll: false,
+    position: 'unset',
+    cancel: false,
+    drag: function (event, ui) {
+      if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+      if (ui.position.top < max_drag_banda) ui.position.top = max_drag_banda;
+    },
+    stop: function (event, ui) {
+      $(event.originalEvent.target).one('click', function (e) {
+        e.stopImmediatePropagation();
+      });
+    }
+
+  });
+
+  let mapa = $("#inner-map");
+  mapa.css("top", "-36%");
+  let max_drag_top = mapa.top;
+  mapa.css("left", "-50%");
+  let max_drag_left = mapa.left;
+  mapa.draggable({
+    scroll: false,
+    position: 'unset',
+    cancel: false,
+    drag: function (event, ui) {
+
+      start = new Date().getTime();
+
+      if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+      if (ui.position.top < -121.217) ui.position.top = -121.217;
+      if (ui.position.left > 0) ui.position.left = 0;
+      if (ui.position.left < -154.5) ui.position.left = -154.5;
+
+    },
+    stop: function (event, ui) {
+      $(event.originalEvent.target).one('click', function (e) {
+        e.stopImmediatePropagation();
+      });
+    }
+
+  });
+
+  $("#mapa").on('mousedown', function( e ) {
+      start = new Date().getTime();
+  } );
+
+  $("#mapa").on('mouseleave', function( e ) {
+      start = 0;
+  } );
+  $("#mapa").on('mouseup', function( e ) {
+      if (new Date().getTime() >= ( start + longpress )  ) {
+        changeScreen($("#mapa"), $("#options-mapa"))
+      }
+  } );
+
   $("#menu-cartaz").click(function (event) {
     changeScreen($("#menu-overflow"), $("#cartaz"));
   });
@@ -142,51 +299,67 @@ async function init() {
   $("#bt-horario").click(() => {
     changeScreen($("#cartaz"), $("#list-horario"));
   });
+  $("#menu-mapa").click(() => {
+    changeScreen($("#menu-overflow"), $("#mapa"));
+  });
 
   $("#back-bt").click(backApp);
   $("#crown-button").click(crownFunction);
 
   $(".bt-band").click(function () {
-    createDiv($(this), 1)
+    createDiv($(this), 1);
   });
   $(".bt-schedule").click(function () {
-    createDiv($(this), 1)
+    createDiv($(this), 1);
   });
-  $("#lockscreen").click(function () {
-    if ($("#lockscreen").position.top != 0){
-      $("#lockscreen").animate({
-        'top': -225
-      });
-    }
-  });
+  // $("#lockscreen").click(function () {
+  //   if ($("#lockscreen").position.top != 0){
+  //     $("#lockscreen").animate({
+  //       'top': -225
+  //     });
+  //   }
+  // });
+  $("#bar-title").click(backApp);
 
   $("#bar-title").text("Menu");
 
 }
 
+async function detectIdleTime(){
+  idle += 2;
+  if (idle >= 30){
+    if ($("#lockscreen").position.top != 0){
+      $("#lockscreen").animate({
+        "top": 0
+      });
+      idle = 0;
+    }
+  }
+}
+
 var band_list = {
   "altj": {
-    artist: "ALTJ",
-    desc: "Description:",
-    hour: "10:00 - 11:00",
+    artist: "ALT-J",
+    desc: "Descrição: É uma banda de rock alternativo formada em 2007 em Leeds, Inglaterra.",
+    hour: "19:00 - 20:30",
     stage: "Palco 1",
   },
   "coldplay": {
     artist: "COLDPLAY",
-    desc: "Description:",
-    hour: "13:00 - 14:00",
+    desc: "Descrição: É uma banda britânica de rock alternativo fundada em 1996 na Inglaterra pelo vocalista e pianista Chris Martin e o guitarrista Jonny Buckland no University College London.",
+    hour: "17:00 - 18:45",
     stage: "Palco 2",
   },
-  "direstraits": {
-    artist: "DIRESTRAITS",
-    desc: "Description:",
-    hour: "12:00 - 13:00",
+  "linkinpark": {
+    artist: "LINKIN PARK",
+    desc: "Descrição: É uma banda de rock dos Estados Unidos formada em 1996 em Agoura Hills, Califórnia. Desde a sua formação, o grupo já vendeu pelo menos 70 milhões de álbuns pelo mundo e ganhou dois Grammy Awards.",
+    hour: "00:30 - 02:00",
     stage: "Palco 3",
   },
   "pinkfloyd": {
     artist: "PINK FLOYD",
-    desc: "Description:",
-    hour: "11:00 - 12:00",
+    desc: "Descrição: É uma banda britânica de rock, formada em Londres em 1965, que atingiu sucesso internacional com sua música psicodélica e progressiva.",
+    hour: "22:30 - 00:00",
     stage: "Palco 4",
   }
 }
@@ -195,24 +368,38 @@ var title_list = {
   "cartaz": "Cartaz",
   "list-bandas": "Bandas",
   "band": "Bandas",
-  "list-horario": "Horário",
+  "list-horario": "Dia 1",
   "menu": "Menu",
-  "menu-cartaz": "Menu",
-  "menu-overflow": "Menu"
+  "menu-overflow": "Menu",
+  "mapa":"Mapa",
+  "options-mapa":"Navegar"
 };
 
 var notificationTitle = "";
 var notificationInfo = "";
 
 var popup_list = {
-  1: ["Alerta adicionado.", "Cancelar"],
+  1: ["Alerta adicionado", "Cancelar"],
   2: ["", "Remover"],
-  3: ["Função nao implementada", ""]
+  3: ["Função nao implementada", ""],
+  4: ["Alerta removido", ""]
 }
 
 async function createBar(screen) {
   $("#bar-title").empty();
-  $("#bar-title").append('<b>&lt;</b>' + title_list[screen]);
+  if (title_list[screen]!="Menu"){
+    $("#bar-title").css("cursor", "pointer");
+    $("#bar-title").append('<b style="padding-right:3%;">&lt;</b>' + title_list[screen]);
+  }
+  else{
+    $("#bar-title").css("cursor", "default");
+    $("#bar-title").append(title_list[screen]);
+  }
+}
+
+function writeToBar(title){
+  $("#bar-title").empty();
+  $("#bar-title").append('<b style="padding-right:3%;">&lt;</b>' + title);
 }
 
 async function createNotification(alert) {
@@ -239,6 +426,7 @@ async function createNotification(alert) {
   lockscreen.append(notificationDiv);
   $(".notification-bt").click(function () {
     $("#notification").remove();
+    $("#alerticon").css("opacity", "0");
   });
 }
 
@@ -269,6 +457,7 @@ async function notifyPopup() {
 
 async function createDiv(el, flag) {
   let band_screen = $("#band");
+  band_screen.attr("band",el.attr("id"));
   band_screen.empty();
   let fixbardiv = document.createElement("div");
   fixbardiv.className = "fixbar";
@@ -290,36 +479,106 @@ async function createDiv(el, flag) {
     bt_nav.className = "mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
     bt_reminder.className = "mdl-button--raised no-hover mdl-button mdl-js-button mdl-js-ripple-effect";
 
-    bt_nav.textContent = "Navegar";
-    bt_reminder.textContent = "Alerta";
+    if(el.attr("id")==currentAlert){
+      bt_reminder.innerHTML = `<i class="material-icons">notifications_off</i>`;
+    }else{
+      bt_reminder.innerHTML = `<i class="material-icons">add_alert</i>`;
+      bt_reminder.className+=" add";
+    }
+
+
+    // bt_nav.textContent = "Navegar";
+    // bt_nav.append
+    bt_nav.innerHTML = '<i class="material-icons">navigation</i>';
+
+
+
 
   }
 
   let list = [artist, hour, stage, description];
-  let table = document.createElement('TABLE');
+  let dragDiv = document.createElement("div");
+  dragDiv.id = "dragDiv";
+  dragDiv.className = "dragDiv";
+  let dragDivIn = document.createElement("div");
+  dragDivIn.className = "overflow dragDiv";
+  let max_drag_bandtext = -110;
 
-  for (i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i++) {
     let divText = document.createElement("div");
-    divText.textContent = list[i];
+    let spanText = document.createElement("p");
+    spanText.textContent = list[i];
     divText.className = "text"+i;
-    band_screen.append(divText);
+    spanText.className = "pargraph";
+    spanText.id = "info" + i;
+
+
+    divText.append(spanText);
+    dragDiv.append(divText);
+
   }
 
+  dragDivIn.append(dragDiv);
+  band_screen.append(dragDivIn);
   band_screen.append(bt_reminder);
   band_screen.append(bt_nav);
 
-  changeScreen(el.parent().parent(), band_screen);
+  let changeOrigin = el.parent().parent().parent().attr("id")=="ecra"?el.parent().parent():el.parent().parent().parent();
+
+  changeScreen(changeOrigin, band_screen);
+  //let descricao_height = $("#descricao").height();
+  await sleep(500);
+  for (let index = 0; index < 4; index++) {
+    max_drag_bandtext += $("#info"+index).height();
+  }
+  console.log(max_drag_bandtext);
+  $("#dragDiv").draggable({
+    axis: "y",
+    scroll: false,
+    position: 'unset',
+    cancel: false,
+    drag: function (event, ui) {
+      if (ui.position.top > 0) ui.position.top = 0;
+      if (ui.position.top < -max_drag_bandtext) ui.position.top = -max_drag_bandtext;
+    },
+    stop: function (event, ui) {
+      $(event.originalEvent.target).one('click', function (e) {
+        e.stopImmediatePropagation();
+      });
+    }
+  });
+
   $("#bt-reminder").click(function () {
-    createPopup(1);
-    notifyPopup();
-    createNotification(2);
+    if($("#bt-reminder").hasClass("add")){
+      $("#bt-reminder").removeClass("add");
+      currentAlert = $("#band").attr("band");
+      // $("#bt-reminder").clear();
+      $("#bt-reminder").html(`<i class="material-icons">notifications_off</i>`);
+      createPopup(1);
+      notifyPopup();
+      $("#alerticon").css("opacity", "1");
+      createNotification(2);
+    }else{
+      currentAlert=undefined;
+      $("#bt-reminder").addClass("add");
+      // $("#bt-reminder").clear();
+      $("#bt-reminder").html(`<i class="material-icons">add_alert</i>`);
+      $("#notification").remove();
+      $("#alerticon").css("opacity", "0");
+      createPopup(4);
+    }
+
   });
   $("#bt-nav").click(function () {
     createPopup(3);
     notifyPopup();
   });
   $(".popup-button").click(function () {
+    currentAlert=undefined;
     $("#notification").remove();
+    $("#alerticon").css("opacity", "0");
+    createPopup(4);
+
   });
 }
 
@@ -365,7 +624,7 @@ async function bootAnimation(debug) {
 }
 
 function updateTime() {
-  today = new Date();
+  let today = new Date();
   var h = today.getHours();
   var m = today.getMinutes();
   if (m < 10) {

@@ -13,7 +13,7 @@
 
 	/*Blues Primario*/
 	--bp1: #1565C0;
-	--bp2: #002984;
+	--bp2: #1565C0;
 	--bp3: #757de8;
 
 	/*Greys Secondario*/
@@ -74,17 +74,19 @@
 .menu i {
 	color: white;
 	font-size: 10em;
-	margin-top: 20%;
+	margin-top: 25%;
 	user-select: none;
 }
 
 .menu h1 {
 	position: absolute;
-	bottom: 20px;
+	bottom: 15px;
 	left: 0;
 	right: 0;
 	font-size: 2.4em;
 	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
 	/*margin-bottom: 20;*/
 }
 
@@ -110,7 +112,7 @@
 	margin-bottom: auto;
 }
 
-#bar-time {
+#bar-timeicon {
 	padding-right: 5%;
 	text-align: right;
 }
@@ -198,6 +200,21 @@
 	font-weight: 400;
 }
 
+.dragDiv {
+	position: absolute;
+	user-select: none;
+	top: 14%;
+	bottom: 13%;
+	left: 1%;
+	right: 1%;
+	height: 69%;
+}
+
+#dragDiv {
+	top: 0;
+	height: 300%;
+}
+
 #cartaz {
 	background-color: var(--w4);
 	/*z-index: 80;*/
@@ -231,7 +248,7 @@
 	right: 2%;
 	bottom: 2%;
 	height: 13%;
-	background-color: var(--gs1);
+	background-color: var(--bp2);
 }
 
 #bt-nav {
@@ -239,7 +256,7 @@
 	left: 2%;
 	bottom: 2%;
 	height: 13%;
-	background-color: var(--gs1);
+	background-color: var(--bp2);
 }
 
 #bandas-list {
@@ -253,6 +270,14 @@
 #horario-list {
 	height: auto;
 	width: 100%;
+	/*z-index: 70;*/
+	transition: 0s;
+	background-color: var(--w4);
+}
+#horario-list2 {
+	height: auto;
+	width: 100%;
+	left: 145px;
 	/*z-index: 70;*/
 	transition: 0s;
 	background-color: var(--w4);
@@ -284,7 +309,7 @@
 }
 
 .no-hover:hover {
-	background: #757575;
+	background: var(--bp2);
 }
 
 #menu {
@@ -363,42 +388,37 @@
 	pointer-events: none;
 }
 
+.pargraph {
+	position: relative;
+	vertical-align: middle;
+	text-align: middle;
+	line-height: -50%;
+	margin: 3px;
+}
+
 .text0 {
 	user-select: none;
 	border-radius: inherit;
-	position: absolute;
 	background-color: var(--bp2);
-	width: 94%;
-	height: 14%;
-	left: 3%;
-	top: 17%;
+	width: 100%;
 	color: var(--w1);
-	text-align: left;
 	font-size: 1.5em;
 }
+
 
 .text1 {
 	user-select: none;
 	border-radius: inherit;
-	position: absolute;
 	background-color: var(--w1);
-	width: 94%;
-	left: 3%;
-	height: 11%;
-	top: 33%;
+	width: 100%;
 	color: var(--g1);
-	text-align: left;
 }
 
 .text2 {
 	user-select: none;
 	border-radius: inherit;
-	position: absolute;
 	background-color: var(--w1);
-	width: 94%;
-	left: 3%;
-	height: 11%;
-	top: 46%;
+	width: 100%;
 	color: var(--g1);
 	text-align: left;
 }
@@ -406,13 +426,12 @@
 .text3 {
 	user-select: none;
 	border-radius: inherit;
-	position: absolute;
 	background-color: var(--w1);
-	width: 94%;
-	left: 3%;
-	height: 24%;
-	top: 59%;
+	width: 100%;
 	color: var(--g1);
+	text-align: left;
+}
+.text3 > p {
 	text-align: left;
 }
 
@@ -421,13 +440,17 @@
 	border-radius: inherit;
 	background-color: var(--w1);
 	height: 66%;
-	text-align: right;
+	text-align: left;
 	line-height: 50%;
 	font-size: 0.8em;
 	color: var(--g1);
 }
+.bt-text span{
+	margin: 2px;
+}
 
 .bt-title {
+	margin: 0 2px;
 	font-size: 0.9em;
 	right: 0;
 	line-height: 120%;
@@ -441,4 +464,20 @@
 
 .transition {
 	transition: 0.35s;
+}
+
+#inner-map {
+	position: absolute;
+	background-image: url("../resources/map.jpg");
+	top: -36%;
+	left: -50%;
+	width: 300px;
+	height: 300px;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#options-mapa-list{
+	margin: 0px;
+	height: 100%;
+	width: 100%;
 }
