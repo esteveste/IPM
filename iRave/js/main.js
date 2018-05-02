@@ -4,6 +4,7 @@ const DEBUG = true;
 const BUTTON_SIZE = 64;
 const BAR_SIZE = 25.8;
 const SCREEN_SIZE = 178.31;
+const SCREEN_WIDTH=145;
 const NR_OF_MENU_EL = 4;
 
 const MAP_WIDTH=1568;
@@ -17,6 +18,7 @@ var start;
 var currentAlert = undefined;
 
 var map_zoom = 2;
+var map_zoom_last =1;
 var map_left =  (MAP_WIDTH / map_zoom) - SCREEN_SIZE;
 var map_top=(MAP_HEIGHT / map_zoom)-SCREEN_SIZE;
 
@@ -260,12 +262,14 @@ async function init() {
   });
 
   let mapa = $("#inner-map");
-  mapa.css("top", "-36%");
+  // mapa.css("top", "-36%");
   let max_drag_top = mapa.top;
-  mapa.css("left", "-50%");
+  // mapa.css("left", "-50%");
   let max_drag_left = mapa.left;
 
-
+  mapa.dblclick(function() {
+      (map_zoom==2)?mapZoomChange(1):mapZoomChange(2);
+  });
 
   mapa.draggable({
     scroll: false,
@@ -275,9 +279,9 @@ async function init() {
 
       start = new Date().getTime();
       if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
-      if (ui.position.top < -map_top) ui.position.top = -map_top;
+      if (ui.position.top < -map_top*map_zoom_last) ui.position.top = -map_top*map_zoom_last;
       if (ui.position.left > 0) ui.position.left = 0;
-      if (ui.position.left < -map_left) ui.position.left = -map_left;
+      if (ui.position.left < -map_left*map_zoom_last) ui.position.left = -map_left*map_zoom_last;
 
     },
     stop: function (event, ui) {
@@ -858,9 +862,18 @@ function crownFunction() {
 }
 
 function mapZoomChange(z){
+
+  let mapa = $("#inner-map");
+  mapa.css("height",MAP_HEIGHT/z);
+  mapa.css("width",MAP_WIDTH/z);
+
+  // let max_drag_top = mapa.top;
+  // let max_drag_left = mapa.left;
+  console.log(`${parseFloat(mapa.css("top"))/z}px`);
+  mapa.css("top", `${parseFloat(mapa.css("top"))*(map_zoom/z)+(SCREEN_SIZE-SCREEN_SIZE*(map_zoom/z))/2}px`);
+  mapa.css("left", `${parseFloat(mapa.css("left"))*(map_zoom/z)+(SCREEN_WIDTH-SCREEN_WIDTH*(map_zoom/z))/2}px`);
+  map_zoom_last=map_zoom;
   map_zoom=z;
-  $("#inner-map").css("height",MAP_HEIGHT/z);
-  $("#inner-map").css("width",MAP_WIDTH/z);
 }
 
 function sleep(ms) {

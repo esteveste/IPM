@@ -493,8 +493,8 @@
 #inner-map {
 	position: absolute;
 	background-image: url("../resources/map/map.png");
-	top: -36%;
-	left: -50%;
+	top: -16%;
+	left: -180%;
 	width: 1568px;
 	height: 676px;
 	background-size: contain;
