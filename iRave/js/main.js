@@ -378,26 +378,16 @@ async function init() {
     changeScreen($("#options-mapa"), $("#mapa-opcoes3"));
   });
   $("#options-mapa1 > button").click(function () {
-<<<<<<< HEAD
     changeScreen($("#mapa-opcoes1"), $("#mapa"));
+    changeImage($(this).attr("id"));
   });
   $("#options-mapa2 > button").click(function () {
     changeScreen($("#mapa-opcoes2"), $("#mapa"));
+    changeImage($(this).attr("id"));
   });
   $("#options-mapa3 > button").click(function () {
     changeScreen($("#mapa-opcoes3"), $("#mapa"));
-=======
-    changeScreen($("#options-mapa1"), $("#mapa"));
-    changeImage($(this));
-  });
-  $("#options-mapa2 > button").click(function () {
-    changeScreen($("#options-mapa2"), $("#mapa"));
-    changeImage($(this));
-  });
-  $("#options-mapa3 > button").click(function () {
-    changeScreen($("#options-mapa3"), $("#mapa"));
-    changeImage($(this));
->>>>>>> origin/master
+    changeImage($(this).attr("id"));
   });
 
   // $("#lockscreen").click(function () {
@@ -438,7 +428,7 @@ var btImg = {
 }
 
 function changeImage(el){
-  $("#inner-map").css("background-image",`url(${ btImg[el.attr("id")]})`);
+  $("#inner-map").css("background-image",`url(${ btImg[el]})`);
 }
 
 var band_list = {
@@ -716,6 +706,7 @@ async function createDiv(el, flag) {
     // createPopup(3);
     // notifyPopup();
     changeScreen($("#band"), $("#mapa"));
+    changeImage("p" + band_list[el.attr("id")].stage[band_list[el.attr("id")].stage.length -1])
   });
   $(".popup-button").click(function () {
     currentAlert=undefined;
