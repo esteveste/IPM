@@ -542,7 +542,9 @@
 	height: 50px;
 	user-select: none;
 }
-
+/* .mapaopcoes  > button :hover{
+		background: #F44336;
+} */
 .mapaopcoes{
 	margin: 0px;
 	height: 100%;
