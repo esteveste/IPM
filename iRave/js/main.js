@@ -380,14 +380,17 @@ async function init() {
   $("#options-mapa1 > button").click(function () {
     changeScreen($("#mapa-opcoes1"), $("#mapa"));
     changeImage($(this).attr("id"));
+    createMapBar($(this).attr("id"));
   });
   $("#options-mapa2 > button").click(function () {
     changeScreen($("#mapa-opcoes2"), $("#mapa"));
     changeImage($(this).attr("id"));
+    createMapBar($(this).attr("id"));
   });
   $("#options-mapa3 > button").click(function () {
     changeScreen($("#mapa-opcoes3"), $("#mapa"));
     changeImage($(this).attr("id"));
+    createMapBar($(this).attr("id"));
   });
 
   // $("#lockscreen").click(function () {
@@ -417,6 +420,7 @@ async function detectIdleTime(){
 }
 
 var btImg = {
+  "def":"resources/map/map.png",
   "p1":"resources/map/P1.png",
   "p2":"resources/map/P2.png",
   "p3":"resources/map/P3.png",
@@ -512,7 +516,7 @@ var popup_list = {
   1: ["Alerta adicionado", "Cancelar"],
   2: ["", "Remover"],
   3: ["Função nao implementada", ""],
-  4: ["Alerta removido", ""]
+  4: ["Alerta removido", ""],
 }
 
 async function createBar(screen) {
@@ -557,6 +561,41 @@ async function createNotification(alert) {
   $(".notification-bt").click(function () {
     $("#notification").remove();
     $("#alerticon").css("opacity", "0");
+  });
+}
+
+var mapBarTexts = {
+  "p1":"Palco 1 | 2mins",
+  "p2":"Palco 2 | 3mins",
+  "p3":"Palco 3 | 5mins",
+  "p4":"Palco 4 | 7mins",
+  "w1":"WC 1 | 5mins",
+  "w2":"WC 2 | 3mins",
+  "c1":"Comida 1 | 8mins",
+  "c2":"Comida 2 | 3mins"
+}
+
+async function createMapBar(destino){
+  let text = $("#map-txt");
+  let bt = $("#map-bt");
+  let bar = $("#mapbar");
+  let h = bar.height();
+  text.empty();
+  text.text(mapBarTexts[destino]);
+  bar.css("bottom", -h -12);
+  setTimeout(function () {
+    bar.animate({
+      bottom:0
+    }, 300);
+  }, 500);
+
+  bt.click(function () {
+    setTimeout(function () {
+      bar.animate({
+        bottom: -h - 12
+      }, 300);
+    }, 200);
+    changeImage("def");
   });
 }
 

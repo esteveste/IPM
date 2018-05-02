@@ -484,6 +484,31 @@
 	height: 33%;
 }
 
+.bt-textmap {
+	right: 0;
+	border-radius: inherit;
+	background-color: var(--w1);
+	height: 66%;
+	text-align: left;
+	line-height: 50%;
+	font-size: 0.8em;
+	color: var(--g1);
+}
+.bt-textmap span{
+	margin: 2px;
+}
+
+.bt-titlemap {
+	margin: 0 2px;
+	font-size: 0.9em;
+	right: 0;
+	line-height: 120%;
+	border-radius: inherit;
+	text-align: left;
+	/*background-color: var(--bp2);*/
+	height: 33%;
+}
+
 /*Tratar no futuro animacoes*/
 
 .transition {
@@ -572,4 +597,36 @@
 	margin: 0px;
 	height: 100%;
 	width: 100%;
+}
+
+.no-hover2:hover {
+	background: #F44336;
+}
+
+.mapbar {
+	background: rgba(224, 224, 224, 1);
+	border: 1px solid #F44336;
+	height: 15%;
+	bottom: -16%;
+	text-align: left;
+	position: absolute;
+	width: 100%;
+	border-radius: inherit;
+	font-family: "Roboto";
+}
+
+.map-text {
+	padding-left: 5%;
+	top:50%;
+	font-size: 1.4em;
+	color: #000000;
+}
+
+.map-button {
+	position: absolute;
+	background: transparent;
+	right: 0;
+	bottom: 0;
+	color: #ff0000;
+	border: 0;
 }
