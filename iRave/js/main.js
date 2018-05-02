@@ -422,9 +422,9 @@ var btImg = {
   "p3":"resources/map/P3.png",
   "p4":"resources/map/P4.png",
   "w1":"resources/map/WC1.png",
-  "w2":"resources/map/wc2.png",
-  "c1":"resources/map/C2.png",
-  "c2":"resources/map/C2.png"
+  "w2":"resources/map/Wc2.png",
+  "c1":"resources/map/Comida1.png",
+  "c2":"resources/map/Comida2.png"
 }
 
 function changeImage(el){
@@ -502,7 +502,7 @@ var title_list = {
   "options-mapa":"Navegar",
   "mapa-opcoes1":"Palcos",
   "mapa-opcoes2":"WC",
-  "mapa-opcoes3":"Restaurantes"
+  "mapa-opcoes3":"Comida"
 };
 
 var notificationTitle = "";
