@@ -230,7 +230,7 @@ async function init() {
   });
 
   let options_mapa = $("#options-mapa-list");
-  // let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
+  let max_drag_opcoesmapa = -($("#options-mapa-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
   options_mapa.css("top", BAR_SIZE);
   options_mapa.draggable({
     axis: "y",
@@ -239,7 +239,7 @@ async function init() {
     cancel: false,
     drag: function (event, ui) {
       if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
-      if (ui.position.top < max_drag_banda) ui.position.top = max_drag_banda;
+      if (ui.position.top < max_drag_opcoesmapa) ui.position.top = max_drag_opcoesmapa;
     },
     stop: function (event, ui) {
       $(event.originalEvent.target).one('click', function (e) {
@@ -267,6 +267,46 @@ async function init() {
       if (ui.position.left > 0) ui.position.left = 0;
       if (ui.position.left < -154.5) ui.position.left = -154.5;
 
+    },
+    stop: function (event, ui) {
+      $(event.originalEvent.target).one('click', function (e) {
+        e.stopImmediatePropagation();
+      });
+    }
+
+  });
+
+  let options1 = $("#options-mapa1");
+  let max_drag_opcoes1 = -($("#options-mapa1 > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
+  options1.css("top", BAR_SIZE);
+  options1.draggable({
+    axis: "y",
+    scroll: false,
+    position: 'unset',
+    cancel: false,
+    drag: function (event, ui) {
+      if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+      if (ui.position.top < max_drag_opcoes1) ui.position.top = max_drag_opcoes1;
+    },
+    stop: function (event, ui) {
+      $(event.originalEvent.target).one('click', function (e) {
+        e.stopImmediatePropagation();
+      });
+    }
+
+  });
+
+  let options3 = $("#options-mapa3");
+  let max_drag_opcoes3 = -($("#options-mapa3 > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
+  options3.css("top", BAR_SIZE);
+  options3.draggable({
+    axis: "y",
+    scroll: false,
+    position: 'unset',
+    cancel: false,
+    drag: function (event, ui) {
+      if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+      if (ui.position.top < max_drag_opcoes3) ui.position.top = max_drag_opcoes3;
     },
     stop: function (event, ui) {
       $(event.originalEvent.target).one('click', function (e) {
@@ -312,6 +352,24 @@ async function init() {
   $(".bt-schedule").click(function () {
     createDiv($(this), 1);
   });
+  $("#palcos").click(function () {
+    changeScreen($("#options-mapa"), $("#mapa-opcoes1"));
+  });
+  $("#wc").click(function () {
+    changeScreen($("#options-mapa"), $("#mapa-opcoes2"));
+  });
+  $("#restaurantes").click(function () {
+    changeScreen($("#options-mapa"), $("#mapa-opcoes3"));
+  });
+  $("#options-mapa1 > button").click(function () {
+    changeScreen($("#options-mapa1"), $("#mapa"));
+  });
+  $("#options-mapa2 > button").click(function () {
+    changeScreen($("#options-mapa2"), $("#mapa"));
+  });
+  $("#options-mapa3 > button").click(function () {
+    changeScreen($("#options-mapa3"), $("#mapa"));
+  });
   // $("#lockscreen").click(function () {
   //   if ($("#lockscreen").position.top != 0){
   //     $("#lockscreen").animate({
@@ -322,6 +380,7 @@ async function init() {
   $("#bar-title").click(backApp);
 
   $("#bar-title").text("Menu");
+  
 
 }
 
@@ -405,7 +464,10 @@ var title_list = {
   "menu": "Menu",
   "menu-overflow": "Menu",
   "mapa":"Mapa",
-  "options-mapa":"Navegar"
+  "options-mapa":"Navegar",
+  "mapa-opcoes1":"Palcos",
+  "mapa-opcoes2":"WC",
+  "mapa-opcoes3":"Restaurantes"
 };
 
 var notificationTitle = "";
@@ -527,10 +589,6 @@ async function createDiv(el, flag) {
     // bt_nav.textContent = "Navegar";
     // bt_nav.append
     bt_nav.innerHTML = '<i class="material-icons">navigation</i>';
-
-
-
-
   }
 
   let list = [artist, day,hour, stage, description];

@@ -308,6 +308,15 @@
 	user-select: none;
 }
 
+.bt-mapa {
+	background-color: #F44336;
+	margin: 3% auto;
+	width: 94%;
+	left: 3%;
+	height: 50px;
+	user-select: none;
+}
+
 .no-hover:hover {
 	background: var(--bp2);
 }
@@ -492,6 +501,48 @@
 	background-repeat: no-repeat;
 }
 #options-mapa-list{
+	margin: 0px;
+	height: 100%;
+	width: 100%;
+}
+
+#options-mapa-list > button{
+	background-color: #F44336;
+	width: 94%;
+	left: 3%;
+	margin: 3% auto;
+	height: 50px;
+	user-select: none;
+}
+
+#mapa-opcoes1 > button{
+	background-color: #F44336;
+	width: 94%;
+	left: 3%;
+	margin: 3% auto;
+	height: 50px;
+	user-select: none;
+}
+
+#mapa-opcoes2 > button{
+	background-color: #F44336;
+	width: 94%;
+	left: 3%;
+	margin: 3% auto;
+	height: 50px;
+	user-select: none;
+}
+
+#mapa-opcoes3 > button{
+	background-color: #F44336;
+	width: 94%;
+	left: 3%;
+	margin: 3% auto;
+	height: 50px;
+	user-select: none;
+}
+
+.mapaopcoes{
 	margin: 0px;
 	height: 100%;
 	width: 100%;
