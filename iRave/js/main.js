@@ -378,13 +378,13 @@ async function init() {
     changeScreen($("#options-mapa"), $("#mapa-opcoes3"));
   });
   $("#options-mapa1 > button").click(function () {
-    changeScreen($("#options-mapa1"), $("#mapa"));
+    changeScreen($("#mapa-opcoes1"), $("#mapa"));
   });
   $("#options-mapa2 > button").click(function () {
-    changeScreen($("#options-mapa2"), $("#mapa"));
+    changeScreen($("#mapa-opcoes2"), $("#mapa"));
   });
   $("#options-mapa3 > button").click(function () {
-    changeScreen($("#options-mapa3"), $("#mapa"));
+    changeScreen($("#mapa-opcoes3"), $("#mapa"));
   });
   // $("#lockscreen").click(function () {
   //   if ($("#lockscreen").position.top != 0){
@@ -684,8 +684,9 @@ async function createDiv(el, flag) {
 
   });
   $("#bt-nav").click(function () {
-    createPopup(3);
-    notifyPopup();
+    // createPopup(3);
+    // notifyPopup();
+    changeScreen($("#band"), $("#mapa"));
   });
   $(".popup-button").click(function () {
     currentAlert=undefined;
