@@ -6,6 +6,9 @@ const BAR_SIZE = 25.8;
 const SCREEN_SIZE = 178.31;
 const NR_OF_MENU_EL = 4;
 
+const MAP_WIDTH=1568;
+const MAP_HEIGHT=676;
+
 var appHistory = [];
 var atualApp = undefined;
 var idle = 0;
@@ -13,11 +16,18 @@ var longpress = 1000;
 var start;
 var currentAlert = undefined;
 
+var map_zoom = 2;
+var map_left =  (MAP_WIDTH / map_zoom) - SCREEN_SIZE;
+var map_top=(MAP_HEIGHT / map_zoom)-SCREEN_SIZE;
+
+
+
 async function init() {
   console.log("lets go");
   bootAnimation(DEBUG);
   lockArrow();
   updateTime();
+  mapZoomChange(2);
 
   var idletimer = setInterval(detectIdleTime, 2000);
 
@@ -254,6 +264,9 @@ async function init() {
   let max_drag_top = mapa.top;
   mapa.css("left", "-50%");
   let max_drag_left = mapa.left;
+
+
+
   mapa.draggable({
     scroll: false,
     position: 'unset',
@@ -261,11 +274,10 @@ async function init() {
     drag: function (event, ui) {
 
       start = new Date().getTime();
-
       if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
-      if (ui.position.top < -121.217) ui.position.top = -121.217;
+      if (ui.position.top < -map_top) ui.position.top = -map_top;
       if (ui.position.left > 0) ui.position.left = 0;
-      if (ui.position.left < -154.5) ui.position.left = -154.5;
+      if (ui.position.left < -map_left) ui.position.left = -map_left;
 
     },
     stop: function (event, ui) {
@@ -380,7 +392,7 @@ async function init() {
   $("#bar-title").click(backApp);
 
   $("#bar-title").text("Menu");
-  
+
 
 }
 
@@ -843,6 +855,12 @@ function crownFunction() {
       'top': 0
     });
   }
+}
+
+function mapZoomChange(z){
+  map_zoom=z;
+  $("#inner-map").css("height",MAP_HEIGHT/z);
+  $("#inner-map").css("width",MAP_WIDTH/z);
 }
 
 function sleep(ms) {
