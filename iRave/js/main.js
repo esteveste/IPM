@@ -379,13 +379,17 @@ async function init() {
   });
   $("#options-mapa1 > button").click(function () {
     changeScreen($("#options-mapa1"), $("#mapa"));
+    changeImage($(this));
   });
   $("#options-mapa2 > button").click(function () {
     changeScreen($("#options-mapa2"), $("#mapa"));
+    changeImage($(this));
   });
   $("#options-mapa3 > button").click(function () {
     changeScreen($("#options-mapa3"), $("#mapa"));
+    changeImage($(this));
   });
+
   // $("#lockscreen").click(function () {
   //   if ($("#lockscreen").position.top != 0){
   //     $("#lockscreen").animate({
@@ -410,6 +414,21 @@ async function detectIdleTime(){
       idle = 0;
     }
   }
+}
+
+var btImg = {
+  "p1":"resources/map/P1.png",
+  "p2":"resources/map/P2.png",
+  "p3":"resources/map/P3.png",
+  "p4":"resources/map/P4.png",
+  "w1":"resources/map/WC1.png",
+  "w2":"resources/map/wc2.png",
+  "c1":"resources/map/C2.png",
+  "c2":"resources/map/C2.png"
+}
+
+function changeImage(el){
+  $("#inner-map").css("background-image",`url(${ btImg[el.attr("id")]})`);
 }
 
 var band_list = {
