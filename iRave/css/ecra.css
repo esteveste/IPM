@@ -502,6 +502,7 @@
 	transition: 0.2s;
 }
 #options-mapa-list{
+	background-color: var(--w4);
 	margin: 0px;
 	height: 100%;
 	width: 100%;
@@ -544,6 +545,7 @@
 }
 
 .mapaopcoes{
+	background-color: var(--w4);
 	margin: 0px;
 	height: 100%;
 	width: 100%;
