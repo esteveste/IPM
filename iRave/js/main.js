@@ -278,6 +278,7 @@ async function init() {
     drag: function (event, ui) {
 
       start = new Date().getTime();
+      $("#s1").attr("style", "z-index: 0;");
       if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
       if (ui.position.top < -map_top*map_zoom_last) ui.position.top = -map_top*map_zoom_last;
       if (ui.position.left > 0) ui.position.left = 0;
@@ -334,15 +335,18 @@ async function init() {
 
   $("#mapa").on('mousedown', function( e ) {
       start = new Date().getTime();
+      $("#s1").attr("style", "z-index: 200; -webkit-animation: sk-scaleout 1.0s infinite ease-in-out; animation: sk-scaleout 1.0s infinite ease-in-out;");
   } );
 
   $("#mapa").on('mouseleave', function( e ) {
       start = 0;
+      $("#s1").attr("style", "z-index: 0;");
   } );
   $("#mapa").on('mouseup', function( e ) {
       if (new Date().getTime() >= ( start + longpress )  ) {
         changeScreen($("#mapa"), $("#options-mapa"))
       }
+      $("#s1").attr("style", "z-index: 0;");
   } );
 
   $("#menu-cartaz").click(function (event) {
