@@ -335,7 +335,9 @@ async function init() {
 
   $("#mapa").on('mousedown', function( e ) {
       start = new Date().getTime();
-      $("#s1").attr("style", "z-index: 200; -webkit-animation: sk-scaleout 1.0s infinite ease-in-out; animation: sk-scaleout 1.0s infinite ease-in-out;");
+      var left = ((e.pageX - $("#mapa").offset().left)/145)*100 - 17;
+      var top =  ((e.pageY - $("#mapa").offset().top)/178.333)*100 - 8.5;
+      $("#s1").attr("style", `z-index: 200; -webkit-animation: sk-scaleout 1.0s ease-in-out; animation: sk-scaleout 1.0s ease-in-out; margin-left: ${left}%; margin-top: ${top}%; `);
   } );
 
   $("#mapa").on('mouseleave', function( e ) {
