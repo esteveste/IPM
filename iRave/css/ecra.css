@@ -203,7 +203,6 @@
 .dragDiv {
 	position: absolute;
 	user-select: none;
-	top: 14%;
 	bottom: 13%;
 	left: 1%;
 	right: 1%;
@@ -581,18 +580,6 @@
 	background-color: var(--w4);
 }
 
-#mapa-opcoes1 > button:hover{
-	background: #F44336;
-}
-
-#mapa-opcoes2 > button:hover{
-	background: #F44336;
-}
-
-#mapa-opcoes3 > button:hover{
-	background: #F44336;
-}
-
 .mapaopcoes{
 	margin: 0px;
 	height: 100%;
@@ -657,3 +644,170 @@
 	  opacity: 0;
 	}
   }
+
+#pedidos-menu {
+    background-color: var(--w4);
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#pedidos-menu > button {
+    background-color: #4CAF50;
+    width: 94%;
+    left: 3%;
+    margin: 3% auto;
+    height: 50px;
+    user-select: none;
+}
+
+#turca-menu {
+    background-color: var(--w4);
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#tcheca {
+    background-color: var(--w4);
+}
+
+#turca {
+    background-color: var(--w4);
+}
+
+#tcheca-menu {
+    background-color: var(--w4);
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#tcheca-drag > button {
+    background-color: #4CAF50;
+    width: 94%;
+    left: 3%;
+    margin: 3% auto;
+    height: 70px;
+    user-select: none;
+}
+
+#turca-menu {
+    background-color: var(--w4);
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#turca-drag > button {
+    background-color: #4CAF50;
+    width: 94%;
+    left: 3%;
+    margin: 3% auto;
+    height: 70px;
+    user-select: none;
+}
+
+.bt-textp {
+    right: 0;
+    border-radius: inherit;
+    background-color: var(--w1);
+    height: 66%;
+    text-align: left;
+    line-height: 50%;
+    font-size: 0.8em;
+    color: var(--g1);
+}
+
+.bt-textp span {
+    margin: 2px;
+}
+
+.bt-titlep {
+    margin: 0 2px;
+    font-size: 0.9em;
+    right: 0;
+    line-height: 120%;
+    border-radius: inherit;
+    text-align: left;
+    height: 33%;
+}
+
+.no-hover3:hover {
+    background-color: #4CAF50;
+}
+
+.prices {
+    position: absolute;
+    width: 100%;
+    height: 46%;
+    top: 60%;
+}
+
+.descs {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top: 37%;
+}
+
+.descs > span {
+    display: inline;
+}
+
+#bt-pedido1 {
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+
+    background-color: #4CAF50;
+}
+
+#bt-back1 {
+    position: absolute;
+    left: 2%;
+    bottom: 2%;
+    background-color: #4CAF50;
+}
+
+#bt-pedido2 {
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+    background-color: #4CAF50;
+}
+
+#bt-back2 {
+    position: absolute;
+    left: 2%;
+    bottom: 2%;
+    background-color: #4CAF50;
+}
+
+#tcheca-drag {
+    top: 0;
+    height: 300%;
+}
+
+#turca-drag {
+    top: 0;
+    height: 300%;
+}
+
+#tcheca-overflow {
+    top: 14%;
+}
+
+#turca-overflow {
+    top: 14%;
+}
+
+.bt-ped {
+    height: 13%;
+    line-height: 50%;
+}
+
+.bt-back {
+    height: 13%;
+    line-height: 50%;
+}

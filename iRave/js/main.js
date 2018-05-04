@@ -330,8 +330,48 @@ async function init() {
         e.stopImmediatePropagation();
       });
     }
-
+    
   });
+
+    let comidatcheca = $("#tcheca-drag");
+    let max_drag_tcheca = -($("#tcheca-drag > button").length * 90 - 206.47*0.69);
+    comidatcheca.css("top", BAR_SIZE);
+    comidatcheca.draggable({
+        axis: "y",
+        scroll: false,
+        position: 'unset',
+        cancel: false,
+        drag: function (event, ui) {
+            if (ui.position.top > 0) ui.position.top = 0;
+            if (ui.position.top < max_drag_tcheca) ui.position.top = max_drag_tcheca;
+        },
+        stop: function (event, ui) {
+            $(event.originalEvent.target).one('click', function (e) {
+                e.stopImmediatePropagation();
+            });
+        }
+
+    });
+
+    let comidaturca = $("#turca-drag");
+    let max_drag_turca = -($("#turca-drag > button").length * 90 - 206.47*0.69);
+    comidaturca.css("top", BAR_SIZE);
+    comidaturca.draggable({
+        axis: "y",
+        scroll: false,
+        position: 'unset',
+        cancel: false,
+        drag: function (event, ui) {
+            if (ui.position.top > 0) ui.position.top = 0;
+            if (ui.position.top < max_drag_turca) ui.position.top = max_drag_turca;
+        },
+        stop: function (event, ui) {
+            $(event.originalEvent.target).one('click', function (e) {
+                e.stopImmediatePropagation();
+            });
+        }
+
+    });
 
   $("#mapa").on('mousedown', function( e ) {
       start = new Date().getTime();
@@ -398,7 +438,78 @@ async function init() {
     changeImage($(this).attr("id"));
     createMapBar($(this).attr("id"));
   });
+  $("#menu-pedidos").click(function () {
+    changeScreen($("#menu-overflow"), $("#pedidos"));
+  });
+  $("#comida1").click(function () {
+    changeScreen($("#pedidos"), $("#turca"));
+  });
+  $("#comida2").click(function () {
+    changeScreen($("#pedidos"), $("#tcheca"));
+  });
 
+  /*$("#plusic11").click(function () {
+      updatePriceUnit(1, 1, 1);
+  });
+  $("#minusic11").click(function () {
+      updatePriceUnit(0, 1, 1);
+  });
+
+    $("#plusic21").click(function () {
+        updatePriceUnit(1, 2, 1);
+    });
+    $("#minusic21").click(function () {
+        updatePriceUnit(0, 2, 1);
+    });
+
+    $("#plusic31").click(function () {
+        updatePriceUnit(1, 3, 1);
+    });
+    $("#minusic31").click(function () {
+        updatePriceUnit(0, 3, 1);
+    });
+
+    $("#plusic41").click(function () {
+        updatePriceUnit(1, 4, 1);
+    });
+    $("#minusic41").click(function () {
+        updatePriceUnit(0, 4, 1);
+    });
+
+    $("#plusic12").click(function () {
+        updatePriceUnit(1, 1, 2);
+    });
+    $("#minusic12").click(function () {
+        updatePriceUnit(0, 1, 2);
+    });
+
+    $("#plusic22").click(function () {
+        updatePriceUnit(1, 2, 2);
+    });
+    $("#minusic22").click(function () {
+        updatePriceUnit(0, 2, 2);
+    });
+
+    $("#plusic32").click(function () {
+        updatePriceUnit(1, 3, 2);
+    });
+    $("#minusic32").click(function () {
+        updatePriceUnit(0, 3, 2);
+    });
+
+    $("#plusic42").click(function () {
+        updatePriceUnit(1, 4, 2);
+    });
+    $("#minusic42").click(function () {
+        updatePriceUnit(0, 4, 2);
+    });*/
+
+    $(".plusic").click(function () {
+        updatePriceUnit(1, $(this).attr("id")[$(this).attr("id").length - 2], $(this).attr("id")[$(this).attr("id").length-1] );
+    });
+    $(".minusic").click(function () {
+        updatePriceUnit(0, $(this).attr("id")[$(this).attr("id").length - 2], $(this).attr("id")[$(this).attr("id").length - 1] );
+    });
   // $("#lockscreen").click(function () {
   //   if ($("#lockscreen").position.top != 0){
   //     $("#lockscreen").animate({
@@ -512,7 +623,10 @@ var title_list = {
   "options-mapa":"Navegar",
   "mapa-opcoes1":"Palcos",
   "mapa-opcoes2":"WC",
-  "mapa-opcoes3":"Comida"
+  "mapa-opcoes3": "Comida",
+  "pedidos":"Pedidos",
+  "tcheca": "Tcheca",
+  "turca":"Turca"
 };
 
 var notificationTitle = "";
@@ -940,6 +1054,29 @@ function mapZoomChange(z){
   mapa.css("left", `${parseFloat(mapa.css("left"))*(map_zoom/z)+(SCREEN_WIDTH-SCREEN_WIDTH*(map_zoom/z))/2}px`);
   map_zoom_last=map_zoom;
   map_zoom=z;
+}
+
+function updatePriceUnit(flag, n, m) {
+    let span1 = $("#t1" + n +""+m);
+    let span2 = $("#t2" + n +""+m);
+
+    let unit = parseInt(span1.text());
+    let price = parseFloat(span1.attr("price"));
+
+    if (flag == 1 && unit<9) {
+        unit++;
+    }
+    else if(flag == 0 && unit >=1){
+        unit--;
+    }
+
+    price = unit * price;
+
+    let price2dec = price.toFixed(2);
+
+    span1.text(unit);
+    span2.text(price2dec + "€");
+
 }
 
 function sleep(ms) {
