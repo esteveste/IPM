@@ -208,7 +208,7 @@
 .dragDiv {
 	position: absolute;
 	user-select: none;
-	bottom: 13%;
+	bottom: 16%;
 	left: 1%;
 	right: 1%;
 	height: 69%;
@@ -341,7 +341,7 @@
 
 .popup {
 	background: rgba(224, 224, 224, 1);
-	border: 1px solid var(--bp2);
+	border: 1px solid black;
 	height: 25%;
 	top: -26%;
 	text-align: left;
@@ -678,11 +678,19 @@
     width: 100%;
 }
 
+#pedidos {
+    background-color: var(--w4);
+}
+
 #tcheca {
     background-color: var(--w4);
 }
 
 #turca {
+    background-color: var(--w4);
+}
+
+#bebidas {
     background-color: var(--w4);
 }
 
@@ -768,29 +776,27 @@
 #bt-pedido1 {
     position: absolute;
     right: 2%;
-    bottom: 2%;
-
-    background-color: #4CAF50;
-}
-
-#bt-back1 {
-    position: absolute;
     left: 2%;
     bottom: 2%;
+    width: 96%;
     background-color: #4CAF50;
 }
 
 #bt-pedido2 {
     position: absolute;
     right: 2%;
+    left: 2%;
     bottom: 2%;
+    width: 96%;
     background-color: #4CAF50;
 }
 
-#bt-back2 {
+#bt-pedido3 {
     position: absolute;
+    right: 2%;
     left: 2%;
     bottom: 2%;
+    width: 96%;
     background-color: #4CAF50;
 }
 
@@ -804,6 +810,11 @@
     height: 300%;
 }
 
+#bebidas-drag {
+    top: 0;
+    height: 300%;
+}
+
 #tcheca-overflow {
     top: 14%;
 }
@@ -812,12 +823,99 @@
     top: 14%;
 }
 
+#bebidas-overflow {
+    top: 14%;
+}
+
 .bt-ped {
+    color: white;
     height: 13%;
     line-height: 50%;
 }
 
-.bt-back {
+.bt-comfirm {
+    color: white;
     height: 13%;
     line-height: 50%;
+}
+
+.bt-cancel {
+    color: white;
+    height: 13%;
+    line-height: 50%;
+}
+
+#bt-comfirm {
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+    width: 46%;
+    background-color: #4CAF50;
+}
+
+#bt-cancel {
+    position: absolute;
+    left: 2%;
+    bottom: 2%;
+    width: 46%;
+    background-color: #4CAF50;
+}
+
+#pedido-drag {
+    top: 0;
+    border: 1.5px solid black;
+    height: 300%;
+}
+
+#check-menu {
+    background-color: var(--w4);
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#pedido-pagar2 > img {
+    /*background-image: url("../resources/qrfake.png");*/
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 30%;
+    margin-left: 15%;
+    margin-right: 15%;
+    opacity: 1;
+    height: 70%;
+    width: 70%;
+    /*overflow: hidden;*/
+}
+
+#pedido-pagar1 {
+    background-color: var(--w4);
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#pedido-pagar3 {
+    background-color: #4CAF50;
+    bottom: 1.5%;
+    height: 13%;
+    width: 100%;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+#bebidas-menu {
+    background-color: var(--w4);
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#bebidas-drag > button {
+    background-color: #4CAF50;
+    width: 94%;
+    left: 3%;
+    margin: 3% auto;
+    height: 70px;
+    user-select: none;
 }

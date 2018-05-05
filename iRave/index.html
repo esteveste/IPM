@@ -242,6 +242,47 @@
                               </div>
                           </div>
                       </button>
+                      <button id="bebidasbt" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <div class="mdl-button__ripple-container">
+                              <div class="bt-titlemap">
+                                  Bebidas
+                              </div>
+                              <div class="bt-textmap">
+                                  <br>
+                                  <span>Cerveja e mais</span><br><br>
+                                  <span>Tempo espera: 3 mins</span>
+                              </div>
+                          </div>
+                      </button>
+                  </div>
+              </div>
+
+              <div id="check-pedido" class="app overflow">
+                  <div id="check-menu">
+                      <div class="fixbar"></div>
+                      <div id="pedido-overflow" class="overflow dragDiv">
+                          <div id="pedido-drag" class="dragDiv">
+
+                          </div>
+                      </div>
+                      <button id="bt-comfirm" class="mdl-button--raised no-hover3 bt-comfirm mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <i class="material-icons">done_all</i>
+                      </button>
+                      <button id="bt-cancel" class="mdl-button--raised no-hover3 bt-cancel mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <i class="material-icons">remove_shopping_cart</i>
+                      </button>
+                  </div>
+              </div>
+
+              <div id="pagar-pedido" class="app overflow">
+                  <div id="pedido-pagar1">
+                      <div id="pedido-pagar2">
+                          <img src="resources/qrfake.png" width="100" />
+                      </div>
+                      <span></span>
+                      <div id="pedido-pagar3">
+                          Faça Scan para pagar
+                      </div>
                   </div>
               </div>
 
@@ -249,7 +290,7 @@
                   <div id="tcheca-menu" class="app">
                       <div id="tcheca-overflow" class="overflow dragDiv">
                           <div id="tcheca-drag" class="dragDiv">
-                              <button id="grilovane" class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button">
+                              <button class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button">
                                   <div class="mdl-button__ripple-container">
                                       <div class="bt-titlep">
                                           Grilované klobásy
@@ -260,7 +301,7 @@
                                               <span>1x 7.89€</span>
                                           </div>
                                           <div class="prices">
-                                              <div style="right: 5%; display: inline-block;">
+                                              <div food="Grilovane" style="right: 5%; display: inline-block;">
                                                   <i id="plusic11" class="material-icons plusic">add</i>
                                                   <span id="t111" price="7.89" style="font-size: 1.3em;"> 0 </span>
                                                   <i id="minusic11" class="material-icons minusic">remove</i>
@@ -272,7 +313,7 @@
                                   </div>
                               </button>
 
-                              <button id="smazeny" class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
+                              <button class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
                                   <div class="mdl-button__ripple-container">
                                       <div class="bt-titlep">
                                           Smažený sýr
@@ -283,7 +324,7 @@
                                               <span>1x 3.99€</span>
                                           </div>
                                           <div class="prices">
-                                              <div style="right: 5%; display: inline-block;">
+                                              <div food="Smazeny" style="right: 5%; display: inline-block;">
                                                   <i id="plusic21" class="material-icons plusic">add</i>
                                                   <span id="t121" price="3.99" style="font-size: 1.3em;"> 0 </span>
                                                   <i id="minusic21" class="material-icons minusic">remove</i>
@@ -294,7 +335,7 @@
                                       </div>
                               </button>
 
-                              <button id="chlebicek" class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
+                              <button class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
                                   <div class="mdl-button__ripple-container">
                                       <div class="bt-titlep">
                                           Chlebíček
@@ -305,7 +346,7 @@
                                               <span>1x 4.79€</span>
                                           </div>
                                           <div class="prices">
-                                              <div style="right: 5%; display: inline-block;">
+                                              <div food="Chlebicek" style="right: 5%; display: inline-block;">
                                                   <i id="plusic31" class="material-icons plusic">add</i>
                                                   <span id="t131" price="4.79" style="font-size: 1.3em;"> 0 </span>
                                                   <i id="minusic31" class="material-icons minusic">remove</i>
@@ -316,7 +357,7 @@
                                       </div>
                               </button>
 
-                              <button id="oplatka" class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
+                              <button class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
                                   <div class="mdl-button__ripple-container">
                                       <div class="bt-titlep">
                                           Oplatka
@@ -328,7 +369,7 @@
                                                   <span>1x 2.49€</span>
                                               </div>
                                               <div class="prices">
-                                                  <div style="right: 5%; display: inline-block;">
+                                                  <div food="Oplatka" style="right: 5%; display: inline-block;">
                                                       <i id="plusic41" class="material-icons plusic">add</i>
                                                       <span id="t141" price="2.49" style="font-size: 1.3em;"> 0 </span>
                                                       <i id="minusic41" class="material-icons minusic">remove</i>
@@ -341,13 +382,10 @@
                               </button>
                           </div>
                       </div>
-                      
-                    <button id="bt-pedido1" class="mdl-button--raised no-hover3 bt-ped mdl-button mdl-js-button mdl-js-ripple-effect">
-                        <i class="material-icons">shopping_cart</i>
-                    </button>
-                    <button id="bt-back1" class="mdl-button--raised no-hover3 bt-ped mdl-button mdl-js-button mdl-js-ripple-effect">
-                        <i class="material-icons">arrow_back</i>
-                    </button>
+
+                      <button id="bt-pedido1" class="mdl-button--raised no-hover3 bt-ped mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <i class="material-icons">shopping_cart</i>
+                      </button>
                   </div>
               </div>
 
@@ -355,7 +393,7 @@
                   <div id="turca-menu" class="app">
                       <div id="turca-overflow" class="overflow dragDiv">
                           <div id="turca-drag" class="dragDiv">
-                              <button id="kebab" class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button">
+                              <button class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button">
                                   <div class="mdl-button__ripple-container">
                                       <div class="bt-titlep">
                                           Kebab
@@ -366,7 +404,7 @@
                                               <span>1x 7.89€</span>
                                           </div>
                                           <div class="prices">
-                                              <div style="right: 5%; display: inline-block;">
+                                              <div food="Kebab" style="right: 5%; display: inline-block;">
                                                   <i id="plusic12" class="material-icons plusic">add</i>
                                                   <span id="t112" price="7.89" style="font-size: 1.3em;"> 0 </span>
                                                   <i id="minusic12" class="material-icons minusic">remove</i>
@@ -378,7 +416,7 @@
                                   </div>
                               </button>
 
-                              <button id="doner" class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
+                              <button class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
                                   <div class="mdl-button__ripple-container">
                                       <div class="bt-titlep">
                                           Döner
@@ -389,7 +427,7 @@
                                               <span>1x 5.99€</span>
                                           </div>
                                           <div class="prices">
-                                              <div style="right: 5%; display: inline-block;">
+                                              <div food="Doner" style="right: 5%; display: inline-block;">
                                                   <i id="plusic22" class="material-icons plusic">add</i>
                                                   <span id="t122" price="3.99" style="font-size: 1.3em;"> 0 </span>
                                                   <i id="minusic22" class="material-icons minusic">remove</i>
@@ -400,7 +438,7 @@
                                       </div>
                               </button>
 
-                              <button id="dorduma" class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
+                              <button class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
                                   <div class="mdl-button__ripple-container">
                                       <div class="bt-titlep">
                                           Dorduma
@@ -411,7 +449,7 @@
                                               <span>1x 3.79€</span>
                                           </div>
                                           <div class="prices">
-                                              <div style="right: 5%; display: inline-block;">
+                                              <div food="Dorduma" style="right: 5%; display: inline-block;">
                                                   <i id="plusic32" class="material-icons plusic">add</i>
                                                   <span id="t132" price="4.79" style="font-size: 1.3em;"> 0 </span>
                                                   <i id="minusic32" class="material-icons minusic">remove</i>
@@ -422,7 +460,7 @@
                                       </div>
                               </button>
 
-                              <button id="baklava" class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
+                              <button class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
                                   <div class="mdl-button__ripple-container">
                                       <div class="bt-titlep">
                                           Baklava
@@ -434,7 +472,7 @@
                                                   <span>1x 3.49€</span>
                                               </div>
                                               <div class="prices">
-                                                  <div style="right: 5%; display: inline-block;">
+                                                  <div food="Baklava" style="right: 5%; display: inline-block;">
                                                       <i id="plusic42" class="material-icons plusic">add</i>
                                                       <span id="t142" price="2.49" style="font-size: 1.3em;"> 0 </span>
                                                       <i id="minusic42" class="material-icons minusic">remove</i>
@@ -450,263 +488,363 @@
                       <button id="bt-pedido2" class="mdl-button--raised no-hover3 bt-ped mdl-button mdl-js-button mdl-js-ripple-effect">
                           <i class="material-icons">shopping_cart</i>
                       </button>
-                      <button id="bt-back2" class="mdl-button--raised no-hover3 bt-back mdl-button mdl-js-button mdl-js-ripple-effect">
-                          <i class="material-icons">arrow_back</i>
-                      </button>
-                      </div>
                   </div>
+              </div>
 
-                      <!-- <div id="options-mapa" class="app" style="background-color: #ffffff">
+              <div id="bebidas" class="app overflow">
+                  <div id="bebidas-menu" class="app">
+                      <div id="bebidas-overflow" class="overflow dragDiv">
+                          <div id="bebidas-drag" class="dragDiv">
+                              <button class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button">
+                                  <div class="mdl-button__ripple-container">
+                                      <div class="bt-titlep">
+                                          Cerveja
+                                      </div>
+                                      <div class="bt-textp">
+                                          <div class="descs">
+                                              <span></span>
+                                              <span>1x 1.10€</span>
+                                          </div>
+                                          <div class="prices">
+                                              <div food="Cerveja" style="right: 5%; display: inline-block;">
+                                                  <i id="plusic13" class="material-icons plusic">add</i>
+                                                  <span id="t113" price="1.10" style="font-size: 1.3em;"> 0 </span>
+                                                  <i id="minusic13" class="material-icons minusic">remove</i>
+                                              </div>
+                                              <span id="t213" style="right: 2%; font-size: 1.2em;">
+                                              </span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </button>
+
+                              <button class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
+                                  <div class="mdl-button__ripple-container">
+                                      <div class="bt-titlep">
+                                          Sommersby
+                                      </div>
+                                      <div class="bt-textp">
+                                          <div class="descs">
+                                              <span></span>
+                                              <span>1x 2.00€</span>
+                                          </div>
+                                          <div class="prices">
+                                              <div food="Sommersby" style="right: 5%; display: inline-block;">
+                                                  <i id="plusic23" class="material-icons plusic">add</i>
+                                                  <span id="t123" price="2" style="font-size: 1.3em;"> 0 </span>
+                                                  <i id="minusic23" class="material-icons minusic">remove</i>
+                                              </div>
+                                              <span id="t223" style="right: 2%; font-size: 1.2em;">
+                                              </span>
+                                          </div>
+                                      </div>
+                              </button>
+
+                              <button class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
+                                  <div class="mdl-button__ripple-container">
+                                      <div class="bt-titlep">
+                                          Shots
+                                      </div>
+                                      <div class="bt-textp">
+                                          <div class="descs">
+                                              <span></span>
+                                              <span>1x 2.50€</span>
+                                          </div>
+                                          <div class="prices">
+                                              <div food="Shots" style="right: 5%; display: inline-block;">
+                                                  <i id="plusic33" class="material-icons plusic">add</i>
+                                                  <span id="t133" price="2.5" style="font-size: 1.3em;"> 0 </span>
+                                                  <i id="minusic33" class="material-icons minusic">remove</i>
+                                              </div>
+                                              <span id="t233" style="right: 2%; font-size: 1.2em;">
+                                              </span>
+                                          </div>
+                                      </div>
+                              </button>
+
+                              <button class="mdl-button--raised no-hover3 button-style mdl-button mdl-js-button ">
+                                  <div class="mdl-button__ripple-container">
+                                      <div class="bt-titlep">
+                                          Tequila
+                                      </div>
+                                      <div class="bt-textp">
+                                          <div>
+                                              <div class="descs">
+                                                  <span></span>
+                                                  <span>1x 3.00€</span>
+                                              </div>
+                                              <div class="prices">
+                                                  <div food="Tequila" style="right: 5%; display: inline-block;">
+                                                      <i id="plusic44" class="material-icons plusic">add</i>
+                                                      <span id="t144" price="3" style="font-size: 1.3em;"> 0 </span>
+                                                      <i id="minusic44" class="material-icons minusic">remove</i>
+                                                  </div>
+                                                  <span id="t244" style="right: 2%; font-size: 1.2em;">
+                                                  </span>
+                                              </div>
+                                          </div>
+                                      </div>
+                              </button>
+                          </div>
+                      </div>
+
+                      <button id="bt-pedido3" class="mdl-button--raised no-hover3 bt-ped mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <i class="material-icons">shopping_cart</i>
+                      </button>
+                  </div>
+              </div>
+
+              <!-- <div id="options-mapa" class="app" style="background-color: #ffffff">
       <div class="fixbar"></div>
       <span id="destinos" style="left: 0">Escolher Destino</span>
       <span id="" style="left: 0"> <br> Ordenar:</span>
       <span id="" style="left: 0"> <br> Por Tempo</span>
       <span id="" style="left: 0"> <br> Por Distãncia</span>
     </div> -->
-                      <div id="options-mapa" class="app overflow">
-                          <div id="options-mapa-list" class="app">
-                              <button id="palcos" class="mdl-button--raised no-hover bt-mapa button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                  <div class="mdl-button__ripple-container">
-                                      Palcos
-                                  </div>
-                              </button>
-                              <button id="wc" class="mdl-button--raised no-hover bt-mapa button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                  <div class="mdl-button__ripple-container">
-                                      WC
-                                  </div>
-                              </button>
-                              <button id="restaurantes" class="mdl-button--raised bt-mapa no-hover button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                  <div class="mdl-button__ripple-container">
-                                      Restaurantes
-                                  </div>
-                              </button>
+              <div id="options-mapa" class="app overflow">
+                  <div id="options-mapa-list" class="app">
+                      <button id="palcos" class="mdl-button--raised no-hover bt-mapa button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <div class="mdl-button__ripple-container">
+                              Palcos
                           </div>
-                      </div>
-                      <div id="mapa-opcoes1" class="app overflow">
-                          <div id="options-mapa1" class="mapaopcoes app">
-                              <button id="p1" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                  <div class="mdl-button__ripple-container">
-                                      <div class="bt-titlemap">
-                                          Palco 1
-                                      </div>
-                                      <div class="bt-textmap">
-                                          <br>
-                                          <span>Live: AltJ</span><br><br>
-                                          <span>2 mins | 53 metros</span>
-                                      </div>
-                                  </div>
-                              </button>
-                              <button id="p2" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                  <div class="mdl-button__ripple-container">
-                                      <div class="bt-titlemap">
-                                          Palco 2
-                                      </div>
-                                      <div class="bt-textmap">
-                                          <br>
-                                          <span>Live: Coldplay</span><br><br>
-                                          <span>3 mins | 79 metros</span>
-                                      </div>
-                                  </div>
-                              </button>
-                              <button id="p3" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                  <div class="mdl-button__ripple-container">
-                                      <div class="bt-titlemap">
-                                          Palco 3
-                                      </div>
-                                      <div class="bt-textmap">
-                                          <br>
-                                          <span>Live: Linkin Park</span><br><br>
-                                          <span>5 mins | 102 metros</span>
-                                      </div>
-                                  </div>
-                              </button>
-                              <button id="p4" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                  <div class="mdl-button__ripple-container">
-                                      <div class="bt-titlemap">
-                                          Palco 4
-                                      </div>
-                                      <div class="bt-textmap">
-                                          <br>
-                                          <span>Live: Pinkfloyd</span><br><br>
-                                          <span>7 mins | 96 metros</span>
-                                      </div>
-                                  </div>
-                              </button>
+                      </button>
+                      <button id="wc" class="mdl-button--raised no-hover bt-mapa button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <div class="mdl-button__ripple-container">
+                              WC
                           </div>
-                      </div>
-                      <div id="mapa-opcoes2" class="app overflow">
-                          <div id="options-mapa2" class="mapaopcoes app" style="top: 14%;">
-                              <button id="w1" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                  <div class="mdl-button__ripple-container">
-                                      <div class="bt-titlemap">
-                                          WC 1
-                                      </div>
-                                      <div class="bt-textmap">
-                                          <br>
-                                          <span></span><br><br>
-                                          <span>5 mins | 96 metros</span>
-                                      </div>
-                                  </div>
-                              </button>
-                              <button id="w2" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                  <div class="mdl-button__ripple-container">
-                                      <div class="bt-titlemap">
-                                          WC 2
-                                      </div>
-                                      <div class="bt-textmap">
-                                          <br>
-                                          <span></span><br><br>
-                                          <span>3 mins | 54 metros</span>
-                                      </div>
-                                  </div>
-                              </button>
+                      </button>
+                      <button id="restaurantes" class="mdl-button--raised bt-mapa no-hover button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <div class="mdl-button__ripple-container">
+                              Restaurantes
                           </div>
-                      </div>
-                      <div id="mapa-opcoes3" class="app overflow">
-                          <div id="options-mapa3" class="mapaopcoes app">
-                              <button id="c1" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                  <div class="mdl-button__ripple-container">
-                                      <div class="bt-titlemap">
-                                          Comida 1
-                                      </div>
-                                      <div class="bt-textmap">
-                                          <br>
-                                          <span>Cozinha: Turca</span><br><br>
-                                          <span>8 mins | 143 metros</span>
-                                      </div>
-                                  </div>
-                              </button>
-                              <button id="c2" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                  <div class="mdl-button__ripple-container">
-                                      <div class="bt-titlemap">
-                                          Comida 2
-                                      </div>
-                                      <div class="bt-textmap">
-                                          <br>
-                                          <span>Cozinha: Tcheca</span><br><br>
-                                          <span>3 mins | 65 metros</span>
-                                      </div>
-                                  </div>
-                              </button>
-                          </div>
-                      </div>
-
-                      <div id="list-horario" class="app overflow">
-                          <div id="horario-days" style="height:100%;">
-                              <div id="horario-list" class="app horario-list">
-                                  <button id="coldplay" class="bt-past mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                      <div class="mdl-button__ripple-container">
-                                          <div class="bt-title">
-                                              Coldplay
-                                          </div>
-                                          <div class="bt-text">
-                                              <br>
-                                              <span>17:00 - 18:45</span><br><br>
-                                              <span>Palco 2</span>
-                                          </div>
-                                      </div>
-                                  </button>
-                                  <button id="altj" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                      <div class="mdl-button__ripple-container">
-                                          <div class="bt-title">
-                                              Alt-J
-                                          </div>
-                                          <div class="bt-text">
-                                              <br>
-                                              <span>19:00 - 20:30</span><br><br>
-                                              <span>Palco 1</span>
-                                          </div>
-                                      </div>
-                                  </button>
-                                  <button id="pinkfloyd" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                      <div class="mdl-button__ripple-container">
-                                          <div class="bt-title">
-                                              Pinkfloyd
-                                          </div>
-                                          <div class="bt-text">
-                                              <br>
-                                              <span>22:30 - 00:00</span><br><br>
-                                              <span>Palco 4</span>
-                                          </div>
-                                      </div>
-                                  </button>
-                                  <button id="linkinpark" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                      <div class="mdl-button__ripple-container">
-                                          <div class="bt-title">
-                                              Linkin Park
-                                          </div>
-                                          <div class="bt-text">
-                                              <br>
-                                              <span>00:30 - 02:00</span><br><br>
-                                              <span>Palco 3</span>
-                                          </div>
-                                      </div>
-                                  </button>
-                              </div>
-                              <div id="horario-list2" class="app horario-list">
-                                  <button id="thexx" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                      <div class="mdl-button__ripple-container">
-                                          <div class="bt-title">
-                                              The XX
-                                          </div>
-                                          <div class="bt-text">
-                                              <br>
-                                              <span>17:00 - 18:45</span><br><br>
-                                              <span>Palco 4</span>
-                                          </div>
-                                      </div>
-                                  </button>
-                                  <button id="imaginedragons" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                      <div class="mdl-button__ripple-container">
-                                          <div class="bt-title">
-                                              Imagine Dragons
-                                          </div>
-                                          <div class="bt-text">
-                                              <br>
-                                              <span>19:00 - 21:00</span><br><br>
-                                              <span>Palco 1</span>
-                                          </div>
-                                      </div>
-                                  </button>
-                                  <button id="postmalone" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                      <div class="mdl-button__ripple-container">
-                                          <div class="bt-title">
-                                              Post Malone
-                                          </div>
-                                          <div class="bt-text">
-                                              <br>
-                                              <span>22:45 - 00:10</span><br><br>
-                                              <span>Palco 3</span>
-                                          </div>
-                                      </div>
-                                  </button>
-                                  <button id="foofighters" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                                      <div class="mdl-button__ripple-container">
-                                          <div class="bt-title">
-                                              Foo Fighters
-                                          </div>
-                                          <div class="bt-text">
-                                              <br>
-                                              <span>00:30 - 02:30</span><br><br>
-                                              <span>Palco 2</span>
-                                          </div>
-                                      </div>
-                                  </button>
-                              </div>
-                          </div>
-
-                      </div>
-                      <div id="band" class="app">
-                      </div>
-                      <div class="app overflow">
-                          <div id="popups" class="popup">
-                              <span id="txt-popup" class="popup-text">
-                              </span>
-                              <button id="bt-popup" class="popup-button"></button>
-                          </div>
-                      </div>
-
+                      </button>
                   </div>
+              </div>
+              <div id="mapa-opcoes1" class="app overflow">
+                  <div id="options-mapa1" class="mapaopcoes app">
+                      <button id="p1" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <div class="mdl-button__ripple-container">
+                              <div class="bt-titlemap">
+                                  Palco 1
+                              </div>
+                              <div class="bt-textmap">
+                                  <br>
+                                  <span>Live: AltJ</span><br><br>
+                                  <span>2 mins | 53 metros</span>
+                              </div>
+                          </div>
+                      </button>
+                      <button id="p2" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <div class="mdl-button__ripple-container">
+                              <div class="bt-titlemap">
+                                  Palco 2
+                              </div>
+                              <div class="bt-textmap">
+                                  <br>
+                                  <span>Live: Coldplay</span><br><br>
+                                  <span>3 mins | 79 metros</span>
+                              </div>
+                          </div>
+                      </button>
+                      <button id="p3" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <div class="mdl-button__ripple-container">
+                              <div class="bt-titlemap">
+                                  Palco 3
+                              </div>
+                              <div class="bt-textmap">
+                                  <br>
+                                  <span>Live: Linkin Park</span><br><br>
+                                  <span>5 mins | 102 metros</span>
+                              </div>
+                          </div>
+                      </button>
+                      <button id="p4" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <div class="mdl-button__ripple-container">
+                              <div class="bt-titlemap">
+                                  Palco 4
+                              </div>
+                              <div class="bt-textmap">
+                                  <br>
+                                  <span>Live: Pinkfloyd</span><br><br>
+                                  <span>7 mins | 96 metros</span>
+                              </div>
+                          </div>
+                      </button>
+                  </div>
+              </div>
+              <div id="mapa-opcoes2" class="app overflow">
+                  <div id="options-mapa2" class="mapaopcoes app" style="top: 14%;">
+                      <button id="w1" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <div class="mdl-button__ripple-container">
+                              <div class="bt-titlemap">
+                                  WC 1
+                              </div>
+                              <div class="bt-textmap">
+                                  <br>
+                                  <span></span><br><br>
+                                  <span>5 mins | 96 metros</span>
+                              </div>
+                          </div>
+                      </button>
+                      <button id="w2" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <div class="mdl-button__ripple-container">
+                              <div class="bt-titlemap">
+                                  WC 2
+                              </div>
+                              <div class="bt-textmap">
+                                  <br>
+                                  <span></span><br><br>
+                                  <span>3 mins | 54 metros</span>
+                              </div>
+                          </div>
+                      </button>
+                  </div>
+              </div>
+              <div id="mapa-opcoes3" class="app overflow">
+                  <div id="options-mapa3" class="mapaopcoes app">
+                      <button id="c1" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <div class="mdl-button__ripple-container">
+                              <div class="bt-titlemap">
+                                  Comida 1
+                              </div>
+                              <div class="bt-textmap">
+                                  <br>
+                                  <span>Cozinha: Turca</span><br><br>
+                                  <span>8 mins | 143 metros</span>
+                              </div>
+                          </div>
+                      </button>
+                      <button id="c2" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                          <div class="mdl-button__ripple-container">
+                              <div class="bt-titlemap">
+                                  Comida 2
+                              </div>
+                              <div class="bt-textmap">
+                                  <br>
+                                  <span>Cozinha: Tcheca</span><br><br>
+                                  <span>3 mins | 65 metros</span>
+                              </div>
+                          </div>
+                      </button>
+                  </div>
+              </div>
+
+              <div id="list-horario" class="app overflow">
+                  <div id="horario-days" style="height:100%;">
+                      <div id="horario-list" class="app horario-list">
+                          <button id="coldplay" class="bt-past mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                              <div class="mdl-button__ripple-container">
+                                  <div class="bt-title">
+                                      Coldplay
+                                  </div>
+                                  <div class="bt-text">
+                                      <br>
+                                      <span>17:00 - 18:45</span><br><br>
+                                      <span>Palco 2</span>
+                                  </div>
+                              </div>
+                          </button>
+                          <button id="altj" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                              <div class="mdl-button__ripple-container">
+                                  <div class="bt-title">
+                                      Alt-J
+                                  </div>
+                                  <div class="bt-text">
+                                      <br>
+                                      <span>19:00 - 20:30</span><br><br>
+                                      <span>Palco 1</span>
+                                  </div>
+                              </div>
+                          </button>
+                          <button id="pinkfloyd" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                              <div class="mdl-button__ripple-container">
+                                  <div class="bt-title">
+                                      Pinkfloyd
+                                  </div>
+                                  <div class="bt-text">
+                                      <br>
+                                      <span>22:30 - 00:00</span><br><br>
+                                      <span>Palco 4</span>
+                                  </div>
+                              </div>
+                          </button>
+                          <button id="linkinpark" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                              <div class="mdl-button__ripple-container">
+                                  <div class="bt-title">
+                                      Linkin Park
+                                  </div>
+                                  <div class="bt-text">
+                                      <br>
+                                      <span>00:30 - 02:00</span><br><br>
+                                      <span>Palco 3</span>
+                                  </div>
+                              </div>
+                          </button>
+                      </div>
+                      <div id="horario-list2" class="app horario-list">
+                          <button id="thexx" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                              <div class="mdl-button__ripple-container">
+                                  <div class="bt-title">
+                                      The XX
+                                  </div>
+                                  <div class="bt-text">
+                                      <br>
+                                      <span>17:00 - 18:45</span><br><br>
+                                      <span>Palco 4</span>
+                                  </div>
+                              </div>
+                          </button>
+                          <button id="imaginedragons" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                              <div class="mdl-button__ripple-container">
+                                  <div class="bt-title">
+                                      Imagine Dragons
+                                  </div>
+                                  <div class="bt-text">
+                                      <br>
+                                      <span>19:00 - 21:00</span><br><br>
+                                      <span>Palco 1</span>
+                                  </div>
+                              </div>
+                          </button>
+                          <button id="postmalone" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                              <div class="mdl-button__ripple-container">
+                                  <div class="bt-title">
+                                      Post Malone
+                                  </div>
+                                  <div class="bt-text">
+                                      <br>
+                                      <span>22:45 - 00:10</span><br><br>
+                                      <span>Palco 3</span>
+                                  </div>
+                              </div>
+                          </button>
+                          <button id="foofighters" class="mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                              <div class="mdl-button__ripple-container">
+                                  <div class="bt-title">
+                                      Foo Fighters
+                                  </div>
+                                  <div class="bt-text">
+                                      <br>
+                                      <span>00:30 - 02:30</span><br><br>
+                                      <span>Palco 2</span>
+                                  </div>
+                              </div>
+                          </button>
+                      </div>
+                  </div>
+
+              </div>
+              <div id="band" class="app">
+              </div>
+              <div class="app overflow">
+                  <div id="popups" class="popup">
+                      <span id="txt-popup" class="popup-text">
+                      </span>
+                      <button id="bt-popup" class="popup-button"></button>
+                  </div>
+              </div>
+
+          </div>
         <div id="crown-button" class="crown"></div>
         <div id="back-bt" class="power"></div>
       </div>
