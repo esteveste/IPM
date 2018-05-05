@@ -44,7 +44,6 @@ async function init() {
   });
 
   let lockScreen = $("#lockscreen");
-  // lockScreen.css("opacity",1);
   const maxLockDrag = -225;
   const minLockDrag = 0;
   lockScreen.draggable({
@@ -66,16 +65,13 @@ async function init() {
           'top': minLockDrag
         });
       }
-      // $("#app-screen").addClass("disabled");
     }
 
   });
 
 
   let menu = $("#menu");
-  // lockScreen.css("opacity",1);
   const maxMenuDrag = -SCREEN_SIZE * (NR_OF_MENU_EL - 1);
-  // const minLockDrag=0;
   menu.draggable({
     axis: "y",
     scroll: false,
@@ -83,12 +79,6 @@ async function init() {
     drag: function (event, ui) {
       if (ui.position.top > 0) ui.position.top = 0;
       if (ui.position.top < maxMenuDrag) ui.position.top = maxMenuDrag;
-      // if(!$(`#menu-status li:nth-child(${(Math.floor(ui.position.top/SCREEN_SIZE)+1)})`).hasClass("current")){
-      //   $(`#menu-status li:nth-child(${(Math.floor(ui.position.top/SCREEN_SIZE))})`).removeClass("current");
-      //   $(`#menu-status li:nth-child(${(Math.floor(ui.position.top/SCREEN_SIZE)+1)})`).addClass("current");
-      // }
-      // console.log(!$(`#menu-status li:nth-child(${(Math.floor(ui.position.top/SCREEN_SIZE)+1)})`).hasClass("current"));
-      // console.log("csajlsajcsa" + Math.floor(ui.position.top/SCREEN_SIZE));
       if (ui.position.top / SCREEN_SIZE - Math.floor(ui.position.top / SCREEN_SIZE) < 0.5 && ui.position.top % SCREEN_SIZE != 0) {
         $(`#menu-status li:nth-child(${(Math.floor(-ui.position.top/SCREEN_SIZE)+1)})`).removeClass("current");
         $(`#menu-status li:nth-child(${(Math.floor(-ui.position.top/SCREEN_SIZE)+2)})`).addClass("current");
@@ -113,9 +103,6 @@ async function init() {
         });
       }
     }
-    // stop: function (event, ui) {
-
-    // }
   });
 
 
@@ -189,40 +176,7 @@ async function init() {
         }
       }
     }
-    // if (ui.position.top / SCREEN_SIZE - Math.floor(ui.position.top / SCREEN_SIZE) <= 0.5) {
-    //   $(this).animate({
-    //     'left': (Math.floor(ui.position.top / SCREEN_SIZE)) * SCREEN_SIZE
-    //   });
-    // } else {
-    //   $(this).animate({
-    //     'top': (Math.floor(ui.position.top / SCREEN_SIZE) + 1) * SCREEN_SIZE
-    //   });
-    // }
-
   });
-
-  // let horario_days = $("#horario-days");
-  // // let max_drag_horario = -($("#horario-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
-  // // console.log(max_drag_horario);
-  // // horario_days.css("top", BAR_SIZE);
-  // horario_days.draggable({
-  //   axis: "x",
-  //   scroll: false,
-  //   position: 'unset',
-  //   cancel: false,
-  //   drag: function (event, ui) {
-  //     if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
-  //     if (ui.position.top < max_drag_horario) ui.position.top = max_drag_horario;
-  //   },
-  //   stop: function (event, ui) {
-  //     $(event.originalEvent.target).one('click', function (e) {
-  //       e.stopImmediatePropagation();
-  //     });
-  //   }
-  //
-  // });
-
-
 
   let banda_lista = $("#bandas-list");
   let max_drag_banda = -($("#bandas-list > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
@@ -265,9 +219,7 @@ async function init() {
   });
 
   let mapa = $("#inner-map");
-  // mapa.css("top", "-36%");
   let max_drag_top = mapa.top;
-  // mapa.css("left", "-50%");
   let max_drag_left = mapa.left;
 
   mapa.dblclick(function() {
@@ -333,7 +285,7 @@ async function init() {
         e.stopImmediatePropagation();
       });
     }
-    
+
   });
 
     let pedidos = $("#pedidos-menu");
@@ -470,16 +422,20 @@ async function init() {
     changeScreen($("#mapa-opcoes1"), $("#mapa"));
     changeImage($(this).attr("id"));
     createMapBar($(this).attr("id"));
+    // remove Map options back posibility
+    appHistory.splice(-3);
   });
   $("#options-mapa2 > button").click(function () {
     changeScreen($("#mapa-opcoes2"), $("#mapa"));
     changeImage($(this).attr("id"));
     createMapBar($(this).attr("id"));
+    appHistory.splice(-3);
   });
   $("#options-mapa3 > button").click(function () {
     changeScreen($("#mapa-opcoes3"), $("#mapa"));
     changeImage($(this).attr("id"));
     createMapBar($(this).attr("id"));
+    appHistory.splice(-3);
   });
   $("#menu-pedidos").click(function () {
     changeScreen($("#menu-overflow"), $("#pedidos"));
@@ -729,8 +685,9 @@ async function createMapBar(destino){
   let bt = $("#map-bt");
   let bar = $("#mapbar");
   let h = bar.height();
+  let mapBarText = mapBarTexts[destino].split("|");
   text.empty();
-  text.text(mapBarTexts[destino]);
+  text.html(`<b style="color:black;">${mapBarText[0]}</b>|${mapBarText[1]}`);
   bar.css("bottom", -h -12);
   setTimeout(function () {
     bar.animate({
@@ -1064,9 +1021,16 @@ function crownFunction() {
     let atual = appHistory[appHistory.length - 1];
     changeScreen(atual, $("#menu-overflow"));
   } else {
-    $("#lockscreen").animate({
-      'top': 0
-    });
+    if(parseInt($("#lockscreen").css("top"))==0){
+      $("#lockscreen").animate({
+        'top': -200
+      });
+    }else{
+      $("#lockscreen").animate({
+        'top': 0
+      });
+    }
+
   }
 }
 
