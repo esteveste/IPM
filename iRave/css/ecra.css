@@ -20,6 +20,11 @@
 	--gs1: #546e7a;
 	--gs2: #29434e;
 	--gs3: #819ca9;
+
+	/*Menu colors*/
+	--menuRed:#F44336;
+	--menuGreen:#4CAF50;
+	--menuBlue:#1565C0;
 }
 
 * {
@@ -591,8 +596,9 @@
 }
 
 .mapbar {
-	background: rgba(224, 224, 224, 1);
-	border: 1px solid #F44336;
+	background: rgba(224, 224, 224, 0.9);
+	border-top: 1px solid darkgrey;
+
 	height: 15%;
 	bottom: -16%;
 	text-align: left;
@@ -600,13 +606,16 @@
 	width: 100%;
 	border-radius: inherit;
 	font-family: "Roboto";
+
 }
 
 .map-text {
-	padding-left: 5%;
-	top:50%;
+	position: relative;
+	padding-left: 6%;
+	top:10%;
 	font-size: 1.4em;
-	color: #000000;
+	/*color: var(--menuGreen);*/
+	color: black;
 }
 
 .map-button {
@@ -614,6 +623,7 @@
 	background: transparent;
 	right: 0;
 	bottom: 0;
+	top: -1%;
 	color: #ff0000;
 	border: 0;
 }
@@ -621,11 +631,11 @@
 .spinner {
 	width: 60px;
 	height: 60px;
-	background-color: #F44336;
+	background-color: darkgrey;
 	z-index: 200;
-	border-radius: 100%;  
+	border-radius: 100%;
   }
-  
+
   @-webkit-keyframes sk-scaleout {
 	0% { -webkit-transform: scale(0) }
 	100% {
@@ -633,9 +643,9 @@
 	  opacity: 0;
 	}
   }
-  
+
   @keyframes sk-scaleout {
-	0% { 
+	0% {
 	  -webkit-transform: scale(0);
 	  transform: scale(0);
 	} 100% {

@@ -330,7 +330,7 @@ async function init() {
         e.stopImmediatePropagation();
       });
     }
-    
+
   });
 
     let comidatcheca = $("#tcheca-drag");
@@ -700,8 +700,9 @@ async function createMapBar(destino){
   let bt = $("#map-bt");
   let bar = $("#mapbar");
   let h = bar.height();
+  let mapBarText = mapBarTexts[destino].split("|");
   text.empty();
-  text.text(mapBarTexts[destino]);
+  text.html(`<b style="color:black;">${mapBarText[0]}</b>|${mapBarText[1]}`);
   bar.css("bottom", -h -12);
   setTimeout(function () {
     bar.animate({
@@ -1035,9 +1036,16 @@ function crownFunction() {
     let atual = appHistory[appHistory.length - 1];
     changeScreen(atual, $("#menu-overflow"));
   } else {
-    $("#lockscreen").animate({
-      'top': 0
-    });
+    if(parseInt($("#lockscreen").css("top"))==0){
+      $("#lockscreen").animate({
+        'top': -200
+      });
+    }else{
+      $("#lockscreen").animate({
+        'top': 0
+      });
+    }
+
   }
 }
 
