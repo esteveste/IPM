@@ -1081,7 +1081,7 @@ function mapZoomChange(z){
 }
 
 function resetShopCart() {
-    for (let m = 1; m <= 2; m++) {
+    for (let m = 1; m <= 3; m++) {
         for (let n = 1; n <= 4; n++) {
             let span1 = $("#t1" + n + "" + m);
             let span2 = $("#t2" + n + "" + m);
