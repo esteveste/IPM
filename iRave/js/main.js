@@ -468,7 +468,7 @@ async function init() {
         if ($("#pedido-drag > span").length > 1) {
             $("#pedido-drag").empty();
             resetShopCart();
-            calculateTotal();
+            precototal = 0;
             createPopup(6);
             notifyPopup();
         }
@@ -482,7 +482,7 @@ async function init() {
             changeScreen($("#check-pedido"), $("#pagar-pedido"));
             $("#pedido-drag").empty();
             resetShopCart();
-            calculateTotal();
+            precototal = 0;
         }
         else {
             createPopup(5);
