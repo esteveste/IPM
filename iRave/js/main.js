@@ -16,6 +16,8 @@ var idle = 0;
 var longpress = 1000;
 var start;
 var currentAlert = undefined;
+var spansnopedido = 8;
+var spanscriados = 0;
 
 var map_zoom = 2;
 var map_zoom_last =1;
@@ -333,9 +335,29 @@ async function init() {
     
   });
 
+    let pedidos = $("#pedidos-menu");
+    let max_drag_pedidos = -($("#pedidos-menu > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
+    pedidos.css("top", BAR_SIZE);
+    pedidos.draggable({
+        axis: "y",
+        scroll: false,
+        position: 'unset',
+        cancel: false,
+        drag: function (event, ui) {
+            if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+            if (ui.position.top < max_drag_pedidos) ui.position.top = max_drag_pedidos;
+        },
+        stop: function (event, ui) {
+            $(event.originalEvent.target).one('click', function (e) {
+                e.stopImmediatePropagation();
+            });
+        }
+
+    });
+
     let comidatcheca = $("#tcheca-drag");
     let max_drag_tcheca = -($("#tcheca-drag > button").length * 90 - 206.47*0.69);
-    comidatcheca.css("top", BAR_SIZE);
+    comidatcheca.css("top", 0);
     comidatcheca.draggable({
         axis: "y",
         scroll: false,
@@ -355,7 +377,7 @@ async function init() {
 
     let comidaturca = $("#turca-drag");
     let max_drag_turca = -($("#turca-drag > button").length * 90 - 206.47*0.69);
-    comidaturca.css("top", BAR_SIZE);
+    comidaturca.css("top", 0);
     comidaturca.draggable({
         axis: "y",
         scroll: false,
@@ -364,6 +386,26 @@ async function init() {
         drag: function (event, ui) {
             if (ui.position.top > 0) ui.position.top = 0;
             if (ui.position.top < max_drag_turca) ui.position.top = max_drag_turca;
+        },
+        stop: function (event, ui) {
+            $(event.originalEvent.target).one('click', function (e) {
+                e.stopImmediatePropagation();
+            });
+        }
+
+    });
+
+    let bebidasdrag = $("#bebidas-drag");
+    let max_drag_bebidasdrag = -($("#bebidas-drag > button").length * 90 - 206.47 * 0.69);
+    bebidasdrag.css("top", 0);
+    bebidasdrag.draggable({
+        axis: "y",
+        scroll: false,
+        position: 'unset',
+        cancel: false,
+        drag: function (event, ui) {
+            if (ui.position.top > 0) ui.position.top = 0;
+            if (ui.position.top < max_drag_bebidasdrag) ui.position.top = max_drag_bebidasdrag;
         },
         stop: function (event, ui) {
             $(event.originalEvent.target).one('click', function (e) {
@@ -448,68 +490,45 @@ async function init() {
     changeScreen($("#pedidos"), $("#tcheca"));
   });
 
-  /*$("#plusic11").click(function () {
-      updatePriceUnit(1, 1, 1);
-  });
-  $("#minusic11").click(function () {
-      updatePriceUnit(0, 1, 1);
-  });
-
-    $("#plusic21").click(function () {
-        updatePriceUnit(1, 2, 1);
+    $("#bebidasbt").click(function () {
+        changeScreen($("#pedidos"), $("#bebidas"));
     });
-    $("#minusic21").click(function () {
-        updatePriceUnit(0, 2, 1);
-    });
-
-    $("#plusic31").click(function () {
-        updatePriceUnit(1, 3, 1);
-    });
-    $("#minusic31").click(function () {
-        updatePriceUnit(0, 3, 1);
-    });
-
-    $("#plusic41").click(function () {
-        updatePriceUnit(1, 4, 1);
-    });
-    $("#minusic41").click(function () {
-        updatePriceUnit(0, 4, 1);
-    });
-
-    $("#plusic12").click(function () {
-        updatePriceUnit(1, 1, 2);
-    });
-    $("#minusic12").click(function () {
-        updatePriceUnit(0, 1, 2);
-    });
-
-    $("#plusic22").click(function () {
-        updatePriceUnit(1, 2, 2);
-    });
-    $("#minusic22").click(function () {
-        updatePriceUnit(0, 2, 2);
-    });
-
-    $("#plusic32").click(function () {
-        updatePriceUnit(1, 3, 2);
-    });
-    $("#minusic32").click(function () {
-        updatePriceUnit(0, 3, 2);
-    });
-
-    $("#plusic42").click(function () {
-        updatePriceUnit(1, 4, 2);
-    });
-    $("#minusic42").click(function () {
-        updatePriceUnit(0, 4, 2);
-    });*/
 
     $(".plusic").click(function () {
-        updatePriceUnit(1, $(this).attr("id")[$(this).attr("id").length - 2], $(this).attr("id")[$(this).attr("id").length-1] );
+        updatePriceUnit(1, $(this).attr("id")[$(this).attr("id").length - 2], $(this).attr("id")[$(this).attr("id").length-1], $(this).parent().attr("food") );
     });
     $(".minusic").click(function () {
-        updatePriceUnit(0, $(this).attr("id")[$(this).attr("id").length - 2], $(this).attr("id")[$(this).attr("id").length - 1] );
+        updatePriceUnit(0, $(this).attr("id")[$(this).attr("id").length - 2], $(this).attr("id")[$(this).attr("id").length - 1], $(this).parent().attr("food") );
     });
+
+    $(".bt-ped").click(function () {
+        changeScreen($(this).parent().parent(), $("#check-pedido"));
+    });
+
+    $("#bt-cancel").click(function () {
+        if ($("#pedido-drag > span").length > 1) {
+            $("#pedido-drag").empty();
+            resetShopCart();
+            createPopup(6);
+            notifyPopup();
+        }
+        else {
+            createPopup(5);
+            notifyPopup();
+        }
+    });
+    $("#bt-comfirm").click(function () {
+        if ($("#pedido-drag > span").length > 1) {
+            changeScreen($("#check-pedido"), $("#pagar-pedido"));
+            $("#pedido-drag").empty();
+            resetShopCart();
+        }
+        else {
+            createPopup(5);
+            notifyPopup();
+        }
+    });
+
   // $("#lockscreen").click(function () {
   //   if ($("#lockscreen").position.top != 0){
   //     $("#lockscreen").animate({
@@ -626,7 +645,10 @@ var title_list = {
   "mapa-opcoes3": "Comida",
   "pedidos":"Pedidos",
   "tcheca": "Tcheca",
-  "turca":"Turca"
+  "turca": "Turca",
+  "check-pedido": "Pedido",
+  "pagar-pedido": "Pagar",
+  "bebidas": "Bebidas"
 };
 
 var notificationTitle = "";
@@ -637,6 +659,8 @@ var popup_list = {
   2: ["", "Remover"],
   3: ["Função nao implementada", ""],
   4: ["Alerta removido", ""],
+  5: ["O seu pedido está vazio.", ""],
+  6: ["Cancelou o seu pedido.", ""]
 }
 
 async function createBar(screen) {
@@ -1056,9 +1080,22 @@ function mapZoomChange(z){
   map_zoom=z;
 }
 
-function updatePriceUnit(flag, n, m) {
+function resetShopCart() {
+    for (let m = 1; m <= 2; m++) {
+        for (let n = 1; n <= 4; n++) {
+            let span1 = $("#t1" + n + "" + m);
+            let span2 = $("#t2" + n + "" + m);
+
+            span1.text(0);
+            span2.text("");
+        }
+    }
+}
+
+function updatePriceUnit(flag, n, m, id) {
     let span1 = $("#t1" + n +""+m);
-    let span2 = $("#t2" + n +""+m);
+    let span2 = $("#t2" + n + "" + m);
+    let checkdiv = $("#pedido-drag");
 
     let unit = parseInt(span1.text());
     let price = parseFloat(span1.attr("price"));
@@ -1074,8 +1111,59 @@ function updatePriceUnit(flag, n, m) {
 
     let price2dec = price.toFixed(2);
 
+    if (unit == 1 && flag == 1) {
+        spanscriados++;
+        if (spanscriados > 8) spansnopedido++;
+        let spanadd = document.createElement("span");
+        let spanadd1 = document.createElement("span");
+        let br = document.createElement("br");
+        br.id = id + "br";
+        spanadd.id = id;
+        spanadd.textContent = unit + "x " + id;
+        spanadd.style = "position: absolute; left: 2%;"
+        spanadd1.id = id + 1;
+        spanadd1.textContent = price2dec + "€";
+        spanadd1.style = "position: absolute; right: 2%;"
+        checkdiv.append(spanadd);
+        checkdiv.append(spanadd1);
+        checkdiv.append(br);
+    }
+    else if (unit == 0 && flag == 0) {
+        spanscriados--;
+        if (spansnopedido > 8) spansnopedido--;
+        $("#" + id).remove();
+        $("#" + id + 1).remove();
+        $("#" + id +"br").remove();
+    }
+    else {
+        let spanupdate = $("#" + id);
+        let spanupdate1 = $("#" + id + 1);
+        spanupdate.text(unit + "x " + id);
+        spanupdate1.text(price2dec + "€");
+    }
+
     span1.text(unit);
     span2.text(price2dec + "€");
+
+    let pedidocheck = $("#pedido-drag");
+    let max_drag_pedidocheck = -(spansnopedido * 25 - 206.47 * 0.69);
+    pedidocheck.css("top", 0);
+    pedidocheck.draggable({
+        axis: "y",
+        scroll: false,
+        position: 'unset',
+        cancel: false,
+        drag: function (event, ui) {
+            if (ui.position.top > 0) ui.position.top = 0;
+            if (ui.position.top < max_drag_pedidocheck) ui.position.top = max_drag_pedidocheck;
+        },
+        stop: function (event, ui) {
+            $(event.originalEvent.target).one('click', function (e) {
+                e.stopImmediatePropagation();
+            });
+        }
+
+    });
 
 }
 
