@@ -18,6 +18,7 @@ var start;
 var currentAlert = undefined;
 var spansnopedido = 8;
 var spanscriados = 0;
+var precototal = 0;
 
 var map_zoom = 2;
 var map_zoom_last =1;
@@ -495,10 +496,12 @@ async function init() {
     });
 
     $(".plusic").click(function () {
-        updatePriceUnit(1, $(this).attr("id")[$(this).attr("id").length - 2], $(this).attr("id")[$(this).attr("id").length-1], $(this).parent().attr("food") );
+        updatePriceUnit(1, $(this).attr("id")[$(this).attr("id").length - 2], $(this).attr("id")[$(this).attr("id").length - 1], $(this).parent().attr("food"));
+        calculateTotal();
     });
     $(".minusic").click(function () {
-        updatePriceUnit(0, $(this).attr("id")[$(this).attr("id").length - 2], $(this).attr("id")[$(this).attr("id").length - 1], $(this).parent().attr("food") );
+        updatePriceUnit(0, $(this).attr("id")[$(this).attr("id").length - 2], $(this).attr("id")[$(this).attr("id").length - 1], $(this).parent().attr("food"));
+        calculateTotal();
     });
 
     $(".bt-ped").click(function () {
@@ -509,6 +512,7 @@ async function init() {
         if ($("#pedido-drag > span").length > 1) {
             $("#pedido-drag").empty();
             resetShopCart();
+            calculateTotal();
             createPopup(6);
             notifyPopup();
         }
@@ -522,6 +526,7 @@ async function init() {
             changeScreen($("#check-pedido"), $("#pagar-pedido"));
             $("#pedido-drag").empty();
             resetShopCart();
+            calculateTotal();
         }
         else {
             createPopup(5);
@@ -1092,6 +1097,21 @@ function resetShopCart() {
     }
 }
 
+function calculateTotal() {
+    let span2;
+    $("#totalapagar").remove();
+    $("#brtotal").remove();
+    let spantotal = document.createElement("span");
+    let brtotal = document.createElement("br");
+    brtotal.id = "brtotal";
+    spantotal.id = "totalapagar";
+    spantotal.style = "position: absolute; right: 2%;"
+    spantotal.textContent = "Total: " + precototal.toFixed(2) + "€";
+    let checkdiv = $("#pedido-drag");
+    checkdiv.append(spantotal)
+    checkdiv.append(brtotal);
+}
+
 function updatePriceUnit(flag, n, m, id) {
     let span1 = $("#t1" + n +""+m);
     let span2 = $("#t2" + n + "" + m);
@@ -1102,9 +1122,11 @@ function updatePriceUnit(flag, n, m, id) {
 
     if (flag == 1 && unit<9) {
         unit++;
+        precototal += price;
     }
     else if(flag == 0 && unit >=1){
         unit--;
+        precototal -= price;
     }
 
     price = unit * price;
