@@ -896,12 +896,14 @@
 }
 
 #pedido-pagar3 {
+		position: absolute;
     background-color: #4CAF50;
-    bottom: 1.5%;
+    bottom: 0%;
     height: 13%;
     width: 100%;
     text-align: center;
     font-size: 1.4em;
+		color: white;
 }
 
 #bebidas-menu {
