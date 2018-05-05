@@ -482,7 +482,7 @@ async function init() {
             changeScreen($("#check-pedido"), $("#pagar-pedido"));
             $("#pedido-drag").empty();
             resetShopCart();
-            precototal = 0;
+            precototal = 0.00;
         }
         else {
             createPopup(5);
@@ -1056,7 +1056,7 @@ function resetShopCart() {
             let span2 = $("#t2" + n + "" + m);
 
             span1.text(0);
-            span2.text("");
+            span2.text("0.00€");
         }
     }
 }
