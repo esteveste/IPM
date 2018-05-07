@@ -471,10 +471,12 @@ async function init() {
             precototal = 0;
             createPopup(6);
             notifyPopup();
+            changeScreen($("#check-pedido"), $("#pedidos"));
         }
         else {
             createPopup(5);
             notifyPopup();
+            changeScreen($("#check-pedido"), $("#pedidos"));
         }
     });
     $("#bt-comfirm").click(function () {
@@ -488,6 +490,28 @@ async function init() {
             createPopup(5);
             notifyPopup();
         }
+    });
+
+    $("#imgpagar").click(function () {
+      var idtime;
+      createPopup(7);
+      notifyPopup();
+      $("#imgpagar").attr("src", "resources/checked.png");
+      $("#imgpagar").attr("id", "imgpagar1");
+      $("#pedido-pagar3").text("Pagamento Efetuado");
+      idtime = setTimeout( function () {
+        changeScreen($("#pagar-pedido"), $("#pedidos"));
+        $("#pedido-pagar3").text("Faça scan para pagar");
+        $("#imgpagar1").attr("src", "resources/qrfake.png");
+        $("#imgpagar1").attr("id", "imgpagar");
+      }, 10000);
+      /*$("#imgpagar1").click(function () {
+        clearTimeout(idtime);
+        changeScreen($("#pagar-pedido"), $("#pedidos"), );
+        $("#pedido-pagar3").text("Faça scan para pagar");
+        $("#imgpagar1").attr("src", "resources/qrfake.png");
+        $("#imgpagar1").attr("id", "imgpagar");
+      });*/
     });
 
   // $("#lockscreen").click(function () {
@@ -621,7 +645,8 @@ var popup_list = {
   3: ["Função nao implementada", ""],
   4: ["Alerta removido", ""],
   5: ["O seu pedido está vazio.", ""],
-  6: ["Cancelou o seu pedido.", ""]
+  6: ["Cancelou o seu pedido.", ""],
+  7: ["O seu pedido foi efetuado com sucesso.", ""]
 }
 
 async function createBar(screen) {
