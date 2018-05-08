@@ -493,28 +493,32 @@ async function init() {
         }
     });
 
-    $("#imgpagar").click(function () {
+    $("#imgpagar").click(clickOnQRCode);
+    async function clickOnQRCode() {
       var idtime;
+      $("#imgpagar").attr("src", "resources/load.gif");
+      await sleep(1000);
       createPopup(7);
       notifyPopup();
       $("#imgpagar").attr("src", "resources/checked.png");
       $("#imgpagar").attr("id", "imgpagar1");
       $("#pedido-pagar3").text("Pagamento Efetuado");
-      idtime = setTimeout( function () {
+      idtime = setTimeout( async function () {
         changeScreen($("#pagar-pedido"), $("#pedidos"));
+        await sleep(1000);
         $("#pedido-pagar3").text("Faça scan para pagar");
         $("#imgpagar1").attr("src", "resources/qrfake.png");
         $("#imgpagar1").attr("id", "imgpagar");
-      }, 10000);
-      /*$("#imgpagar1").click(function () {
-        clearTimeout(idtime);
-        changeScreen($("#pagar-pedido"), $("#pedidos"), );
-        $("#pedido-pagar3").text("Faça scan para pagar");
-        $("#imgpagar1").attr("src", "resources/qrfake.png");
-        $("#imgpagar1").attr("id", "imgpagar");
-      });*/
-    });
-
+      }, 3000);
+      // $("#imgpagar1").click(function () {
+      //   clearTimeout(idtime);
+      //   changeScreen($("#pagar-pedido"), $("#pedidos"), );
+      //   $("#pedido-pagar3").text("Faça scan para pagar");
+      //   $("#imgpagar1").attr("src", "resources/qrfake.png");
+      //   $("#imgpagar1").attr("id", "imgpagar");
+      //   $("#imgpagar").click(clickOnQRCode);
+      // });
+    }
   // $("#lockscreen").click(function () {
   //   if ($("#lockscreen").position.top != 0){
   //     $("#lockscreen").animate({
