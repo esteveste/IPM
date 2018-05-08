@@ -35,6 +35,9 @@ async function init() {
   mapZoomChange(2);
   mapZoomChange(1);
   mapZoomChange(2);
+
+  $("#inner-map").css("left","-269px");
+  $("#inner-map").css("top","-29px");
   var idletimer = setInterval(detectIdleTime, 2000);
 
   $(document).mousemove(function (e) {
@@ -423,6 +426,8 @@ async function init() {
     changeScreen($("#mapa-opcoes1"), $("#mapa"));
     changeImage($(this).attr("id"));
     createMapBar($(this).attr("id"));
+    $("#inner-map").css("left",`-${269*map_zoom_last}px`);
+    $("#inner-map").css("top",`-${29*map_zoom_last}px`);
     // remove Map options back posibility
     appHistory.splice(-3);
   });
@@ -430,12 +435,16 @@ async function init() {
     changeScreen($("#mapa-opcoes2"), $("#mapa"));
     changeImage($(this).attr("id"));
     createMapBar($(this).attr("id"));
+    $("#inner-map").css("left",`-${269*map_zoom_last}px`);
+    $("#inner-map").css("top",`-${29*map_zoom_last}px`);
     appHistory.splice(-3);
   });
   $("#options-mapa3 > button").click(function () {
     changeScreen($("#mapa-opcoes3"), $("#mapa"));
     changeImage($(this).attr("id"));
     createMapBar($(this).attr("id"));
+    $("#inner-map").css("left",`-${269*map_zoom_last}px`);
+    $("#inner-map").css("top",`-${29*map_zoom_last}px`);
     appHistory.splice(-3);
   });
   $("#menu-pedidos").click(function () {
