@@ -505,7 +505,9 @@ async function init() {
       $("#pedido-pagar3").text("Pagamento Efetuado");
       idtime = setTimeout( async function () {
         changeScreen($("#pagar-pedido"), $("#pedidos"));
+        appHistory.splice(-4);
         await sleep(1000);
+
         $("#pedido-pagar3").text("Faça scan para pagar");
         $("#imgpagar1").attr("src", "resources/qrfake.png");
         $("#imgpagar1").attr("id", "imgpagar");
