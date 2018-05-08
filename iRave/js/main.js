@@ -371,7 +371,7 @@ async function init() {
   $("#mapa").on('mousedown', function( e ) {
       start = new Date().getTime();
       var left = ((e.pageX - $("#mapa").offset().left)/145)*100 - (60/145)*50;
-      var top =  ((e.pageY - $("#mapa").offset().top)/178.333)*100 - (60/178.333)*50;
+      var top =  ((e.pageY - $("#mapa").offset().top)/178.333)*100 - (60/178.333)*50/2;
       $("#s1").attr("style", `z-index: 200; -webkit-animation: sk-scaleout 1.0s ease-in-out; animation: sk-scaleout 1.0s ease-in-out; margin-left: ${left}%; margin-top: ${top}%; `);
   } );
 
