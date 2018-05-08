@@ -33,7 +33,8 @@ async function init() {
   lockArrow();
   updateTime();
   mapZoomChange(2);
-
+  mapZoomChange(1);
+  mapZoomChange(2);
   var idletimer = setInterval(detectIdleTime, 2000);
 
   $(document).mousemove(function (e) {
