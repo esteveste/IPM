@@ -29,7 +29,7 @@ var map_top=(MAP_HEIGHT / map_zoom)-SCREEN_SIZE;
 
 async function init() {
   console.log("lets go");
-  bootAnimation(DEBUG);
+  bootAnimation(false);
   lockArrow();
   updateTime();
   mapZoomChange(2);
@@ -932,10 +932,10 @@ async function bootAnimation(debug) {
 
 
   boot_anim.fadeTo("slow", 1);
-  await sleep(2000);
+  await sleep(1000);
   boot_title.fadeTo(2000, 1);
   // boot_title.css("opacity",1);
-  await sleep(4000);
+  await sleep(2000);
   boot_title.fadeTo("slow", 0);
   boot_anim.fadeTo("slow", 0, () => {
     boot_anim.addClass("disabled");
