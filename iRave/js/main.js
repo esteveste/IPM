@@ -643,7 +643,7 @@ var title_list = {
   "options-mapa":"Navegar",
   "mapa-opcoes1":"Palcos",
   "mapa-opcoes2":"WC",
-  "mapa-opcoes3": "Comida",
+  "mapa-opcoes3": "Comer",
   "pedidos":"Pedidos",
   "tcheca": "Tcheca",
   "turca": "Turca",
@@ -717,8 +717,8 @@ var mapBarTexts = {
   "p4":"Palco 4 | 7mins",
   "w1":"WC 1 | 5mins",
   "w2":"WC 2 | 3mins",
-  "c1":"Comida 1 | 8mins",
-  "c2":"Comida 2 | 3mins"
+  "c1":"Alibaba | 1min",
+  "c2":"Tcheco | 3mins"
 }
 
 async function createMapBar(destino){
