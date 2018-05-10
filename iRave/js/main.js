@@ -509,6 +509,11 @@ async function init() {
       await sleep(1000);
       createPopup(7);
       notifyPopup();
+      setTimeout(function () {
+          popup_list[8][0] = "O numero do seu pedido e o " + Math.floor((Math.random() * 100) + 1).toString();
+          createPopup(8);
+          notifyPopup();
+      }, 4100);
       $("#imgpagar").attr("src", "resources/checked.png");
       $("#imgpagar").attr("id", "imgpagar1");
       $("#pedido-pagar3").text("Pagamento Efetuado");
@@ -662,7 +667,8 @@ var popup_list = {
   4: ["Alerta removido", ""],
   5: ["O seu pedido está vazio.", ""],
   6: ["Cancelou o seu pedido.", ""],
-  7: ["O seu pedido foi efetuado com sucesso.", ""]
+  7: ["O seu pedido foi efetuado com sucesso.", ""],
+  8: ["", ""]
 }
 
 async function createBar(screen) {
