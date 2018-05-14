@@ -662,7 +662,7 @@
     width: 100%;
 }
 
-#pedidos-menu > button {
+#pedidos-drag > button {
     background-color: #4CAF50;
     width: 94%;
     left: 3%;
@@ -718,6 +718,15 @@
 }
 
 #turca-drag > button {
+    background-color: #4CAF50;
+    width: 94%;
+    left: 3%;
+    margin: 3% auto;
+    height: 70px;
+    user-select: none;
+}
+
+#pedidos-drag > button {
     background-color: #4CAF50;
     width: 94%;
     left: 3%;
@@ -800,6 +809,15 @@
     background-color: #4CAF50;
 }
 
+#bt-pedidoslist {
+    position: absolute;
+    right: 2%;
+    left: 2%;
+    bottom: 2%;
+    width: 96%;
+    background-color: #4CAF50;
+}
+
 #tcheca-drag {
     top: 0;
     height: 300%;
@@ -839,6 +857,13 @@
     line-height: 50%;
 }
 
+.bt-pedlist {
+    color: white;
+    height: 13%;
+    line-height: 50%;
+}
+
+
 .bt-cancel {
     color: white;
     height: 13%;
@@ -873,6 +898,13 @@
 }
 
 #check-menu {
+    background-color: var(--w4);
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#pedido-list-menu {
     background-color: var(--w4);
     margin: 0px;
     height: 100%;

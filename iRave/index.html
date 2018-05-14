@@ -210,45 +210,59 @@
               </div>
 
               <div id="pedidos" class="app overflow">
-                  <div id="pedidos-menu" class="app" style="top: 14%;">
-                      <button id="comida1" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                          <div class="mdl-button__ripple-container">
-                              <div class="bt-titlemap">
-                                  Alibaba
-                              </div>
-                              <div class="bt-textmap">
-                                  <br>
-                                  <span>Cozinha: Turca</span><br><br>
-                                  <span>Tempo espera: 2 mins</span>
-                              </div>
-                          </div>
-                      </button>
-                      <button id="comida2" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                          <div class="mdl-button__ripple-container">
-                              <div class="bt-titlemap">
-                                  Tcheco
-                              </div>
-                              <div class="bt-textmap">
-                                  <br>
-                                  <span>Cozinha: Tcheca</span><br><br>
-                                  <span>Tempo espera: 5 mins</span>
-                              </div>
-                          </div>
-                      </button>
-                      <button id="bebidasbt" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
-                          <div class="mdl-button__ripple-container">
-                              <div class="bt-titlemap">
-                                  Bebidas
-                              </div>
-                              <div class="bt-textmap">
-                                  <br>
-                                  <span>Cerveja e mais</span><br><br>
-                                  <span>Tempo espera: 3 mins</span>
-                              </div>
-                          </div>
-                      </button>
-                  </div>
+                  <div id="pedidos-menu" class="app">
+                    <div id="pedidos-overflow" class="overflow dragDiv">
+                      <div id="pedidos-drag" class="dragDiv">
+                        <button id="comida1" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                            <div class="mdl-button__ripple-container">
+                                <div class="bt-titlemap">
+                                    Alibaba
+                                </div>
+                                <div class="bt-textmap">
+                                    <br>
+                                    <span>Cozinha: Turca</span><br><br>
+                                    <span>Tempo espera: 2 mins</span>
+                                </div>
+                            </div>
+                        </button>
+                        <button id="comida2" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                            <div class="mdl-button__ripple-container">
+                                <div class="bt-titlemap">
+                                    Tcheco
+                                </div>
+                                <div class="bt-textmap">
+                                    <br>
+                                    <span>Cozinha: Tcheca</span><br><br>
+                                    <span>Tempo espera: 5 mins</span>
+                                </div>
+                            </div>
+                        </button>
+                        <button id="bebidasbt" class="mdl-button--raised bt-mapa no-hover2 button-style mdl-button mdl-js-button mdl-js-ripple-effect">
+                            <div class="mdl-button__ripple-container">
+                                <div class="bt-titlemap">
+                                    Bebidas
+                                </div>
+                                <div class="bt-textmap">
+                                    <br>
+                                    <span>Cerveja e mais</span><br><br>
+                                    <span>Tempo espera: 3 mins</span>
+                                </div>
+                            </div>
+                        </button>
+                      </div>
+                    </div>
+                    <button id="bt-pedidoslist" class="mdl-button--raised no-hover3 bt-pedlist mdl-button mdl-js-button mdl-js-ripple-effect">
+                        <i class="material-icons">list</i>
+                    </button>
               </div>
+            </div>
+
+            <div id="pedidos-list" class="app overflow">
+              <div id="pedido-list-menu">
+                <div class="fixbar"></div>
+
+              </div>
+            </div>
 
               <div id="check-pedido" class="app overflow">
                   <div id="check-menu">

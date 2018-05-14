@@ -292,16 +292,16 @@ async function init() {
 
   });
 
-    let pedidos = $("#pedidos-menu");
-    let max_drag_pedidos = -($("#pedidos-menu > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
-    pedidos.css("top", BAR_SIZE);
+    let pedidos = $("#pedidos-drag");
+    let max_drag_pedidos = -($("#pedidos-drag > button").length * 90 - 206.47*0.69);
+    pedidos.css("top", 0);
     pedidos.draggable({
         axis: "y",
         scroll: false,
         position: 'unset',
         cancel: false,
         drag: function (event, ui) {
-            if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+            if (ui.position.top > BAR_SIZE) ui.position.top = 0;
             if (ui.position.top < max_drag_pedidos) ui.position.top = max_drag_pedidos;
         },
         stop: function (event, ui) {
@@ -472,6 +472,10 @@ async function init() {
 
     $(".bt-ped").click(function () {
         changeScreen($(this).parent().parent(), $("#check-pedido"));
+    });
+
+    $(".bt-pedlist").click(function () {
+        changeScreen($("#pedidos"), $("#pedidos-list"));
     });
 
     $("#bt-cancel").click(function () {
@@ -654,7 +658,8 @@ var title_list = {
   "turca": "Turca",
   "check-pedido": "Pedido",
   "pagar-pedido": "Pagar",
-  "bebidas": "Bebidas"
+  "bebidas": "Bebidas",
+  "pedidos-list": "Lista"
 };
 
 var notificationTitle = "";
