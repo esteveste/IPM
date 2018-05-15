@@ -1,4 +1,7 @@
-@import "watch.css";
+@import "3rd_party/watch.css";
+@import "3rd_party/dotNav.css";
+@import "3rd_party/jquery-ui.css";
+@import "3rd_party/material.indigo-pink.min.css";
 @import "ecra.css";
 
 /* latin font */
