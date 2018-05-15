@@ -24,12 +24,12 @@ var map_zoom = 2;
 var map_zoom_last =1;
 var map_left =  (MAP_WIDTH / map_zoom) - SCREEN_SIZE;
 var map_top=(MAP_HEIGHT / map_zoom)-SCREEN_SIZE;
-
+var pay_list = [];
 
 
 async function init() {
   console.log("lets go");
-  bootAnimation(false);
+  bootAnimation(DEBUG);
   lockArrow();
   updateTime();
   mapZoomChange(2);
@@ -496,9 +496,6 @@ async function init() {
     $("#bt-comfirm").click(function () {
         if ($("#pedido-drag > span").length > 1) {
             changeScreen($("#check-pedido"), $("#pagar-pedido"));
-            $("#pedido-drag").empty();
-            resetShopCart();
-            precototal = 0.00;
         }
         else {
             createPopup(5);
@@ -508,13 +505,26 @@ async function init() {
 
     $("#imgpagar").click(clickOnQRCode);
     async function clickOnQRCode() {
+
+      $("#back-bt").addClass("no-touch");
+      $("#crown-button").addClass("no-touch");
+
+      let pedido_nr =Math.floor((Math.random() * 100) + 1);
+      let pedido_list = document.getElementById("pedido-drag").innerHTML;
+      let preco_total = precototal;
+      pay_list.push([pedido_nr,pedido_list,precototal]);
+
+      resetShopCart();
+      precototal = 0.00;
+      $("#pedido-drag").empty();
+
       var idtime;
       $("#imgpagar").attr("src", "resources/load.gif");
       await sleep(1000);
       createPopup(7);
       notifyPopup();
       setTimeout(function () {
-          popup_list[8][0] = "O numero do seu pedido e o " + Math.floor((Math.random() * 100) + 1).toString();
+          popup_list[8][0] = "O numero do seu pedido e o " + pedido_nr.toString();
           createPopup(8);
           notifyPopup();
       }, 4100);
@@ -526,8 +536,8 @@ async function init() {
         appHistory.splice(-4);
         await sleep(1000);
 
-        $("#pedido-pagar3").text("Faça scan para pagar");
-        $("#imgpagar1").attr("src", "resources/qrfake.png");
+        $("#pedido-pagar3").text("Aproxime o cartão");
+        $("#imgpagar1").attr("src", "resources/cardfake.png");
         $("#imgpagar1").attr("id", "imgpagar");
       }, 3000);
       // $("#imgpagar1").click(function () {
@@ -782,6 +792,12 @@ async function notifyPopup() {
   }, 4000);
 }
 
+async function creatPayList(){
+  let pedido_list = $("#pedidos-list");
+
+}
+
+
 async function createDiv(el, flag) {
   let band_screen = $("#band");
   band_screen.attr("band",el.attr("id"));
@@ -982,6 +998,16 @@ async function lockArrow() {
 
 async function changeScreen(atual, to, addHistory = true) {
 
+  if(atual==undefined){
+    // $("#back-bt").addClass("no-touch");
+    // $("#crown-button").addClass("no-touch");
+    // $("#menu-overflow").removeClass("disabled");
+    // $("#menu-overflow").css("height", "76%");
+    // $("#menu-overflow").css("width", "72%");
+    // $("#menu-overflow").css("opacity", 1);
+    // $("#menu-overflow").css("z-index", 20);
+    return;
+  }
   // if the to is equal to from we break
   if (atual.is(to) || (addHistory && appHistory[appHistory.length - 1] != undefined &&
       appHistory[appHistory.length - 1].is(to))) {
