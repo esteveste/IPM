@@ -503,6 +503,7 @@ async function init() {
 
       $("#back-bt").addClass("no-touch");
       $("#crown-button").addClass("no-touch");
+      $("#bar-title").addClass("no-touch");
       $("#imgpagar").addClass("no-touch");
       let pedido_nr =Math.floor((Math.random() * 100) + 1);
       let pedido_list = document.getElementById("pedido-overflow").innerHTML;
@@ -543,6 +544,7 @@ async function init() {
 
         $("#back-bt").addClass("no-touch");
         $("#crown-button").addClass("no-touch");
+        $("#bar-title").addClass("no-touch");
         $("#imglift").addClass("no-touch");
 
         let index = atual_Pedido_Lift;

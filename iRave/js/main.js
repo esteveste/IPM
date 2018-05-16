@@ -435,6 +435,7 @@ async function changeScreen(atual, to, addHistory = true) {
   atual.addClass("transition");
   to.addClass("transition");
 
+  $("#bar-title").addClass("no-touch");
   $("#back-bt").addClass("no-touch");
   $("#crown-button").addClass("no-touch");
   atual.addClass("no-touch");
@@ -457,6 +458,7 @@ async function changeScreen(atual, to, addHistory = true) {
 
   }
   setTimeout(() => {
+    $("#bar-title").removeClass("no-touch");
     $("#back-bt").removeClass("no-touch");
     $("#crown-button").removeClass("no-touch");
     atual.addClass("disabled");
