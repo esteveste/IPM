@@ -530,8 +530,8 @@ async function init() {
         appHistory.splice(-4);
         await sleep(1000);
 
-        $("#pedido-pagar3").text("Aproxime o cartão");
-        $("#imgpagar1").attr("src", "resources/cardfake.png");
+        $("#pedido-pagar3").text("Faça scan para pagar");
+        $("#imgpagar1").attr("src", "resources/qrfake.png");
         $("#imgpagar1").removeClass("no-touch");
         $("#imgpagar1").attr("id", "imgpagar");
       }, 3000);
