@@ -225,6 +225,27 @@ async function init() {
 
   });
 
+  let pedido_lista = $("#pedido-list-menu");
+  max_pedido = -($("#pedido-list-menu > button").length * 90 - 206.47) - BAR_SIZE;
+  max_pedido = (max_pedido < 175) ? 175 :  max_pedido;
+  pedido_lista.css("top", BAR_SIZE);
+  pedido_lista.draggable({
+    axis: "y",
+    scroll: false,
+    position: 'unset',
+    cancel: false,
+    drag: function (event, ui) {
+      if (ui.position.top > BAR_SIZE) ui.position.top = BAR_SIZE;
+      if (ui.position.top < -max_pedido) ui.position.top = -max_pedido;
+    },
+    stop: function (event, ui) {
+      $(event.originalEvent.target).one('click', function (e) {
+        e.stopImmediatePropagation();
+      });
+    }
+
+  });
+
   let options1 = $("#options-mapa1");
   let max_drag_opcoes1 = -($("#options-mapa1 > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
   options1.css("top", BAR_SIZE);
@@ -448,6 +469,7 @@ async function init() {
     });
 
     $(".bt-pedlist").click(function () {
+        creatPayList();
         changeScreen($("#pedidos"), $("#pedidos-list"));
     });
 
@@ -481,12 +503,11 @@ async function init() {
 
       $("#back-bt").addClass("no-touch");
       $("#crown-button").addClass("no-touch");
-
+      $("#imgpagar").addClass("no-touch");
       let pedido_nr =Math.floor((Math.random() * 100) + 1);
-      let pedido_list = document.getElementById("pedido-drag").innerHTML;
-      let preco_total = precototal;
-      pay_list.push([pedido_nr,pedido_list,precototal]);
-
+      let pedido_list = document.getElementById("pedido-overflow").innerHTML;
+      let preco_total = precototal.toFixed(2);
+      pay_list.push([pedido_nr,pedido_list,preco_total]);
       resetShopCart();
       precototal = 0.00;
       $("#pedido-drag").empty();
@@ -511,8 +532,45 @@ async function init() {
 
         $("#pedido-pagar3").text("Aproxime o cartão");
         $("#imgpagar1").attr("src", "resources/cardfake.png");
+        $("#imgpagar1").removeClass("no-touch");
         $("#imgpagar1").attr("id", "imgpagar");
       }, 3000);
+    }
+
+      $("#imglift").click(clickOnPickUpFood);
+
+      async function clickOnPickUpFood() {
+
+        $("#back-bt").addClass("no-touch");
+        $("#crown-button").addClass("no-touch");
+        $("#imglift").addClass("no-touch");
+
+        let index = atual_Pedido_Lift;
+        if (index > -1) {
+          pay_list.splice(index, 1);
+        }
+        atual_Pedido_Lift=-1;
+
+        let idtime;
+        $("#imglift").attr("src", "resources/load.gif");
+        await sleep(1000);
+        // createPopup(9);
+        // notifyPopup();
+        $("#imglift").attr("src", "resources/checked.png");
+        $("#imglift").attr("id", "imglift1");
+        $("#pedido-pagar3-d").text("Pedido Confirmado");
+        idtime = setTimeout( async function () {
+          creatPayList()
+          changeScreen($("#pagar-pedido-d"),$("#pedidos-list"));
+          appHistory.splice(-4);
+          await sleep(1000);
+
+          $("#pedido-pagar3-d").text("Aproxime o terminal");
+          $("#imglift1").attr("src", "resources/terminal.png");
+          $("#imglift1").removeClass("no-touch");
+          $("#imglift1").attr("id", "imglift");
+          $("#imglift1").click(clickOnQRCode);
+        }, 3000);
       // $("#imgpagar1").click(function () {
       //   clearTimeout(idtime);
       //   changeScreen($("#pagar-pedido"), $("#pedidos"), );
@@ -533,5 +591,9 @@ async function init() {
 
   $("#bar-title").text("Menu");
 
-
+  $("#bt-pedidos-desc").click(function(){
+    atual_Pedido_Lift= parseInt($(this).attr("pedidos"));
+    console.log(atual_Pedido_Lift);
+    changeScreen($("#ped-description"),$("#pagar-pedido-d"));
+  });
 }

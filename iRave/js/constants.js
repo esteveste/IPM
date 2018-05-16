@@ -24,6 +24,10 @@ var map_zoom_last =1;
 var map_left =  (MAP_WIDTH / map_zoom) - SCREEN_SIZE;
 var map_top=(MAP_HEIGHT / map_zoom)-SCREEN_SIZE;
 var pay_list = [];
+var max_pedido=175;
+var atual_Pedido_Lift=-1;
+
+var varDebug=0;
 
 var band_list = {
   "altj": {
@@ -103,7 +107,9 @@ var title_list = {
   "check-pedido": "Pedido",
   "pagar-pedido": "Pagar",
   "bebidas": "Bebidas",
-  "pedidos-list": "Lista"
+  "pedidos-list": "Lista",
+  "ped-description":"Pedido",
+  "pagar-pedido-d":"Levantar"
 };
 
 var notificationTitle = "";
@@ -117,7 +123,8 @@ var popup_list = {
   5: ["O seu pedido está vazio.", ""],
   6: ["Cancelou o seu pedido.", ""],
   7: ["O seu pedido foi efetuado com sucesso.", ""],
-  8: ["", ""]
+  8: ["", ""],
+  9: ["Pedido confirmado.",""]
 }
 var btImg = {
   "def":"resources/map/map.png",
@@ -129,4 +136,15 @@ var btImg = {
   "w2":"resources/map/Wc2.png",
   "c1":"resources/map/Comida1.png",
   "c2":"resources/map/Comida2.png"
+}
+
+var mapBarTexts = {
+  "p1":"Palco 1 | 2mins",
+  "p2":"Palco 2 | 3mins",
+  "p3":"Palco 3 | 5mins",
+  "p4":"Palco 4 | 7mins",
+  "w1":"WC 1 | 5mins",
+  "w2":"WC 2 | 3mins",
+  "c1":"Alibaba | 1min",
+  "c2":"Tcheco | 3mins"
 }

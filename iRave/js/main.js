@@ -63,16 +63,6 @@ async function createNotification(alert) {
   });
 }
 
-var mapBarTexts = {
-  "p1":"Palco 1 | 2mins",
-  "p2":"Palco 2 | 3mins",
-  "p3":"Palco 3 | 5mins",
-  "p4":"Palco 4 | 7mins",
-  "w1":"WC 1 | 5mins",
-  "w2":"WC 2 | 3mins",
-  "c1":"Alibaba | 1min",
-  "c2":"Tcheco | 3mins"
-}
 
 async function createMapBar(destino){
   let text = $("#map-txt");
@@ -124,8 +114,74 @@ async function notifyPopup() {
   }, 4000);
 }
 
-async function creatPayList(){
-  let pedido_list = $("#pedidos-list");
+function createPedidoDetails(el){
+    console.log(el);
+    let i = parseInt(el);
+    console.log(i);
+    // console.log(el.attr("id"));
+    console.log(pay_list);
+    let pay_el = pay_list[i];
+    // console.warn(pay_el);
+    let pedidos_descricao = $("#pedidos-description");
+    pedidos_descricao.empty();
+    let buttonLevantar=`<button id="bt-pedidoslist" class="mdl-button--raised no-hover3 bt-pedlist mdl-button mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+                        <i class="material-icons">list</i>
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating" style="width: 284.206px; height: 284.206px; transform: translate(-50%, -50%) translate(85px, 23px);"></span></span></button>`
+    pedidos_descricao.append(pay_el[1]+buttonLevantar);
+    let pedidocheck2 = pedidos_descricao.children();
+    pedidocheck2.attr("id","pedido-drag2");
+
+
+    let max_drag_pedidocheck = -(spansnopedido * 25 - 206.47 * 0.69);
+    pedidocheck2.css("top", BAR_SIZE);
+    pedidocheck2.draggable({
+        axis: "y",
+        scroll: false,
+        position: 'unset',
+        cancel: false,
+        drag: function (event, ui) {
+            if (ui.position.top > 0) ui.position.top = BAR_SIZE;
+            if (ui.position.top < max_drag_pedidocheck) ui.position.top = max_drag_pedidocheck;
+        },
+        stop: function (event, ui) {
+            $(event.originalEvent.target).one('click', function (e) {
+                e.stopImmediatePropagation();
+            });
+        }
+    });
+    $("#bt-pedidos-desc").attr("pedidos",i);
+    changeScreen($("#pedidos-list"),$("#ped-description"));
+
+}
+
+function creatPayList(){
+  let pedido_list = $("#pedido-list-menu");
+  pedido_list.empty();
+  for (var i = 0; i < pay_list.length; i++) {
+    let el = pay_list[i];
+    console.log("sup" + el[0]);
+      let button = document.createElement("button");
+      button.id=`${i}pedido`;
+      button.className = "mdl-button--raised no-hover bt-schedule button-style mdl-button mdl-js-button mdl-js-ripple-effect";
+      button.innerHTML = `<div class="mdl-button__ripple-container">
+                              <div class="bt-title">
+                                  ${"Pedido nr: "+el[0]}
+                              </div>
+                              <div class="bt-text">
+                                  <br>
+                                  <span>${`Tempo: ${"2 mins"}`}</span><br><br>
+                                  <span>${"Preço: " +el[2] + "€"}</span>
+                              </div>
+                          </div>`
+      pedido_list.append(button);
+
+      max_pedido = -($("#pedido-list-menu > button").length * BUTTON_SIZE - 206.47) - BAR_SIZE;
+      max_pedido = (max_pedido < 175) ? 175 :  max_pedido;
+
+      $("#pedido-list-menu > button").click(function(){
+        createPedidoDetails($(this).attr("id"));
+      });
+  }
 
 }
 
@@ -558,8 +614,8 @@ function updatePriceUnit(flag, n, m, id) {
                 e.stopImmediatePropagation();
             });
         }
-
     });
+
 
 }
 
