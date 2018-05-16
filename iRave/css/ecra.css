@@ -926,6 +926,10 @@
 
 #pedido-list-menu {
     background-color: var(--w4);
+		/*background-position: top;*/
+		background-repeat: no-repeat;
+		background-size: 100%;
+		background-position-y: -10px;
     margin: 0px;
     height: 100%;
     width: 100%;

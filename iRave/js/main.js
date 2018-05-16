@@ -157,7 +157,8 @@ function createPedidoDetails(el){
 function creatPayList(){
   let pedido_list = $("#pedido-list-menu");
   pedido_list.empty();
-  for (var i = 0; i < pay_list.length; i++) {
+  let i = 0;
+  for (i = 0; i < pay_list.length; i++) {
     let el = pay_list[i];
     console.log("sup" + el[0]);
       let button = document.createElement("button");
@@ -181,6 +182,12 @@ function creatPayList(){
       $("#pedido-list-menu > button").click(function(){
         createPedidoDetails($(this).attr("id"));
       });
+  }
+  if(i==0){
+    $("#pedido-list-menu").css("background-image","url(../resources/checkedpedido.png)");
+    max_pedido=0;
+  }else{
+    $("#pedido-list-menu").css("background-image","none");
   }
 
 }
