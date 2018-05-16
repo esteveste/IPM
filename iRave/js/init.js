@@ -596,4 +596,21 @@ async function init() {
     console.log(atual_Pedido_Lift);
     changeScreen($("#ped-description"),$("#pagar-pedido-d"));
   });
+
+
+  setInterval(function(){
+    $(".wait_time").each(function(){
+      let nr = parseInt($(this).html());
+      $(this).html(--nr);
+      pay_list[parseInt($(this).parent().parent().parent().parent().attr("id"))][3]=nr;
+      if(nr==0){
+        // $(this).removeClass(".wait_time");
+        $(this).parent().html("Pedido Pronto");
+      }
+    })
+  },10000);
+
+
+
+
 }

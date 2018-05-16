@@ -114,7 +114,7 @@ async function notifyPopup() {
   }, 4000);
 }
 
-function createPedidoDetails(el){
+function createPedidoDetails(el,ready){
     console.log(el);
     let i = parseInt(el);
     console.log(i);
@@ -149,6 +149,16 @@ function createPedidoDetails(el){
             });
         }
     });
+
+    if(ready){
+      $("#bt-pedidos-desc").css("opacity","1");
+      $("#bt-pedidos-desc").removeClass("no-touch");
+    }else{
+      $("#bt-pedidos-desc").css("opacity","0.5");
+      $("#bt-pedidos-desc").addClass("no-touch");
+    }
+
+
     $("#bt-pedidos-desc").attr("pedidos",i);
     changeScreen($("#pedidos-list"),$("#ped-description"));
 
@@ -160,6 +170,10 @@ function creatPayList(){
   let i = 0;
   for (i = 0; i < pay_list.length; i++) {
     let el = pay_list[i];
+    if(el[3]==undefined){
+      el.push(Math.ceil(Math.random() * 5));
+    }
+
     console.log("sup" + el[0]);
       let button = document.createElement("button");
       button.id=`${i}pedido`;
@@ -170,7 +184,7 @@ function creatPayList(){
                               </div>
                               <div class="bt-text">
                                   <br>
-                                  <span>${`Tempo: ${"2 mins"}`}</span><br><br>
+                                  <span>${`Tempo: <span class="wait_time">${el[3]}</span> mins`}</span><br><br>
                                   <span>${"Preço: " +el[2] + "€"}</span>
                               </div>
                           </div>`
@@ -180,7 +194,8 @@ function creatPayList(){
       max_pedido = (max_pedido < 175) ? 175 :  max_pedido;
 
       $("#pedido-list-menu > button").click(function(){
-        createPedidoDetails($(this).attr("id"));
+        let ready = true ? pay_list[parseInt($(this).attr("id"))][3]==0 : false;
+        createPedidoDetails($(this).attr("id"),ready);
       });
   }
   if(i==0){
