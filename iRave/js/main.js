@@ -1,5 +1,15 @@
 'use strict';
 
+// Todo
+// Horario Navegar
+// Nav pedidos
+// notificar pedido Pronto
+// Fazer mais Restaurantes
+// Mapa photoshop
+// Autoupdate
+//
+//
+
 async function detectIdleTime(){
   idle += 2;
   if (idle >= 60){
@@ -173,7 +183,12 @@ function creatPayList(){
     if(el[3]==undefined){
       el.push(Math.ceil(Math.random() * 5));
     }
-
+    let time;
+    if(el[3]!=0){
+      time=`Tempo: <span class="wait_time">${el[3]}</span> mins`;
+    }else{
+      time="Pedido Pronto";
+    }
     console.log("sup" + el[0]);
       let button = document.createElement("button");
       button.id=`${i}pedido`;
@@ -184,7 +199,7 @@ function creatPayList(){
                               </div>
                               <div class="bt-text">
                                   <br>
-                                  <span>${`Tempo: <span class="wait_time">${el[3]}</span> mins`}</span><br><br>
+                                  <span>${time}</span><br><br>
                                   <span>${"Preço: " +el[2] + "€"}</span>
                               </div>
                           </div>`
@@ -194,7 +209,7 @@ function creatPayList(){
       max_pedido = (max_pedido < 175) ? 175 :  max_pedido;
 
       $("#pedido-list-menu > button").click(function(){
-        let ready = true ? pay_list[parseInt($(this).attr("id"))][3]==0 : false;
+        let ready = true ? pay_list[parseInt($(this).attr("id"))][3]<=0 : false;
         createPedidoDetails($(this).attr("id"),ready);
       });
   }

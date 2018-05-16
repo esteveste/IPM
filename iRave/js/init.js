@@ -522,6 +522,7 @@ async function init() {
           popup_list[8][0] = "O numero do seu pedido e o " + pedido_nr.toString();
           createPopup(8);
           notifyPopup();
+          creatPayList();
       }, 4100);
       $("#imgpagar").attr("src", "resources/checked.png");
       $("#imgpagar").attr("id", "imgpagar1");
@@ -605,9 +606,9 @@ async function init() {
       let nr = parseInt($(this).html());
       $(this).html(--nr);
       pay_list[parseInt($(this).parent().parent().parent().parent().attr("id"))][3]=nr;
-      if(nr==0){
-        // $(this).removeClass(".wait_time");
+      if(nr<=0){
         $(this).parent().html("Pedido Pronto");
+        $(this).removeClass("wait_time");
       }
     })
   },10000);
