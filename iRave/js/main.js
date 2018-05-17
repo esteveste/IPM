@@ -219,7 +219,7 @@ function creatPayList(){
       });
   }
   if(i==0){
-    $("#pedido-list-menu").css("background-image","url(../resources/checkedpedido2.png)");
+    $("#pedido-list-menu").css("background-image","url(./resources/checkedpedido2.png)");
     $("#pedido-list-menu").css("opacity","0.5");
     max_pedido=0;
   }else{
