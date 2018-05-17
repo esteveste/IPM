@@ -124,7 +124,7 @@ var popup_list = {
   6: ["Cancelou o seu pedido.", ""],
   7: ["O seu pedido foi efetuado com sucesso.", ""],
   8: ["", ""],
-  9: ["Pedido confirmado.",""]
+  9: ["Pedido confirmado.", ""],
 }
 var btImg = {
   "def":"resources/map/map.png",

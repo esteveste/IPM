@@ -186,7 +186,10 @@ function creatPayList(){
     let time;
     if(el[3]!=0){
       time=`Tempo: <span class="wait_time">${el[3]}</span> mins`;
-    }else{
+    } else {
+        popup_list[2][0] = "O pedido " + el[0] + " está pronto.";
+        createNotification(2);
+        $("#alerticon").css("opacity", "1");
       time="Pedido Pronto";
     }
     console.log("sup" + el[0]);

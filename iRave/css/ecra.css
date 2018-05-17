@@ -824,9 +824,16 @@
 
     position: absolute;
     right: 2%;
-    left: 3%;
     bottom: 2%;
-    width: 95%;
+    width: 46%;
+    background-color: #4CAF50;
+}
+
+#bt-pedidos-nav {
+    position: absolute;
+    left: 2%;
+    bottom: 2%;
+    width: 46%;
     background-color: #4CAF50;
 }
 
@@ -876,6 +883,11 @@
     line-height: 50%;
 }
 
+.bt-pednav {
+    color: white;
+    height: 13%;
+    line-height: 50%;
+}
 
 .bt-cancel {
     color: white;

@@ -595,10 +595,14 @@ async function init() {
   $("#bar-title").text("Menu");
 
   $("#bt-pedidos-desc").click(function(){
-    atual_Pedido_Lift= parseInt($(this).attr("pedidos"));
+    atual_Pedido_Lift = parseInt($(this).attr("pedidos"));
     console.log(atual_Pedido_Lift);
     changeScreen($("#ped-description"),$("#pagar-pedido-d"));
   });
+
+    $("#bt-pedidos-nav").click(function () {
+        changeScreen($("#ped-description"), $("#mapa"));
+    });
 
 
   setInterval(function(){
