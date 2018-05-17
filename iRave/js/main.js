@@ -188,6 +188,8 @@ function creatPayList(){
       time=`Tempo: <span class="wait_time">${el[3]}</span> mins`;
     } else {
         popup_list[2][0] = "O pedido " + el[0] + " está pronto.";
+        createPopup(2);
+        notifyPopup();
         createNotification(2);
         $("#alerticon").css("opacity", "1");
       time="Pedido Pronto";
