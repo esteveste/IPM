@@ -1,9 +1,7 @@
 'use strict';
 
 // Todo
-// Horario Navegar
-// Nav pedidos
-// notificar pedido Pronto
+// notificar pedido Tem problemas...
 // Fazer mais Restaurantes
 // Mapa photoshop
 // Autoupdate
@@ -351,7 +349,13 @@ async function createDiv(el, flag) {
     // createPopup(3);
     // notifyPopup();
     changeScreen($("#band"), $("#mapa"));
-    changeImage("p" + band_list[el.attr("id")].stage[band_list[el.attr("id")].stage.length -1])
+    changeImage("p" + band_list[el.attr("id")].stage[band_list[el.attr("id")].stage.length -1]);
+    createMapBar("p" + band_list[el.attr("id")].stage[band_list[el.attr("id")].stage.length -1]);
+    $("#inner-map").css("left",`-${269*map_zoom_last}px`);
+    $("#inner-map").css("top",`-${29*map_zoom_last}px`);
+    // changeImage("p" + band_list[el.attr("id")].stage[band_list[el.attr("id")].stage.length -1])
+    //
+
   });
   $(".popup-button").click(function () {
     currentAlert=undefined;
