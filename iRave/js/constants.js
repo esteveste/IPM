@@ -103,7 +103,7 @@ var title_list = {
   "mapa-opcoes3": "Comer",
   "pedidos":"Pedidos",
   "tcheca": "Tcheca",
-  "turca": "Turca",
+  "turca": "Alibaba",
   "check-pedido": "Pedido",
   "pagar-pedido": "Pagar",
   "bebidas": "Bebidas",
@@ -125,6 +125,7 @@ var popup_list = {
   7: ["O seu pedido foi efetuado com sucesso.", ""],
   8: ["", ""],
   9: ["Pedido confirmado.", ""],
+  10:["","Ir"]
 }
 var btImg = {
   "def":"resources/map/map.png",

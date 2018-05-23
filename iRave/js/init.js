@@ -609,8 +609,14 @@ async function init() {
     $(".wait_time").each(function(){
       let nr = parseInt($(this).html());
       $(this).html(--nr);
-      pay_list[parseInt($(this).parent().parent().parent().parent().attr("id"))][3]=nr;
+      let i_list =parseInt($(this).parent().parent().parent().parent().attr("id"));
+      pay_list[i_list][3]=nr;
       if(nr<=0){
+        popup_list[10][0] = "O pedido " + pay_list[i_list][0] + " está pronto.";
+        createPopup(10);
+        notifyPopup();
+        createNotification(10);
+        $("#alerticon").css("opacity", "1");
         $(this).parent().html("Pedido Pronto");
         $(this).removeClass("wait_time");
       }

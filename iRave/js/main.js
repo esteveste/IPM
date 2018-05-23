@@ -65,10 +65,24 @@ async function createNotification(alert) {
   notificationDiv.appendChild(notificationButton);
 
   lockscreen.append(notificationDiv);
-  $(".notification-bt").click(function () {
-    $("#notification").remove();
-    $("#alerticon").css("opacity", "0");
-  });
+  $(".notification-bt").unbind();
+  if(alert!=10){
+    $(".notification-bt").click(function () {
+      $("#notification").remove();
+      $("#alerticon").css("opacity", "0");
+    });
+  }else{
+    $(".notification-bt").click(function () {
+      $("#notification").remove();
+      $("#alerticon").css("opacity", "0");
+      $("#lockscreen").animate({
+        'top': -200
+      });
+      let atual = appHistory[appHistory.length-1]!=undefined ? appHistory[appHistory.length-1] : $("#menu-overflow");
+      changeScreen(atual,$("#pedidos-list"));
+    });
+  }
+
 }
 
 
@@ -104,6 +118,25 @@ async function createPopup(alert) {
   bt.empty();
   text.text(popup_list[alert][0]);
   bt.text(popup_list[alert][1]);
+  $(".popup-button").unbind();
+  if(alert==10){
+
+    $(".popup-button").click(function () {
+      currentAlert=undefined;
+      $("#notification").remove();
+      $("#alerticon").css("opacity", "0");
+      let atual = appHistory[appHistory.length-1]!=undefined ? appHistory[appHistory.length-1] : $("#menu-overflow");
+      changeScreen(atual,$("#pedidos-list"));
+    });
+  }else{
+    $(".popup-button").click(function () {
+      currentAlert=undefined;
+      $("#notification").remove();
+      $("#alerticon").css("opacity", "0");
+      createPopup(4);
+
+    });
+  }
 }
 
 async function notifyPopup() {
@@ -185,11 +218,6 @@ function creatPayList(){
     if(el[3]!=0){
       time=`Tempo: <span class="wait_time">${el[3]}</span> mins`;
     } else {
-        popup_list[2][0] = "O pedido " + el[0] + " está pronto.";
-        createPopup(2);
-        notifyPopup();
-        createNotification(2);
-        $("#alerticon").css("opacity", "1");
       time="Pedido Pronto";
     }
     console.log("sup" + el[0]);
@@ -357,13 +385,13 @@ async function createDiv(el, flag) {
     //
 
   });
-  $(".popup-button").click(function () {
-    currentAlert=undefined;
-    $("#notification").remove();
-    $("#alerticon").css("opacity", "0");
-    createPopup(4);
-
-  });
+  // $(".popup-button").click(function () {
+  //   currentAlert=undefined;
+  //   $("#notification").remove();
+  //   $("#alerticon").css("opacity", "0");
+  //   createPopup(4);
+  //
+  // });
 }
 
 
