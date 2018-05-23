@@ -1,5 +1,5 @@
 'use strict';
-const DEBUG = true;
+const DEBUG = false;
 const BUTTON_SIZE = 64;
 const BAR_SIZE = 25.8;
 const SCREEN_SIZE = 178.31;
