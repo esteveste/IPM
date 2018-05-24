@@ -93,7 +93,11 @@ async function createMapBar(destino){
   let h = bar.height();
   let mapBarText = mapBarTexts[destino].split("|");
   text.empty();
-  text.html(`<b style="color:black;">${mapBarText[0]}</b>|${mapBarText[1]}`);
+  if(destino=="help"){
+    text.html(`<b style="color:black;">Longpress Menu</b>`);
+  }else{
+    text.html(`<b style="color:black;">${mapBarText[0]}</b>|${mapBarText[1]}`);
+  }
   bar.css("bottom", -h -12);
   setTimeout(function () {
     bar.animate({

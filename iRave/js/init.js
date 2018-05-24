@@ -623,7 +623,7 @@ async function init() {
     })
   },10000);
 
-
+// createMapBar("help");
 
 
 }

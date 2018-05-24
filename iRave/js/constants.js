@@ -147,5 +147,6 @@ var mapBarTexts = {
   "w1":"WC 1 | 5mins",
   "w2":"WC 2 | 3mins",
   "c1":"Alibaba | 1min",
-  "c2":"Tcheco | 3mins"
+  "c2":"Tcheco | 3mins",
+  "help":"Longpress para Menu"
 }
